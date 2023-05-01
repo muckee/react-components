@@ -1,0 +1,21 @@
+.label {
+    margin-bottom: 0.3em;
+}
+
+.fieldWrapper {
+    display: flex;
+    margin-bottom: 0.3em;
+}
+
+.fieldWrapper button {
+    align-self: center;
+}
+
+.errorMsg {
+    color: red;
+}
+
+.error {
+    border-color: red;
+    background-color: palevioletred;
+}

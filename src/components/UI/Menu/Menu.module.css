@@ -1,0 +1,26 @@
+/* Stylesheet */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.3em;
+  margin: 0 0 0.3em;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+}
+
+.menuItem {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+@media(min-width: 900px) {
+  .menu {
+    flex-direction: row;
+  }
+}

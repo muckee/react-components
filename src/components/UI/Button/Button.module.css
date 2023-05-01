@@ -1,0 +1,35 @@
+/* Stylesheet */
+
+.button {
+  font: inherit;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.6);
+  color: rgba(0,0,0,0.8);
+  margin: 0 0.2em;
+  padding: 0.2em;
+  cursor: pointer;
+  font-size: 1.15em;
+  border-radius: 0.3em;
+  vertical-align: middle;
+}
+
+.button:hover,
+.button:active {
+  background-color: #688;
+  color: rgba(255,255,255,0.6);
+  border-color: #688;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:disabled,
+.button:focus:disabled,
+.button:hover:disabled,
+.button:active:disabled {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.8);
+  cursor: not-allowed;
+}

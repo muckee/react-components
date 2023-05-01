@@ -1,0 +1,7 @@
+/* Stylesheet */
+
+.footer {
+  margin: 0;
+  padding: 0.6em;
+  width: calc(100% - 1.2em); /* calc(page_width - padding_width) */
+}

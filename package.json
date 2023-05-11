@@ -51,6 +51,7 @@
     "dist"
   ],
   "dependencies": {
+    "@babel/plugin-transform-regenerator": "^7.21.5",
     "@floating-ui/react": "^0.24.0",
     "react-select": "^5.7.2"
   }

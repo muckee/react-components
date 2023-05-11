@@ -9,7 +9,7 @@ import styles from './InputList.module.css';
 const InputList = props => {
 
     const renderInputByType = input => {
-        switch(input.type) {
+        switch (input.type) {
             case 'text':
             case 'number':
             case 'file':
@@ -23,7 +23,7 @@ const InputList = props => {
                     size={input.size ? input.size : undefined}
                     hidden={input.hidden ? input.hidden : false}
                     accept={input.accept ? input.accept : undefined}
-                    onChange={input.onChange ? input.onChange : () => {}}
+                    onChange={input.onChange ? input.onChange : () => { }}
                     disabled={input.disabled}
                 />
             case 'select':
@@ -43,35 +43,35 @@ const InputList = props => {
                 if (input.isMulti) {
                     selectProps.isMulti = input.isMulti;
                 }
-                
+
                 const selectStyle = {
                     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-                    const color = '#444';
-                    return {
-                        ...styles,
-                        backgroundColor: isDisabled
-                        ? undefined
-                        : isSelected
-                        ? data.color
-                        : isFocused
-                        ? color
-                        : undefined,
-                        color: isDisabled
-                        ? '#ccc'
-                        : isSelected
-                        ? 'white'
-                        : 'black',
-                        cursor: isDisabled ? 'not-allowed' : 'default',
-                
-                        ':active': {
-                        ...styles[':active'],
-                        backgroundColor: !isDisabled
-                            ? isSelected
-                            ? data.color
-                            : color
-                            : undefined,
-                        },
-                    };
+                        const color = '#444';
+                        return {
+                            ...styles,
+                            backgroundColor: isDisabled
+                                ? undefined
+                                : isSelected
+                                    ? data.color
+                                    : isFocused
+                                        ? color
+                                        : undefined,
+                            color: isDisabled
+                                ? '#ccc'
+                                : isSelected
+                                    ? 'white'
+                                    : 'black',
+                            cursor: isDisabled ? 'not-allowed' : 'default',
+
+                            ':active': {
+                                ...styles[':active'],
+                                backgroundColor: !isDisabled
+                                    ? isSelected
+                                        ? data.color
+                                        : color
+                                    : undefined,
+                            },
+                        };
                     },
                     input: (styles) => ({ ...styles }),
                     placeholder: (styles) => ({ ...styles }),
@@ -87,7 +87,7 @@ const InputList = props => {
                     type={input.type}
                     name={input.name}
                     value={input.value}
-                    onChange={input.onChange ? input.onChange : () => {}}
+                    onChange={input.onChange ? input.onChange : () => { }}
                 />
         }
     }
@@ -127,7 +127,7 @@ const InputList = props => {
                     {input.childrenAreDeletable && <Button
                         type='button'
                         onClick={(e) => {
-                            if(field.type === 'fieldset') {
+                            if (field.type === 'fieldset') {
                                 input.deleteChild(field.fields);
                             } else {
                                 input.deleteChild(e, idx);

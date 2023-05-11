@@ -2,9 +2,8 @@
 
 .button {
   font: inherit;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.6);
-  color: rgba(0,0,0,0.8);
+  background-color: #3A7BD5;
+  color: #9fa8da;
   margin: 0 0.2em;
   padding: 0.2em;
   cursor: pointer;
@@ -13,23 +12,27 @@
   vertical-align: middle;
 }
 
-.button:hover,
+.button:hover {
+  background-color: #4F8CEB;
+  color: #7986CB;
+}
+
 .button:active {
-  background-color: #688;
-  color: rgba(255,255,255,0.6);
-  border-color: #688;
+  background-color: #2A5DA8;
+  color: #5C6BC0;
 }
 
 .button:focus {
   outline: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 4px 8px rgba(0,0,0,0.06), 0 8px 16px rgba(0,0,0,0.06), 0 16px 32px rgba(0,0,0,0.06);
 }
 
 .button:disabled,
 .button:focus:disabled,
 .button:hover:disabled,
 .button:active:disabled {
-  background: rgba(0, 0, 0, 0.3);
-  border-color: rgba(255,255,255,0.4);
-  color: rgba(255,255,255,0.8);
+  outline: 1px solid #424242;
+  background-color: #717D8C;
+  color: #7986CB;
   cursor: not-allowed;
 }

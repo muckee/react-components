@@ -32,7 +32,10 @@ const Menu = props => {
         <h4>{category.category}</h4>
         <UnorderedList>
           {category.items.map((item, iIdx) => {
-            return <ListItem key={iIdx}>
+            return <ListItem
+              key={iIdx}
+              className={`${styles.menuItem}${props.itemClassName ? ' ' + props.itemClassName : ''}`}
+            >
               {item}
             </ListItem>;
           })}

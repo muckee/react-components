@@ -22,6 +22,7 @@ export { default as Input } from './components/UI/Form/Input/Input';
 
 export { default as Figure } from './components/UI/Figure/Figure';
 
+export { default as Portal } from './components/UI/Portal/Portal';
 export { default as Modal } from './components/UI/Modal/Modal';
 export { default as Backdrop } from './components/UI/Backdrop/Backdrop';
 

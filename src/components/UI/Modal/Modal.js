@@ -8,16 +8,17 @@ import Footer from "../Footer/Footer";
 
 import styles from './Modal.module.css';
 import Section from "../Section/Section";
+import Portal from '../Portal/Portal';
 
 const Modal = props => {
 
     return <Fragment>
-        
-        {ReactDOM.createPortal(
-            <Backdrop onClick={props.handleClose} className={props.show ? styles.visible : ''} />,
-            document.getElementById(props.backdropPortalId)
-        )}
-        {ReactDOM.createPortal(
+
+        {<Portal id={`thugnerdz-modal-backdrop-root`}>
+            <Backdrop onClick={props.handleClose} className={props.show ? styles.visible : ''} />
+        </Portal>}
+
+        {<Portal id={`thugnerdz-modal-overlay-root`}>
             <div className={`${styles.modal} ${props.show ? styles.visible : ''} ${props.className ? props.className : ''}`}>
 
                 <Section className={`${styles.modalMain}${props.mainClassName ? ' ' + props.mainClassName : ''}`}>
@@ -40,9 +41,8 @@ const Modal = props => {
                     </Footer>}
 
                 </Section>
-            </div>,
-            document.getElementById(props.overlayPortalId)
-        )}
+            </div>
+        </Portal>}
     </Fragment>;
 };
 

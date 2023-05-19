@@ -3,6 +3,7 @@ import React from 'react';
 import ListItem from '../List/ListItem';
 
 import styles from './Menu.module.css';
+import UnorderedList from '../List/UnorderedList';
 
 const Menu = props => {
 
@@ -23,6 +24,19 @@ const Menu = props => {
 
         {item}
 
+      </ListItem>;
+    })}
+    
+    {props.categories && props.categories.map((category, cIdx) => {
+      return <ListItem key={cIdx}>
+        <h4>{category.category}</h4>
+        <UnorderedList>
+          {category.items.map((item, iIdx) => {
+            return <ListItem key={iIdx}>
+              {item}
+            </ListItem>;
+          })}
+        </UnorderedList>
       </ListItem>;
     })}
   </menu>;

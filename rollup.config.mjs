@@ -27,9 +27,18 @@ export default [
     plugins: [
       peerDepsExternal(),
       resolve(),
+      postcss({
+        minimize: true,
+        modules: true,
+        use: {
+            sass: null,
+            stylus: null,
+            less: null,
+        }, 
+        extract: true
+      }),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      postcss(),
       terser()
     ],
   },

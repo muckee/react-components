@@ -50,6 +50,7 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "@floating-ui/react": "^0.24.8",
+    "@floating-ui/react-dom": "^2.0.1",
     "react-select": "^5.7.4"
   }
 }

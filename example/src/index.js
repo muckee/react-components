@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom';
 
 import App from './App';
 
-import '@muckington/react-components/dist/index.css';
+import '@muckington/react-components/dist/theme.min.css';
+import '@muckington/react-components/dist/cjs/index.css';
 // import './App.css';
 
 const root = createRoot(document.getElementById('root'));

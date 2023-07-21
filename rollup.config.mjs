@@ -1,4 +1,4 @@
-import path from 'path';
+import copy from 'rollup-plugin-copy';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -36,6 +36,18 @@ export default [
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),
       terser(),
+      copy({
+        targets: [
+          {
+            src: 'src/theme.css',
+            dest: 'dist',
+          },
+          {
+            src: 'src/theme.min.css',
+            dest: 'dist',
+          },
+        ]
+      }),
     ],
   },
   {
@@ -45,25 +57,5 @@ export default [
       dts()
     ],
     external: [/\.css$/],
-  },
-  {
-    input: 'src/index.css',
-    output: [
-      {
-        file: path.resolve('dist/index.css'),
-        format: 'es',
-      },
-    ],
-    plugins: [
-      peerDepsExternal(),
-      postcss({
-        minimize: true,
-        modules: true,
-        sourceMap: true,
-      }),
-      resolve(),
-      commonjs(),
-      terser(),
-    ],
   },
 ];

@@ -28,6 +28,7 @@
     "postcss": "^8.4.26",
     "react-dom": "^18.2.0",
     "rollup": "^3.26.3",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
@@ -36,7 +37,7 @@
     "typescript-plugin-css-modules": "^5.0.1"
   },
   "scripts": {
-    "rollup": "rollup -c",
+    "rollup": "css-minify -f ./src/theme.css -o ./src && rollup -c && rm ./src/theme.min.css",
     "test": "jest --passWithNoTests"
   },
   "main": "dist/cjs/index.js",

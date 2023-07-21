@@ -7,7 +7,6 @@ import dts from 'rollup-plugin-dts';
 import postcss from 'rollup-plugin-postcss';
 import terser from '@rollup/plugin-terser';
 
-
 import packageJson from './package.json' assert { type: 'json' };
 
 export default [
@@ -46,5 +45,25 @@ export default [
       dts()
     ],
     external: [/\.css$/],
+  },
+  {
+    input: 'src/index.css',
+    output: [
+      {
+        file: path.resolve('dist/index.css'),
+        format: 'es',
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      postcss({
+        minimize: true,
+        modules: true,
+        sourceMap: true,
+      }),
+      resolve(),
+      commonjs(),
+      terser(),
+    ],
   },
 ];

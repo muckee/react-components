@@ -3,6 +3,8 @@ dist
 
 // Yarn (Berry)
 yarn.lock
+.yarnrc
+.yarnrc.yml
 .pnp.*
 .yarn
 

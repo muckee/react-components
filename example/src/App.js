@@ -12,7 +12,7 @@ import {
   ListItem,
   Footer,
   Spinner
-} from '@muckee/react-components';
+} from '@muckington/react-components';
 
 const App = () => {
 

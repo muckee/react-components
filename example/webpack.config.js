@@ -1,45 +1,67 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  // Where files should be sent once they are bundled
  output: {
    path: path.join(__dirname, '/dist'),
-   filename: 'index.bundle.js'
+   filename: 'index.bundle.js',
+   publicPath: '/',
+   assetModuleFilename: 'assets/img/[hash][ext][query]',
  },
-  // webpack 5 comes with devServer which loads in development mode
- devServer: {
-   static: true,
-   port: 3000,
-   open: true,
-   hot: true
- },
-  // Rules of how webpack will take our files, complie & bundle them for the browser 
  module: {
    rules: [
-     {
-       test: /\.(js|jsx)$/,
-       exclude: /nodeModules/,
-       use: {
-         loader: 'babel-loader'
-       }
-     },
-//     {
-//       test: /\.css$/,
-//       use: ['style-loader', 'css-loader']
-//     },
-     {
-       test: /\.css$/i,
-       use: [MiniCssExtractPlugin.loader, 'css-loader']
-     }
+    {
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                targets: 'defaults',
+                debug: true,
+                useBuiltIns: 'usage',
+                corejs: 3,
+              },
+            ],
+            [
+              '@babel/preset-react',
+              {
+                runtime: 'automatic',
+              },
+            ]
+          ],
+        },
+      },
+    },
+    {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
+    },
+    {
+      test: /\.(png|jpe?g|gif|svg)$/i,
+      type: 'asset',
+    },
    ]
  },
  plugins: [
-   new HtmlWebpackPlugin({ template: './src/index.html' }),
-   new MiniCssExtractPlugin()
+   new HTMLWebpackPlugin({
+    template: path.join(__dirname, "public", "index.html"),
+  }),
  ],
  resolve: {
    extensions: ['.ts', '.tsx', '.js', '.jsx'],
  },
-}
+ devServer: {
+   static: true,
+   port: 3000,
+   hot: true,
+   open: true,
+   historyApiFallback: true,
+   historyApiFallback: {
+     disableDotRule: true,
+   },
+ },
+};

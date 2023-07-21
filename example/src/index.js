@@ -1,11 +1,14 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import { createRoot } from 'react-dom';
 
 import App from './App';
 
-import './App.css';
+import '@muckington/react-components/dist/cjs/index.css';
+// import './App.css';
 
-ReactDom.render(
-  <App />,
-  document.getElementById('app')
-);
+const root = createRoot(document.getElementById('root'));
+
+// Render the React application within the root element
+root.render(<React.StrictMode>
+  <App />
+</React.StrictMode>);

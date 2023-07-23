@@ -16,6 +16,7 @@ export interface MenuProps {
     category: string;
     items: any[];
   }[];
+  categoryHeadingClassName?: string | undefined;
 }
 
 const Menu = (props: MenuProps) => {
@@ -39,20 +40,26 @@ const Menu = (props: MenuProps) => {
 
       </ListItem>;
     })}
-    
+
     {props.categories && props.categories.map((category, cIdx) => {
+
       return <ListItem key={cIdx}>
-        <h4>{category.category}</h4>
+
+        <h4 className={props.categoryHeadingClassName}>{category.category}</h4>
+
         <UnorderedList>
+
           {category.items.map((item, iIdx) => {
             return <ListItem
               key={iIdx}
-              className={`${styles.menuItem}${props.itemClassName ? ' ' + props.itemClassName : ''}`}
+              className={`${styles.menuItem}${props.itemClassName ? ` ${props.itemClassName}` : ''}`}
             >
               {item}
             </ListItem>;
           })}
+
         </UnorderedList>
+
       </ListItem>;
     })}
   </menu>;

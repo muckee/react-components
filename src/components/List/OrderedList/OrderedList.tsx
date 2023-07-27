@@ -17,6 +17,6 @@ const OrderedList = (props: OrderedListProps) => {
   >
     {props.children}
   </ol>;
-}
+};
 
 export default OrderedList;

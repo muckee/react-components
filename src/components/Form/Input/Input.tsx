@@ -11,6 +11,7 @@ export interface InputProps {
   min?: string | undefined;
   max?: string | undefined;
   size?: number | undefined;
+  placeholder?: string | undefined;
   value?: string | undefined;
   accept?: string | undefined;
   onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined; 

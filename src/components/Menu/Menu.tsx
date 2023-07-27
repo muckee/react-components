@@ -16,6 +16,7 @@ export interface MenuProps {
     category: string;
     items: any[];
   }[];
+  categoryClassName?: string | undefined;
   categoryHeadingClassName?: string | undefined;
 }
 
@@ -43,7 +44,7 @@ const Menu = (props: MenuProps) => {
 
     {props.categories && props.categories.map((category, cIdx) => {
 
-      return <ListItem key={cIdx}>
+      return <ListItem key={cIdx} className={props.categoryClassName}>
 
         <h4 className={props.categoryHeadingClassName}>{category.category}</h4>
 

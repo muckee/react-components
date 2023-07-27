@@ -15,7 +15,7 @@ const Portal = (props: PortalProps) => {
         children,
     } = props;
 
-    const rootElement = useRef((id && document.getElementById(id)) || document.createElement('div'));
+    const rootElement = useRef((id ? document.getElementById(id) : null) || document.createElement('div'));
 
     if(className) {
         rootElement.current.classList.add(className);

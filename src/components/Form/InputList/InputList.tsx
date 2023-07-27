@@ -12,6 +12,7 @@ export interface InputData {
   name: string;
   label: any;
   value?: string | undefined;
+  placeholder?: string | undefined;
   defaultValue?: {
     label: string;
     value: string;
@@ -28,6 +29,7 @@ export interface InputData {
     value: string | undefined;
   }[] | undefined;
   className?: string | undefined;
+  classNames?: any;
   labelClassName?: string | undefined;
   legend?: any;
   fields?: InputData[] | undefined;
@@ -36,6 +38,7 @@ export interface InputData {
   isMulti?: boolean | undefined;
   isDisabled?: boolean | undefined;
   isClearable?: boolean | undefined;
+  isSearchable?: boolean | undefined;
   childrenAreDeletable?: boolean | undefined;
   deleteChild?: (
     toDelete: any,
@@ -59,6 +62,7 @@ const InputList = (props: InputListProps) => {
                     type={input.type}
                     name={input.name}
                     className={`${input.className ? input.className : ''}${input.errorMsg ? ' ' + styles.error : ''}`}
+                    placeholder={input.placeholder ? input.placeholder : undefined}
                     value={input.value ? input.value : undefined}
                     min={input.min ? input.min : undefined}
                     max={input.max ? input.max : undefined}
@@ -76,14 +80,23 @@ const InputList = (props: InputListProps) => {
                         label: '',
                         value: '',
                     },
-                    value: input.value !== undefined ? input.value : (input.isMulti ? [] : {}),
+                    placeholder: input.placeholder ? input.placeholder : undefined,
+                    value: input.value === undefined ? (input.isMulti ? [] : {}) : input.value,
                     onChange: input.onChange,
                     isDisabled: input.isDisabled ? true : false,
                     isClearable: input.isClearable ? true : false,
                     isMulti: input.isMulti ? true : false,
+                    isSearchable: input.isSearchable ? true : false,
+                    classNames: input.classNames ? input.classNames : undefined,
                 };
 
                 const selectStyle = {
+                    menu: (styles: any) => {
+                        return {
+                            ...styles,
+                            zIndex: 20,
+                        };
+                    },
                     option: (styles: any, { data, isDisabled, isFocused, isSelected }: {
                       data: any;
                       isDisabled: boolean;
@@ -130,8 +143,16 @@ const InputList = (props: InputListProps) => {
                 return <Input
                     type={input.type}
                     name={input.name}
-                    value={input.value}
+                    className={`${input.className ? input.className : ''}${input.errorMsg ? ' ' + styles.error : ''}`}
+                    placeholder={input.placeholder ? input.placeholder : undefined}
+                    value={input.value ? input.value : undefined}
+                    min={input.min ? input.min : undefined}
+                    max={input.max ? input.max : undefined}
+                    size={input.size ? input.size : undefined}
+                    hidden={input.hidden ? input.hidden : false}
+                    accept={input.accept ? input.accept : undefined}
                     onChange={input.onChange ? input.onChange : () => { }}
+                    disabled={input.disabled}
                 />
         }
     }

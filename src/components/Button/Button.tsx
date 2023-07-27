@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Button.module.css';
 
 export interface ButtonProps {
+  title?: string | undefined;
   type?: "button" | "submit" | "reset" | undefined;
   className?: string | undefined;
   status?: string | undefined;
@@ -53,6 +54,7 @@ const Button = (props: ButtonProps) => {
   }
 
   return <button
+    title={props.title}
     type={props.type || 'button'}
     className={`${styles.button}${getClassName()}`}
     onClick={props.onClick}

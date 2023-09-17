@@ -1,6 +1,6 @@
 {
   "name": "@muckington/react-components",
-  "version": "0.0.13",
+  "version": "0.0.26",
   "description": "A library of re-usable React components built for use with ThugNerdz templates",
   "author": "Muckee <muckee@thugnerdz.com>",
   "license": "EPL-2.0",

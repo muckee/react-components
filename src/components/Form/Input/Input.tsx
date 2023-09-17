@@ -1,42 +1,33 @@
 import React from 'react';
-
-import styles from './Input.module.css';
+import DefaultInput from './DefaultInput';
+import Select from './Select';
 
 export interface InputProps {
-  type: string;
   name: string;
+  id?: string | undefined;
+  type?: string | undefined;
   children?: any;
   hidden?: boolean | undefined;
-  id?: string | undefined;
-  min?: string | undefined;
-  max?: string | undefined;
-  size?: number | undefined;
-  placeholder?: string | undefined;
-  value?: string | undefined;
-  accept?: string | undefined;
-  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined; 
+  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
   className?: string | undefined;
   disabled?: boolean | undefined;
-}
+  placeholder?: any;
+  value?: any;
+};
 
 const Input = (props: InputProps) => {
 
-  return (!props.hidden) && <input
-      id={props.id ? props.id : ''}
-      type={props.type}
-      name={props.name}
-      min={props.min ? props.min : ''}
-      max={props.max ? props.max : ''}
-      size={props.size}
-      value={props.value ? props.value : ''}
-      accept={props.accept ? props.accept : ''}
-      hidden={props.hidden ? props.hidden : false}
-      onChange={props.onChange ? props.onChange : () => {}}
-      className={`${styles.input}${props.className ? ` ${props.className}` : ''}`}
-      disabled={props.disabled}
-  >
-    {props.children}
-  </input>;
+  const {
+    type,
+  } = props;
+
+  switch (type) {
+    case 'select':
+      return <Select {...props} />;
+    default:
+      return <DefaultInput {...props} />;
+  };
+
 };
 
 export default Input;

@@ -2,7 +2,7 @@
 
 html,
 body {
-  background-color: #222;
+  background-color: #2B2D42;
 }
 
 body {
@@ -12,15 +12,15 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Lora', Cambria, 'Times New Roman', Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #FAFAFA;
+  color: #E4E6C3;
 }
 
 code,
 pre {
   padding: 0.3em;
   font-family: source-code-pro, 'Roboto Mono', Menlo, Monaco, Consolas, 'Courier New', Courier, monospace;
-  background-color: #FAFAFA;
-  color: #3E3E3E;
+  background-color: #E4E6C3;
+  color: #048A81;
 }
 
 hr {
@@ -34,20 +34,20 @@ a {
 
 a:hover,
 a:visited:hover {
-  color: #47525d;
+  color: #048A81;
 }
 
 a:visited,
 a:active {
-  color: #b19cd9;
+  color: #A799B7;
 }
 
 a:visited:hover {
-  color: #47525d;
+  color: #048A81;
 }
 
 a:focus {
-  outline-color: #b19cd9;
+  outline-color: #A799B7;
 }
 
 h1,

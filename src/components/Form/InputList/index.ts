@@ -1,1 +1,1 @@
-export { default } from './InputList';
+export { default, createLabel, createFieldset } from "./InputList";

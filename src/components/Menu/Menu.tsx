@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  createElement,
+} from 'react';
 
 import UnorderedList from '../List/UnorderedList';
 import ListItem from '../List/ListItem';
@@ -18,6 +20,7 @@ export interface MenuProps {
   }[];
   categoryClassName?: string | undefined;
   categoryHeadingClassName?: string | undefined;
+  onClick?: React.MouseEventHandler<HTMLElement> | undefined;
 }
 
 const Menu = (props: MenuProps) => {
@@ -26,6 +29,7 @@ const Menu = (props: MenuProps) => {
     ref={props.menuRef}
     className={`${styles.menu}${props.className ? ` ${props.className}` : ''}`}
     style={props.style}
+    onClick={props.onClick}
   >
 
     {props.children && props.children}

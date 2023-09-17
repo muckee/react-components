@@ -1,11 +1,13 @@
-import copy from 'rollup-plugin-copy';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import typescript from '@rollup/plugin-typescript';
-import dts from 'rollup-plugin-dts';
-import postcss from 'rollup-plugin-postcss';
+import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
+import typescript from '@rollup/plugin-typescript';
+import copy from 'rollup-plugin-copy';
+import dts from 'rollup-plugin-dts';
+import nodeBuiltins from 'rollup-plugin-node-builtins';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
+import sourcemaps from 'rollup-plugin-sourcemaps';
 
 import packageJson from './package.json' assert { type: 'json' };
 
@@ -32,9 +34,16 @@ export default [
         extract: true,
         sourceMap: true,
       }),
-      resolve(),
+      resolve({
+        preferBuiltins: true,
+      }),
+      nodeBuiltins(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json' }),
+      typescript({ 
+        sourceMap: false,
+        tsconfig: './tsconfig.json',
+      }),
+      sourcemaps(),
       terser(),
       copy({
         targets: [

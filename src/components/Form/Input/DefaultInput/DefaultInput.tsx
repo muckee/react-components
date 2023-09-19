@@ -32,7 +32,6 @@ const DefaultInput = (props: DefaultInputProps) => {
   } = props;
 
   return <input
-    {...props}
     id={id ? id : ''}
     type={type ? type : 'text'}
     name={name}

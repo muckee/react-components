@@ -1,6 +1,6 @@
 {
   "name": "@muckington/react-components",
-  "version": "0.0.53",
+  "version": "0.0.54",
   "description": "A library of re-usable React components built for use with ThugNerdz templates",
   "author": "Muckee <muckee@thugnerdz.com>",
   "license": "EPL-2.0",
@@ -46,7 +46,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "tslib": "^2.6.0",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "typescript-plugin-css-modules": "^5.0.1"
   },
   "dependencies": {
@@ -56,6 +56,7 @@
     "@floating-ui/utils": "^0.1.1",
     "modern-normalize": "^2.0.0",
     "normalize.css": "^8.0.1",
+    "react-icons": "^4.11.0",
     "react-select": "^5.7.4"
   },
   "scripts": {

@@ -13,6 +13,7 @@ import packageJson from './package.json' assert { type: 'json' };
 
 export default [
   {
+    context: 'this',
     input: 'src/index.ts',
     output: [
       {

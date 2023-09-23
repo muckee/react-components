@@ -1,6 +1,9 @@
 import React, {
     Fragment,
 } from "react";
+import {
+    RiDeleteBinLine,
+} from 'react-icons/ri';
 import Button from "../../Button/Button";
 import Fieldset from "../Fieldset/Fieldset";
 import Input, {
@@ -75,7 +78,7 @@ export const createFieldset = (input: InputListItem) => <Fieldset legend={input.
                     }}
                 >
 
-                    <i className="ri-delete-bin-line"></i>
+                    <RiDeleteBinLine />
 
                 </Button>}
             </div>

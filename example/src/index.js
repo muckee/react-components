@@ -1,8 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import 'remixicon/fonts/remixicon.css';
-
 import '@muckington/react-components/dist/theme.min.css';
 import '@muckington/react-components/dist/cjs/index.css';
 

@@ -46,7 +46,7 @@ const getClassNamesFromProps = (props: ButtonProps) => {
     // We can achieve this by using bracket notation to access the desired property of `styles`.
     const propValue = props[className];
 
-    return styles[propValue];
+    return styles[propValue as keyof typeof styles];
   });
 
   // If no class names were found, don't add any classes.

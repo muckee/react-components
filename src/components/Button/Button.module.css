@@ -5,7 +5,8 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   flex-wrap: nowrap;
   gap: 0.1em;
   padding: 0.9em;

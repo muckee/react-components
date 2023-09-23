@@ -1,5 +1,6 @@
 # Webpack
 dist
+build
 
 # Yarn (Berry)
 yarn.lock

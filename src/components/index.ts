@@ -1,7 +1,7 @@
 export { default as Article } from './Article';
 export { default as Aside } from './Aside';
 export { default as Backdrop } from './Backdrop';
-export { default as Button } from './Button';
+export * from './Button';
 export { default as Figure } from './Figure';
 export { default as Footer } from './Footer';
 export * from './Form';

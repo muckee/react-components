@@ -6,13 +6,6 @@
   padding: 0.9em;
   width: calc(100% - 2em);
   box-sizing: content-box;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border: none;
-  outline: none;
-  border-radius: 0.3em;
-  background: #048A81; /* fallback for older browsers */
-  background: linear-gradient(69deg, #048A81 72%, #556F44);
-  color: #fff;
   cursor: pointer;
   font: inherit;
   font-weight: 700;
@@ -21,12 +14,29 @@
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
+  background: none;
+  border: none;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+/* Primary */
+
+.button.primary {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: #048A81; /* fallback for older browsers */
+  background: linear-gradient(69deg, #048A81 72%, #556F44);
+  color: #E4E6C3;
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  transition: background 0.33s ease-in-out, color 0.3s;
+  transition:
+    background 0.33s ease-in-out,
+    color 0.3s;
   transform-origin: center;
 }
 
-.button::after {
+.button.primary::after {
   content: '';
   z-index: -1;
   position: absolute;
@@ -39,37 +49,36 @@
   opacity: 0;
 }
 
-.button:active {
+.button.primary:active {
   background-color: #E4E6C3;
   color: #2B2D42;
 }
 
-.button:focus {
+.button.primary:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.5);
 }
 
-.button:disabled {
+.button.primary:disabled {
   background-color: #A799B7;
   color: #888;
-  cursor: not-allowed;
   opacity: 0.7;
   transition: opacity 0.3s;
 }
 
-.button:disabled:hover {
+.button.primary:disabled:hover {
   animation: none;
   opacity: 0.7;
 }
 
-.button:disabled:focus {
+.button.primary:disabled:focus {
   outline: none;
   box-shadow: none;
 }
 
 /* Animation - Hover/Focus */
-.button:focus::after,
-.button:hover::after {
+.button.primary:focus::after,
+.button.primary:hover::after {
   animation: hover-animation 4.2s infinite ease-in-out;
   animation-direction: alternate;
 }
@@ -84,8 +93,8 @@
 }
 
 /* Animation - Clicked/Focused */
-.button:focus,
-.button:active {
+.button.primary:focus,
+.button.primary:active {
   animation: pulse 0.6s ease-in-out;
 }
 
@@ -102,4 +111,51 @@
   100% {
     transform: translate3d( 0, 0, 0) scale(1) translateY(0);
   }
+}
+
+/* Secondary */
+
+.button.secondary {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: #556F44;
+  color: #E4E6C3;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Success */
+
+.button.success {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: #048A81;
+  color: #E4E6C3;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Warning */
+
+.button.warning {
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
+  background: #E4E6C3;
+  color: #222;
+  text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.63);
+}
+
+/* Danger */
+
+.button.danger {
+  box-shadow: 0px 4px 6px rgba(255, 0, 0, 0.3);
+  border: 1px solid red;
+  background: pink;
+  color: red;
+  text-shadow: 0px 2px 2px rgba(255, 0, 0, 0.23);
+}
+
+/* Outline */
+
+.button.outline {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #000;
+  background: transparent;
+  color: #000;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }

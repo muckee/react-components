@@ -2,16 +2,17 @@ import React, {
   Fragment
 } from 'react';
 import {
-  Header,
-  Main,
-  Section,
   Article,
   Button,
-  OrderedList,
-  UnorderedList,
-  ListItem,
   Footer,
-  Spinner
+  Header,
+  ListItem,
+  Main,
+  OrderedList,
+  Section,
+  Spinner,
+  SplitButton,
+  UnorderedList,
 } from '@muckington/react-components';
 
 const App = () => {
@@ -48,7 +49,43 @@ const App = () => {
 
               <Button
                 disabled={true}
-              >Disabled button</Button>
+              >
+                Disabled button
+              </Button>
+              
+              <SplitButton
+                splitButtonProps={{
+                  title: `Split button options`,
+                  type: `button`,
+                  // className: props.className,
+                  // status: props.status,
+                  // onClick: props.onClick,
+                  // onMouseDown: props.onMouseDown,
+                  // onMouseUp: props.onMouseUp,
+                  // onMouseOut: props.onMouseOut,
+                  // disabled: props.disabled,
+
+                }}
+                menuItems={[
+                  {
+                    title: `Option #1`,
+                    type: `button`,
+                    children: `Option #1`,
+                  },
+                  {
+                    title: `Option #2`,
+                    type: `button`,
+                    children: `Option #2`,
+                  },
+                  {
+                    title: `Option #3`,
+                    type: `button`,
+                    children: `Option #3`,
+                  },
+                ]}
+              >
+                Split Button
+              </SplitButton>
 
             </ListItem>
 

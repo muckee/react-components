@@ -3,7 +3,7 @@
   "description": "A skeleton React application designed to showcase the @thugnerdz/react-components library.",
   "author": "Muckee <muckee@thugnerdz.com>",
   "license": "EPL-2.0",
-  "packageManager": "yarn@4.0.0-rc.48",
+  "packageManager": "yarn@4.0.0-rc.51",
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
@@ -18,9 +18,10 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "@muckington/react-components": "file:./../",
+    "@muckington/react-components": "^0.0.51",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remixicon": "^3.5.0"
   },
   "scripts": {
     "start": "webpack serve --mode development",

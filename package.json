@@ -1,10 +1,9 @@
 {
   "name": "@muckington/react-components",
-  "version": "0.0.31",
+  "version": "0.0.52",
   "description": "A library of re-usable React components built for use with ThugNerdz templates",
   "author": "Muckee <muckee@thugnerdz.com>",
   "license": "EPL-2.0",
-  "packageManager": "yarn@4.0.0-rc.51",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
@@ -38,6 +37,7 @@
     "postcss": "^8.4.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rimraf": "^5.0.1",
     "rollup": "^3.26.3",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dts": "^5.3.0",
@@ -60,7 +60,9 @@
   },
   "scripts": {
     "minify-css": "css-minify -f ./src/theme.css -o ./src",
-    "rollup": "yarn run minify-css && rollup -c && rm ./src/theme.min.css",
+    "rm-css": "rimraf --glob ./src/theme.min.css",
+    "rollup": "yarn run minify-css && rollup -c && yarn run rm-css",
     "test": "jest --passWithNoTests"
-  }
+  },
+  "packageManager": "yarn@4.0.0-rc.51"
 }

@@ -28,7 +28,6 @@ const Menu = (props: MenuProps) => {
   return <menu
     ref={props.menuRef}
     className={`${styles.menu}${props.className ? ` ${props.className}` : ''}`}
-    style={props.style}
     onClick={props.onClick}
   >
 

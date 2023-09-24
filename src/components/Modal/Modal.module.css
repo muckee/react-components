@@ -10,7 +10,7 @@
 
 .modalMain { 
     position:fixed;
-    background: #223;
+    background: var(--primary-background-color, #222);
     height: auto;
     top:50%;
     left:50%;

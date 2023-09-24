@@ -18,7 +18,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "@muckington/react-components": "^0.0.51",
+    "@muckington/react-components": "file:./..",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

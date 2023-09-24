@@ -8,10 +8,10 @@
 }
 
 .errorMsg {
-    color: red;
+    color: var(--danger-color, red);
 }
 
 .error {
-    border-color: red;
-    background-color: palevioletred;
+    border-color: var(--danger-color, red);
+    background-color: var(--danger-background-color, pink);
 }

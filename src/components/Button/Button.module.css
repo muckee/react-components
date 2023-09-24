@@ -20,114 +20,39 @@
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
-  background: none;
-  border: 1px solid #2B2D42;
+  background: var(--primary-link-color, #EEE);
+  color: var(--primary-background-color, #222);
+  border: 1px solid var(--primary-background-color, #222);
   border-radius: 0.3em;
   box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.63);
-}
-
-.button:disabled {
-  cursor: not-allowed;
-  background-color: #A799B7;
-  color: #888;
 }
 
 /* Primary */
 
 .button.primary {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  background: #048A81; /* fallback for older browsers */
-  background: linear-gradient(69deg, #048A81 72%, #556F44);
-  color: #E4E6C3;
+  background-color: var(--primary-background-color, lightblue);
+  color: var(--primary-color, #EEE);
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  transition:
-    background 0.33s ease-in-out,
-    color 0.3s;
-  transform-origin: center;
-}
-
-.button.primary::after {
-  content: '';
-  z-index: -1;
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: 100%;
-  height: 100%;
-  border-radius: 0.3em;
-  background: linear-gradient(128deg, #E4E6C3 3%, #556F44 8%, #048A81);
-  opacity: 0;
 }
 
 .button.primary:active {
-  background-color: #E4E6C3;
-  color: #2B2D42;
+  background-color: var(--tertiary-link-color, cadetblue);
+  color: var(--secondary-color, #222);
+  border-color: var(--secondary-color, #222);
 }
 
 .button.primary:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.5);
-}
-
-.button.primary:disabled {
-  background-color: #49837f;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-}
-
-.button.primary:disabled:hover {
-  animation: none;
-  opacity: 0.7;
-}
-
-.button.primary:disabled:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-/* Animation - Hover/Focus */
-.button.primary:focus::after,
-.button.primary:hover::after {
-  animation: hover-animation 4.2s infinite ease-in-out;
-  animation-direction: alternate;
-}
-
-@keyframes hover-animation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Animation - Clicked/Focused */
-.button.primary:focus,
-.button.primary:active {
-  animation: pulse 0.6s ease-in-out;
-}
-
-@keyframes pulse {
-  0% {
-    transform: translate3d( 0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d( 0, 0, 0) scale(0.98);
-  }
-  72% {
-    transform: translate3d( 0, 0, 0) scale(0.99) scaleY(1px);
-  }
-  100% {
-    transform: translate3d( 0, 0, 0) scale(1) translateY(0);
-  }
+  box-shadow: 0 0 0 3px var(--primary-transparent-button-color, cyan);
 }
 
 /* Secondary */
 
 .button.secondary {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  background: #556F44;
-  color: #E4E6C3;
+  background: var(--accent-one, green);
+  color: var(--primary-color, #EEE);
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
@@ -135,8 +60,9 @@
 
 .button.success {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  background: #048A81;
-  color: #E4E6C3;
+  background: var(--success-background-color, lightgreen);
+  color: var(--success-color, green);
+  border: 2px solid var(--success-color, green);
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
@@ -144,27 +70,42 @@
 
 .button.warning {
   box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
-  background: #E4E6C3;
-  color: #222;
+  background: var(--warning-background-color, #EEE);
+  color: var(--warning-color, #222);
+  border: 2px solid var(--warning-color, #222);
   text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.63);
 }
 
 /* Danger */
 
 .button.danger {
-  box-shadow: 0px 4px 6px rgba(255, 0, 0, 0.3);
-  border: 1px solid red;
-  background: pink;
-  color: red;
-  text-shadow: 0px 2px 2px rgba(255, 0, 0, 0.23);
+  background: var(--danger-background-color, pink);
+  color: var(--danger-color, red);
+  border: 1px solid var(--danger-color, red);
+  box-shadow: 0px 4px 6px var(--danger-glow, red);
+  text-shadow: 0px 2px 2px var(--danger-glow, red);
 }
 
 /* Outline */
 
 .button.outline {
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #000;
   background: transparent;
   color: #000;
+  border: 2px solid var(--primary-background-color, #222);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.button:disabled {
+  background-color: var(--disabled-background-color, #EEE);
+  color: var(--disabled-color, #666);
+  border: 2px solid var(--disabled-color, #666);
+  outline: none;
+  box-shadow: none;
+  text-shadow: none;
+  cursor: not-allowed;
+}
+
+.button.outline:disabled {
+  background-color: transparent;
 }

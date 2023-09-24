@@ -56,6 +56,14 @@ export default [
             src: 'src/theme.min.css',
             dest: 'dist',
           },
+          {
+            src: 'src/variables.css',
+            dest: 'dist',
+          },
+          {
+            src: 'src/variables.min.css',
+            dest: 'dist',
+          },
         ]
       }),
     ],

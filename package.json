@@ -60,9 +60,9 @@
     "react-select": "^5.7.4"
   },
   "scripts": {
-    "minify-css": "css-minify -f ./src/theme.css -o ./src",
-    "rm-css": "rimraf --glob ./src/theme.min.css",
-    "rollup": "yarn run minify-css && rollup -c && yarn run rm-css",
+    "minify-css": "css-minify -d ./src -o ./src",
+    "remove-css": "rimraf --glob ./src/*.min.css",
+    "rollup": "yarn run minify-css && rollup -c && yarn run remove-css",
     "test": "jest --passWithNoTests"
   },
   "packageManager": "yarn@4.0.0-rc.51"

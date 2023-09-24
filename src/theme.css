@@ -2,25 +2,25 @@
 
 html,
 body {
-  background-color: #2B2D42;
+  background-color: var(--primary-background-color, #222);
 }
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Lora', Cambria, 'Times New Roman', Times, serif;
+  font-family: var(--primary-body-font-family, 'Times New Roman', Times, serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #E4E6C3;
+  color: var(--primary-color, #EEE);
 }
 
 code,
 pre {
   padding: 0.3em;
-  font-family: source-code-pro, 'Roboto Mono', Menlo, Monaco, Consolas, 'Courier New', Courier, monospace;
-  background-color: #E4E6C3;
-  color: #048A81;
+  font-family: var(--primary-mono-font-family, 'Courier New', Courier, monospace);
+  background-color: var(--secondary-background-color, black);
+  color: var(--secondary-color, green);
 }
 
 hr {
@@ -29,25 +29,24 @@ hr {
 }
 
 a {
-  color: #F0F2F5;
+  color: var(--primary-link-color, purple);
 }
 
-a:hover,
-a:visited:hover {
-  color: #048A81;
+a:hover {
+  color: var(--secondary-color, lightblue);
 }
 
 a:visited,
 a:active {
-  color: #A799B7;
+  color: var(--tertiary-link-color, lavender);
 }
 
 a:visited:hover {
-  color: #048A81;
+  color: var(--secondary-color, lightblue);
 }
 
 a:focus {
-  outline-color: #A799B7;
+  outline-color: var(--tertiary-link-color, lavender);
 }
 
 h1,
@@ -58,7 +57,7 @@ h5,
 h6,
 button,
 input[type='button'] {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: var(--primary-heading-font-family, Arial, Helvetica, sans-serif);
 }
 
 h1,
@@ -72,8 +71,8 @@ h6 {
 }
 
 .error {
-  background-color: red;
-  color: #E4E6C3;
-  border: 1px solid #2B2D42;
+  background-color: var(--danger-background-color, pink);
+  color: var(--danger-color, red);
+  border: 1px solid var(--danger-color, red);
   border-radius: 0.3em;
 }

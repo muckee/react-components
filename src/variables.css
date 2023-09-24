@@ -35,10 +35,10 @@
     --secondary-link-color: var(--secondary-color);
     --tertiary-link-color: #A799B7;
     /* Buttons */
-    --primary-button-color: blue;
-    --primary-button-background-color: lightblue;
+    --primary-button-color: var(--secondary-background-color);
+    --primary-button-background-color: var(--secondary-color);
     --secondary-button-color: var(--primary-background-color);
-    --secondary-button-background-color: var(--tertiary-link-color);
+    --secondary-button-background-color: var(--secondary-background-color);
     --tertiary-button-color: purple;
     --tertiary-button-background-color: lavender;
     --primary-transparent-button-color: rgba(0, 255, 255, 0.5);
@@ -47,7 +47,7 @@
     --success-background-color: lightgreen;
     --warning-color: goldenrod;
     --warning-background-color: lightyellow;
-    --danger-color: red;
+    --danger-color: darkred;
     --danger-background-color: palevioletred;
     --danger-glow: rgba(255, 0, 0, 0.23);
     --disabled-color: #888;

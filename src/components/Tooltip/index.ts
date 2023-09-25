@@ -3,5 +3,7 @@ export {
   useTooltipContext,
   Tooltip,
   TooltipTrigger,
-  TooltipContent
+  TooltipContent,
 } from './Tooltip';
+
+export { default as NewTooltip } from './NewTooltip';

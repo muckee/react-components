@@ -1,0 +1,14 @@
+.tooltip {
+    z-index: 299;
+    position: fixed;
+    top: 100px;
+    bottom: 100px;
+    display: inline-block;
+    margin: 0;
+    padding: 0.3em 0.6em;
+    border: 1px solid #000;
+    border-radius: 0.3em;
+    background-color: green;
+    white-space: nowrap;
+    pointer-events: none;
+}

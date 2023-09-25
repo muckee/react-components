@@ -6,6 +6,8 @@
     align-items: center;
     flex-wrap: nowrap;
     gap: 0.3em;
+    border: 1px solid var(--primary-background-color, #222);
+    border-radius: 0.3em;
     background-color: var(--secondary-color, cyan);
 }
 
@@ -42,7 +44,24 @@
     background-color: var(--secondary-color, teal);
 }
 
+.menuItem {
+    width: 100%;
+}
+
 .menuItem:hover {
     background-color: var(--secondary-color, cyan);
     filter: saturate(0.6) brightness(1.2) contrast(0.4); /* Make the hovered element stand out next to its siblings */
+}
+
+.button,
+.splitButtonToggleButton {
+    border: none;
+    border-radius: 0;
+    background: none;
+}
+
+.menuItem {
+    border: none;
+    border-radius: 0;
+    background: none;
 }

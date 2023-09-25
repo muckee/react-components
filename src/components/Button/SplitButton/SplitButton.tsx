@@ -1,8 +1,9 @@
 import React, {
-    cloneElement,
     useState,
 } from 'react';
-import Button, { ButtonProps } from '../Button';
+import Button, {
+    ButtonProps,
+} from '../Button';
 import Menu from '../../Menu';
 import styles from './SplitButton.module.css';
 
@@ -50,6 +51,7 @@ const SplitButton = (props: SplitButtonProps) => {
         >
 
             <Button
+            className={styles.splitButtonToggleButton}
                 onClick={() => setMenuIsVisible(!menuIsVisible)}
                 {...splitButtonProps}
             >

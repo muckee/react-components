@@ -12,6 +12,11 @@
     color: var(--primary-background-color, #222);
 }
 
+.expanded {
+    border-bottom-left-radius: none;
+    border-bottom-right-radius: none;
+}
+
 .primary {
     border-color: var(--primary-button-color, cyan);
     background-color: var(--primary-button-background-color, #EEE);

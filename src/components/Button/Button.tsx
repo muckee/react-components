@@ -12,11 +12,20 @@ export interface DraggableButtonProps {
   onDragStart?: () => any;
 };
 
+enum ButtonStatus {
+  Primary = "primary",
+  Secondary = "secondary",
+  Tertiary = "tertiary",
+  Success = "success",
+  Warning = "warning",
+  Danger = "danger",
+}
+
 export interface ButtonProps {
   title?: string | undefined;
   type?: "button" | "submit" | "reset" | undefined;
   className?: string | undefined;
-  status?: "primary" | "secondary" | "tertiary" | "success" | "warning" | "danger" | undefined;
+  status?: ButtonStatus | undefined;
   outline?: Boolean | undefined;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   onMouseDown?: React.MouseEventHandler<HTMLButtonElement> | undefined;
@@ -57,7 +66,16 @@ const getClassNamesFromProps = (props: ButtonProps) => {
     // We can achieve this by using bracket notation to access the desired property of `styles`.
     const propValue = props[className];
 
-    return styles[propValue as keyof typeof styles];
+    if (className === 'status') {
+
+      return styles[propValue as keyof typeof styles];
+    }
+
+    if (className === 'className') {
+      return propValue;
+    }
+
+    return '';
   });
 
   // If no class names were found, don't add any classes.

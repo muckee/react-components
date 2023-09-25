@@ -53,14 +53,9 @@
     filter: saturate(0.6) brightness(1.2) contrast(0.4); /* Make the hovered element stand out next to its siblings */
 }
 
-.button,
-.splitButtonToggleButton {
-    border: none;
-    border-radius: 0;
-    background: none;
-}
-
-.menuItem {
+button.button,
+button.splitButtonToggleButton,
+button.menuItem {
     border: none;
     border-radius: 0;
     background: none;

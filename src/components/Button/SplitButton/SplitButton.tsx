@@ -47,14 +47,14 @@ const SplitButton = (props: SplitButtonProps) => {
 
             </Button>
 
-            {menuIsVisible && <Menu
-                className={styles.menu}
-                items={menuItems ? menuItems.map((item) => {
-                    return <Button className={styles.menuItem} {...item} />;
-                }) : []}
-            />}
-
         </div>
+
+        {menuIsVisible && <Menu
+            className={styles.menu}
+            items={menuItems ? menuItems.map((item) => {
+                return <Button className={styles.menuItem} {...item} />;
+            }) : []}
+        />}
 
     </div>;
 };

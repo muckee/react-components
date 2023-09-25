@@ -2,6 +2,16 @@ import React from 'react';
 
 import styles from './Button.module.css';
 
+export interface DraggableButtonProps {
+  "aria-describedby"?: string;​
+  "data-rbd-drag-handle-context-id"?: number;
+  "data-rbd-drag-handle-draggable-id"?: number;
+  draggable?: boolean;
+  role?: string;
+  tabIndex?: number;
+  onDragStart?: () => any;
+};
+
 export interface ButtonProps {
   title?: string | undefined;
   type?: "button" | "submit" | "reset" | undefined;
@@ -13,6 +23,7 @@ export interface ButtonProps {
   onMouseUp?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   onMouseOut?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   disabled?: boolean | undefined;
+  dragHandleProps?: DraggableButtonProps | undefined;
   children?: any;
 }
 
@@ -69,6 +80,7 @@ const Button = (props: ButtonProps) => {
     onMouseUp,
     onMouseOut,
     disabled,
+    dragHandleProps,
   } = props;
 
   // Start with the default `styles.button` class.
@@ -85,6 +97,7 @@ const Button = (props: ButtonProps) => {
     onMouseUp={onMouseUp}
     onMouseOut={onMouseOut}
     disabled={disabled}
+    {... dragHandleProps ? dragHandleProps : []}
   >
 
     {props.children}

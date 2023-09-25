@@ -1,4 +1,4 @@
-.splitButtonContainer {
+.container {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -9,10 +9,42 @@
     border: 1px solid var(--primary-background-color, #222);
     border-radius: 0.3em;
     background-color: var(--secondary-color, cyan);
+    color: var(--primary-background-color, #222);
 }
 
-.button {
-    flex: 1;
+.primary {
+    border-color: var(--primary-button-color, cyan);
+    background-color: var(--primary-button-background-color, #EEE);
+    color: var(--primary-button-color, cyan);
+}
+
+.secondary {
+    border-color: var(--secondary-button-color, #222);
+    background-color: var(--secondary-button-background-color, #EEE);
+    color: var(--secondary-button-color, #222);
+}
+
+.success {
+    border-color: var(--success-color, green);
+    background-color: var(--success-background-color, lightgreen);
+    color: var(--success-color, green);
+}
+
+.warning {
+    border-color: var(--warning-color, yellow);
+    background-color: var(--warning-background-color, lightyellow);
+    color: var(--warning-color, black);
+}
+
+.danger {
+    border-color: var(--danger-color, red);
+    background-color: var(--danger-background-color, pink);
+    color: var(--danger-color, red);
+}
+
+.outline {
+    border-width: 3px;
+    background-color: transparent;
 }
 
 .menuContainer {
@@ -53,21 +85,10 @@
     filter: saturate(0.6) brightness(1.2) contrast(0.4); /* Make the hovered element stand out next to its siblings */
 }
 
-button.button,
-button.button:hidden,
-button.button:disabled,
-button.button:focus,
-button.button:active,
-button.splitButtonToggleButton,
-button.splitButtonToggleButton:hidden,
-button.splitButtonToggleButton:disabled,
-button.splitButtonToggleButton:focus,
-button.splitButtonToggleButton:active,
-button.menuItem,
-button.menuItem:hidden,
-button.menuItem:disabled,
-button.menuItem:focus,
-button.menuItem:active {
+.toggleButton,
+.toggleButton:disabled,
+.menuItem,
+.menuItem:disabled {
     border: none;
     border-radius: 0;
     background: none;

@@ -2,10 +2,11 @@ import React, {
     useState,
 } from 'react';
 import Button, {
-    ButtonProps,
+    ButtonProps, getClassNamesFromProps,
 } from '../Button';
 import Menu from '../../Menu';
 import styles from './SplitButton.module.css';
+import PrimaryButton from './PrimaryButton';
 
 export interface SplitButtonProps extends ButtonProps {
     splitButtonProps?: ButtonProps | undefined,
@@ -15,43 +16,27 @@ export interface SplitButtonProps extends ButtonProps {
 const SplitButton = (props: SplitButtonProps) => {
 
     const {
-        children,
+        outline,
         menuItems,
         splitButtonProps,
     } = props;
 
-    // Separate Button props from SplitButton props
-    const buttonProps = {
-        title: props.title,
-        type: props.type,
-        className: props.className,
-        status: props.status,
-        onClick: props.onClick,
-        onMouseDown: props.onMouseDown,
-        onMouseUp: props.onMouseUp,
-        onMouseOut: props.onMouseOut,
-        disabled: props.disabled,
-    };
-
     const [menuIsVisible, setMenuIsVisible] = useState(false);
 
+    const className = styles.container + getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '');
+
     return <div
-        className={styles.splitButtonContainer}
+        className={styles.container}
     >
 
-        <Button
-            {...buttonProps}
-            className={`${styles.button}${buttonProps.className ? ` ${buttonProps.className}` : ''}`}
-        >
-            {children}
-        </Button>
+        <PrimaryButton {...props} />
 
         <div
             className={styles.menuContainer}
         >
 
             <Button
-            className={styles.splitButtonToggleButton}
+                className={styles.toggleButton}
                 onClick={() => setMenuIsVisible(!menuIsVisible)}
                 {...splitButtonProps}
             >
@@ -62,14 +47,14 @@ const SplitButton = (props: SplitButtonProps) => {
 
             </Button>
 
-        </div>
+            {menuIsVisible && <Menu
+                className={styles.menu}
+                items={menuItems ? menuItems.map((item) => {
+                    return <Button className={styles.menuItem} {...item} />;
+                }) : []}
+            />}
 
-        {menuIsVisible && <Menu
-            className={styles.menu}
-            items={menuItems ? menuItems.map((item) => {
-                return <Button className={styles.menuItem} {...item} />;
-            }) : []}
-        />}
+        </div>
 
     </div>;
 };

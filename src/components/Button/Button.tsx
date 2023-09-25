@@ -37,7 +37,7 @@ export interface ButtonProps {
 }
 
 // Dynamically concatenate classes from props
-const getClassNamesFromProps = (props: ButtonProps) => {
+export const getClassNamesFromProps = (props: ButtonProps) => {
 
   const classes = [
     'className',

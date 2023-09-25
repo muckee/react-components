@@ -1,0 +1,10 @@
+.button {
+    flex: 1;
+}
+
+.button,
+.button:disabled {
+    border: none;
+    border-radius: 0;
+    background: none;
+}

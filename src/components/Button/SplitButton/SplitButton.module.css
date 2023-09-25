@@ -53,21 +53,21 @@
     filter: saturate(0.6) brightness(1.2) contrast(0.4); /* Make the hovered element stand out next to its siblings */
 }
 
-.button,
-.button:hidden,
-.button:disabled,
-.button:focus,
-.button:active,
-.splitButtonToggleButton,
-.splitButtonToggleButton:hidden,
-.splitButtonToggleButton:disabled,
-.splitButtonToggleButton:focus,
-.splitButtonToggleButton:active,
-.menuItem,
-.menuItem:hidden,
-.menuItem:disabled,
-.menuItem:focus,
-.menuItem:active {
+button.button,
+button.button:hidden,
+button.button:disabled,
+button.button:focus,
+button.button:active,
+button.splitButtonToggleButton,
+button.splitButtonToggleButton:hidden,
+button.splitButtonToggleButton:disabled,
+button.splitButtonToggleButton:focus,
+button.splitButtonToggleButton:active,
+button.menuItem,
+button.menuItem:hidden,
+button.menuItem:disabled,
+button.menuItem:focus,
+button.menuItem:active {
     border: none;
     border-radius: 0;
     background: none;

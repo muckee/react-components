@@ -18,12 +18,11 @@ const SplitButton = (props: SplitButtonProps) => {
     const {
         outline,
         menuItems,
+        disabled,
         splitButtonProps,
     } = props;
 
     const [menuIsVisible, setMenuIsVisible] = useState(false);
-
-    const className = styles.container + getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '') + (menuIsVisible ? ` ${styles.expanded}` : '');
 
     return <div
         className={styles.container}
@@ -32,11 +31,11 @@ const SplitButton = (props: SplitButtonProps) => {
         <PrimaryButton {...props} />
 
         <div
-            className={className}
+            className={getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '') + (menuIsVisible ? ` ${styles.expanded}` : '')}
         >
 
             <Button
-                className={styles.toggleButton}
+                className={`${styles.toggleButton}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
                 onClick={() => setMenuIsVisible(!menuIsVisible)}
                 {...splitButtonProps}
             >
@@ -52,7 +51,13 @@ const SplitButton = (props: SplitButtonProps) => {
         {menuIsVisible && <Menu
             className={styles.menu}
             items={menuItems ? menuItems.map((item) => {
-                return <Button className={styles.menuItem} {...item} />;
+                return <Button
+                    {...{
+                        ...item,
+                        className: styles.menuItem + (item.className ? ` ${item.className}` : ''), // Prepend parent style to button
+                        disabled: item.disabled ? item.disabled : props.disabled, // If parent is disabled, pass the disabled state to Button
+                    }}
+                />;
             }) : []}
         />}
 

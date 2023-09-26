@@ -49,7 +49,7 @@ const SplitButton = (props: SplitButtonProps) => {
         </div>
 
         {menuIsVisible && <Menu
-            className={styles.menu}
+            className={`${styles.menu}${disabled ?  ` ${styles.disabled}` : ''}`}
             items={menuItems ? menuItems.map((item) => {
                 return <Button
                     {...{

@@ -55,7 +55,7 @@ const SplitButton = (props: SplitButtonProps) => {
                     {...{
                         ...item,
                         className: styles.menuItem + (item.className ? ` ${item.className}` : ''), // Prepend parent style to button
-                        disabled: item.disabled ? item.disabled : props.disabled, // If parent is disabled, pass the disabled state to Button
+                        disabled: item.disabled ? item.disabled : disabled, // If item is not disabled, pass `props.disabled` from parent
                     }}
                 />;
             }) : []}

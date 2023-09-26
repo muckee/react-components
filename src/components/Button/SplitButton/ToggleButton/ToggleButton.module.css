@@ -1,0 +1,30 @@
+.toggleButton {
+    padding: 0 0.6em;
+}
+
+/* .toggleButton:before {
+    content: "\00a0";
+    border-left: 3px solid var(--primary-background-color, #222);
+    border-radius: 0;
+    padding: 0.3em;
+} */
+
+.toggleButton,
+.toggleButton:disabled,
+.menuItem,
+.menuItem:disabled {
+    border: none;
+    border-radius: 0;
+    background: none;
+}
+
+.expanded {
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.outline {
+    border-width: 3px;
+    background-color: transparent;
+}

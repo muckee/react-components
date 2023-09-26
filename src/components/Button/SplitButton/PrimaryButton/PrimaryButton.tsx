@@ -6,7 +6,11 @@ import {
 
 import styles from './PrimaryButton.module.css';
 
-const PrimaryButton = (props: SplitButtonProps) => {
+export interface PrimaryButtonProps extends SplitButtonProps {
+    menuIsVisible: boolean;
+};
+
+const PrimaryButton = (props: PrimaryButtonProps) => {
 
     const {
         title,
@@ -18,13 +22,14 @@ const PrimaryButton = (props: SplitButtonProps) => {
         onMouseUp,
         onMouseOut,
         disabled,
+        menuIsVisible,
     } = props;
 
     return <Button
         title={title}
         type={type}
         status={status}
-        className={`${styles.button}${className ? ` ${className}` : ''}`}
+        className={`${styles.button}${className ? ` ${className}` : ''}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
         onClick={onClick}
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}

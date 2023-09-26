@@ -1,7 +1,8 @@
 .button,
 .button:disabled {
     border: none;
-    border-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .button {
@@ -11,4 +12,44 @@
 
 .button:disabled {
     background-color: var(--disabled-background-color, #222);
+}
+
+.expanded {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.primary {
+    border-color: var(--primary-button-color, cyan);
+    background-color: var(--primary-button-background-color, #EEE);
+    color: var(--primary-button-color, cyan);
+}
+
+.secondary {
+    border-color: var(--secondary-button-color, #222);
+    background-color: var(--secondary-button-background-color, #EEE);
+    color: var(--secondary-button-color, #222);
+}
+
+.success {
+    border-color: var(--success-color, green);
+    background-color: var(--success-background-color, lightgreen);
+    color: var(--success-color, green);
+}
+
+.warning {
+    border-color: var(--warning-color, yellow);
+    background-color: var(--warning-background-color, lightyellow);
+    color: var(--warning-color, black);
+}
+
+.danger {
+    border-color: var(--danger-color, red);
+    background-color: var(--danger-background-color, pink);
+    color: var(--danger-color, red);
+}
+
+.outline {
+    border-width: 2px;
+    background-color: transparent;
 }

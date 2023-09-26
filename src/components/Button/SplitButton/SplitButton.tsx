@@ -7,6 +7,7 @@ import Button, {
 import Menu from '../../Menu';
 import styles from './SplitButton.module.css';
 import PrimaryButton from './PrimaryButton';
+import ToggleButton from './ToggleButton';
 
 export interface SplitButtonProps extends ButtonProps {
     splitButtonProps?: ButtonProps | undefined,
@@ -28,27 +29,18 @@ const SplitButton = (props: SplitButtonProps) => {
         className={`${styles.container}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
     >
 
-        <PrimaryButton {...props} />
+        <PrimaryButton
+            {...props}
+            menuIsVisible={menuIsVisible}
+        />
 
-        <hr />
+        {!menuIsVisible && <hr className={`${styles.verticalRule}${disabled ? ` ${styles.disabled}` : ''}`} />}
 
-        <div
-            className={getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '')}
-        >
-
-            <Button
-                className={`${styles.toggleButton}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
-                onClick={() => setMenuIsVisible(!menuIsVisible)}
-                {...splitButtonProps}
-            >
-
-                <i
-                    className={`ri-arrow-drop-${menuIsVisible ? `up` : `down` }-line`}
-                />
-
-            </Button>
-
-        </div>
+        <ToggleButton
+            {...props}
+            menuIsVisible={menuIsVisible}
+            setMenuIsVisible={setMenuIsVisible} // TODO: Use ForwardRefs
+        />
 
         {menuIsVisible && <Menu
             className={`${styles.menu}${disabled ?  ` ${styles.disabled}` : ''}`}

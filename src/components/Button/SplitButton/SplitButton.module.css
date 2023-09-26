@@ -13,9 +13,9 @@
 }
 
 .container.disabled {
-    border-color: var(--disabled-color, #EEE);
+    border-color: var(--disabled-color, #888);
     background-color: var(--disabled-background-color, #222);
-    color: var(--disabled-color, #EEE);
+    color: var(--disabled-color, #888);
 }
 
 .menuContainer {
@@ -26,17 +26,6 @@
     flex-wrap: nowrap;
     gap: 0.3em;
 }
-
-.toggleButton {
-    padding: 0 0.6em;
-}
-
-/* .toggleButton:before {
-    content: "\00a0";
-    border-left: 3px solid var(--primary-background-color, #222);
-    border-radius: 0;
-    padding: 0.3em;
-} */
 
 .menu {
     position: absolute;
@@ -55,9 +44,9 @@
 }
 
 .menu.disabled {
-    /* border-color: var(--disabled-color, #EEE);
+    /* border-color: var(--disabled-color, #888);
     background-color: var(--disabled-background-color, #222);
-    color: var(--disabled-color, #EEE); */
+    color: var(--disabled-color, #888); */
 }
 
 .menuItem {
@@ -71,13 +60,22 @@
     filter: saturate(0.6) brightness(1.2) contrast(0.4); /* Make the hovered element stand out next to its siblings */
 }
 
-.toggleButton,
-.toggleButton:disabled,
 .menuItem,
 .menuItem:disabled {
     border: none;
     border-radius: 0;
     background: none;
+}
+
+.verticalRule {
+    flex: 1;
+    align-self: stretch;
+    height: auto;
+    color: var(--primary-background-color, #222);
+}
+
+.verticalRule.disabled {
+    color: var(--disabled-color, #888);
 }
 
 .expanded {

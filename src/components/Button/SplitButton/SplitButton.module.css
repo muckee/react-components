@@ -31,12 +31,12 @@
     padding: 0 0.6em;
 }
 
-.toggleButton:before {
+/* .toggleButton:before {
     content: "\00a0";
     border-left: 3px solid var(--primary-background-color, #222);
     border-radius: 0;
     padding: 0.3em;
-}
+} */
 
 .menu {
     position: absolute;
@@ -55,9 +55,9 @@
 }
 
 .menu.disabled {
-    border-color: var(--disabled-color, #EEE);
+    /* border-color: var(--disabled-color, #EEE);
     background-color: var(--disabled-background-color, #222);
-    color: var(--disabled-color, #EEE);
+    color: var(--disabled-color, #EEE); */
 }
 
 .menuItem {

@@ -62,14 +62,14 @@
 }
 
 .toggleButton {
-    padding: 0;
+    padding: 0 0.6em;
 }
 
 .toggleButton:before {
     content: "\00a0";
     border-left: 3px solid var(--primary-background-color, #222);
     border-radius: 0;
-    padding: 0.6em 0;
+    padding: 0.3em;
 }
 
 .menu {

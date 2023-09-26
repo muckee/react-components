@@ -12,16 +12,78 @@
     color: var(--primary-background-color, #222);
 }
 
-.disabled {
+.container.disabled {
     border-color: var(--disabled-color, #EEE);
     background-color: var(--disabled-background-color, #222);
     color: var(--disabled-color, #EEE);
 }
 
+.menuContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.3em;
+}
+
+.toggleButton {
+    padding: 0 0.6em;
+}
+
+.toggleButton:before {
+    content: "\00a0";
+    border-left: 3px solid var(--primary-background-color, #222);
+    border-radius: 0;
+    padding: 0.3em;
+}
+
+.menu {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 0;
+    border: 1px solid var(--primary-background-color, #222);
+    border-top: none;
+    border-radius: 0 0 0.3em 0.3em;
+    background-color: var(--secondary-color, teal);
+}
+
+.menu.disabled {
+    border-color: var(--disabled-color, #EEE);
+    background-color: var(--disabled-background-color, #222);
+    color: var(--disabled-color, #EEE);
+}
+
+.menuItem {
+    width: 100%;
+    padding: 0.6em 0;
+    color: inherit;
+}
+
+.menuItem:hover {
+    background-color: var(--secondary-color, cyan);
+    filter: saturate(0.6) brightness(1.2) contrast(0.4); /* Make the hovered element stand out next to its siblings */
+}
+
+.toggleButton,
+.toggleButton:disabled,
+.menuItem,
+.menuItem:disabled {
+    border: none;
+    border-radius: 0;
+    background: none;
+}
+
 .expanded {
-    border-bottom-left-radius: none;
-    border-bottom-right-radius: none;
     border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .primary {
@@ -57,56 +119,4 @@
 .outline {
     border-width: 3px;
     background-color: transparent;
-}
-
-.menuContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 0.3em;
-}
-
-.toggleButton {
-    padding: 0 0.6em;
-}
-
-.toggleButton:before {
-    content: "\00a0";
-    border-left: 3px solid var(--primary-background-color, #222);
-    border-radius: 0;
-    padding: 0.3em;
-}
-
-.menu {
-    position: absolute;
-    width: 100%;
-    top: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-wrap: nowrap;
-    gap: 0;
-    background-color: var(--secondary-color, teal);
-}
-
-.menuItem {
-    width: 100%;
-    padding: 0.6em 0;
-}
-
-.menuItem:hover {
-    background-color: var(--secondary-color, cyan);
-    filter: saturate(0.6) brightness(1.2) contrast(0.4); /* Make the hovered element stand out next to its siblings */
-}
-
-.toggleButton,
-.menuItem,
-.toggleButton:disabled,
-.menuItem:disabled {
-    border: none;
-    border-radius: 0;
-    background: none;
 }

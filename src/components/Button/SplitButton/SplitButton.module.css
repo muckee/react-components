@@ -12,7 +12,7 @@
     color: var(--primary-background-color, #222);
 }
 
-.container.disabled {
+.disabled {
     border-color: var(--disabled-color, #EEE);
     background-color: var(--disabled-background-color, #222);
     color: var(--disabled-color, #EEE);

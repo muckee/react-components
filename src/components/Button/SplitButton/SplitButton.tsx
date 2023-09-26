@@ -25,7 +25,7 @@ const SplitButton = (props: SplitButtonProps) => {
     const [menuIsVisible, setMenuIsVisible] = useState(false);
 
     return <div
-        className={`${styles.container}${disabled ?  `${styles.disabled}` : ''}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
+        className={`${styles.container}${disabled ?  ` ${styles.disabled}` : ''}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
     >
 
         <PrimaryButton {...props} />

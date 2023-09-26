@@ -61,7 +61,7 @@
     gap: 0.3em;
 }
 
-.menuContainer:before {
+.toggleButtonContainer:before {
     content: "\00a0";
     border-left: 3px solid var(--primary-background-color, #222);
     border-radius: 0;

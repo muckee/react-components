@@ -31,7 +31,7 @@ const SplitButton = (props: SplitButtonProps) => {
         <PrimaryButton {...props} />
 
         <div
-            className={getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '') + (menuIsVisible ? ` ${styles.expanded}` : '')}
+            className={styles.toggleButtonContainer + getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '') + (menuIsVisible ? ` ${styles.expanded}` : '')}
         >
 
             <Button

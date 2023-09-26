@@ -25,13 +25,13 @@ const SplitButton = (props: SplitButtonProps) => {
     const [menuIsVisible, setMenuIsVisible] = useState(false);
 
     return <div
-        className={styles.container}
+        className={`${styles.container}${disabled ?  `${styles.disabled}` : ''}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
     >
 
         <PrimaryButton {...props} />
 
         <div
-            className={getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '') + (menuIsVisible ? ` ${styles.expanded}` : '')}
+            className={getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '')}
         >
 
             <Button

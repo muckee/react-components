@@ -12,9 +12,16 @@
     color: var(--primary-background-color, #222);
 }
 
+.container.disabled {
+    border-color: var(--disabled-color, #EEE);
+    background-color: var(--disabled-background-color, #222);
+    color: var(--disabled-color, #EEE);
+}
+
 .expanded {
     border-bottom-left-radius: none;
     border-bottom-right-radius: none;
+    border-bottom: none;
 }
 
 .primary {
@@ -96,8 +103,8 @@
 }
 
 .toggleButton,
-.toggleButton:disabled,
 .menuItem,
+.toggleButton:disabled,
 .menuItem:disabled {
     border: none;
     border-radius: 0;

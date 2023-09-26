@@ -1,10 +1,14 @@
-.button {
-    flex: 1;
-}
-
 .button,
 .button:disabled {
     border: none;
     border-radius: 0;
-    background: none;
+}
+
+.button {
+    flex: 1;
+    background-color: transparent;
+}
+
+.button:disabled {
+    background-color: var(--disabled-background-color, #222);
 }

@@ -5,7 +5,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
-    gap: 0.3em;
+    gap: 0;
     border: 1px solid var(--primary-background-color, #222);
     border-radius: 0.3em;
     background-color: var(--secondary-color, cyan);
@@ -70,7 +70,10 @@
 .verticalRule {
     flex: 1;
     align-self: stretch;
+    max-width: 1px;
     height: auto;
+    border-top: inherit;
+    border-bottom: inherit;
     color: var(--primary-background-color, #222);
 }
 

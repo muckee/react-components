@@ -10,12 +10,11 @@
 } */
 
 .toggleButton,
-.toggleButton:disabled,
-.menuItem,
-.menuItem:disabled {
+.toggleButton:disabled {
     border: none;
-    border-radius: 0;
     background: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .expanded {

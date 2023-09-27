@@ -1,6 +1,7 @@
 .button,
 .button:disabled {
-    border: none;
+    border: inherit;
+    border-right: none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -11,12 +12,13 @@
 }
 
 .button:disabled {
+    border-bottom: none;
     background-color: var(--disabled-background-color, #222);
 }
 
 .expanded {
     border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    /* border-bottom-right-radius: 0; */
 }
 
 .primary {

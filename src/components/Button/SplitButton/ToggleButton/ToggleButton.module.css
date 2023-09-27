@@ -7,6 +7,10 @@
     border-bottom-right-radius: 0.3em;    
 }
 
+.toggleButtonContainer.expanded {
+    border-bottom-right-radius: 0;
+}
+
 .toggleButton {
     padding: 0 0.6em;
 }
@@ -24,12 +28,6 @@
     background: none;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-}
-
-.expanded {
-    border-bottom: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
 }
 
 .outline {

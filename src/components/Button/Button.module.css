@@ -19,7 +19,7 @@
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
-  background: var(--secondary-color, #EEE);
+  background-color: var(--secondary-color, #EEE)  / 0.72;
   -webkit-backdrop-filter: var(--background-filter);
   backdrop-filter: var(--background-filter);
   color: var(--secondary-color, #222);
@@ -34,7 +34,7 @@
 
 /* Primary */
 primary {
-  background-color: var(--primary-button-background-color, teal);
+  background-color: var(--primary-button-background-color, teal)  / 0.72;
   color: var(--primary-button-color, #EEE);
   border: 2px solid var(--primary-button-color, #EEE);
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
@@ -47,7 +47,7 @@ primary {
 /* Secondary */
 
 .secondary {
-  background: var(--secondary-button-background-color, #EEE);
+  background-color: var(--secondary-button-background-color, #EEE)  / 0.72;
   color: var(--secondary-button-color, #222);
   border: 1px solid var(--secondary-button-color, #222);
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
@@ -56,7 +56,7 @@ primary {
 /* Success */
 
 .success {
-  background: var(--success-color, green);
+  background-color: var(--success-color, green)  / 0.72;
   -webkit-backdrop-filter: var(--background-filter);
   backdrop-filter: var(--background-filter);
   color: var(--success-color, green);
@@ -67,7 +67,7 @@ primary {
 /* Warning */
 
 .warning {
-  background: var(--warning-color, goldenrod);
+  background-color: var(--warning-color, goldenrod)  / 0.72;
   -webkit-backdrop-filter: var(--background-filter);
   backdrop-filter: var(--background-filter);
   color: var(--warning-color, #222);
@@ -78,7 +78,7 @@ primary {
 /* Danger */
 
 .danger {
-  background: var(--danger-color, darkred);
+  background-color: var(--danger-color, darkred)  / 0.72;
   -webkit-backdrop-filter: var(--background-filter);
   backdrop-filter: var(--background-filter);
   color: var(--danger-color, darkred);
@@ -89,7 +89,7 @@ primary {
 /* Outline */
 
 .outline {
-  background: transparent;
+  background-color: transparent;
   color: #000;
   border: 2px solid var(--secondary-color, #222);
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
@@ -103,7 +103,7 @@ primary {
 /* TODO: Add state-specific styles for disabled state. i.e. dim red for `.danger.disabled ` */
 
 .button:disabled {
-  background-color: var(--disabled-color, #EEE);
+  background-color: var(--disabled-color, #EEE)  / 0.72;
   -webkit-backdrop-filter: var(--background-filter);
   backdrop-filter: var(--background-filter);
   color: var(--disabled-color, #666);

@@ -2,7 +2,7 @@ import React, {
     useState,
 } from 'react';
 import Button, {
-    ButtonProps, getClassNamesFromProps,
+    ButtonProps,
 } from '../Button';
 import Menu from '../../Menu';
 import styles from './SplitButton.module.css';
@@ -17,16 +17,14 @@ export interface SplitButtonProps extends ButtonProps {
 const SplitButton = (props: SplitButtonProps) => {
 
     const {
-        outline,
         menuItems,
         disabled,
-        splitButtonProps,
     } = props;
 
     const [menuIsVisible, setMenuIsVisible] = useState(false);
 
     return <div
-        className={`${styles.container}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
+        className={`${styles.container}${disabled ? ` ${styles.disabled}` : ''}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
     >
 
         <PrimaryButton

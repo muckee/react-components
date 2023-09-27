@@ -12,12 +12,6 @@
     color: var(--primary-background-color, #222);
 }
 
-.container.disabled {
-    border-color: var(--disabled-color, #888);
-    background-color: var(--disabled-background-color, #222);
-    color: var(--disabled-color, #888);
-}
-
 .menuContainer {
     display: flex;
     flex-direction: row;
@@ -25,6 +19,13 @@
     align-items: center;
     flex-wrap: nowrap;
     gap: 0.3em;
+}
+
+.container.disabled,
+.menuContainer.disabled {
+    border-color: var(--disabled-color, #888);
+    /* background-color: var(--disabled-background-color, #222); */
+    /* color: var(--disabled-color, #888); */
 }
 
 .menu {
@@ -72,8 +73,9 @@
     align-self: stretch;
     max-width: 1px;
     height: auto;
-    border-top: inherit;
-    border-bottom: inherit;
+    border: inherit;
+    border-left: none;
+    border-right: none;
     color: var(--primary-background-color, #222);
 }
 

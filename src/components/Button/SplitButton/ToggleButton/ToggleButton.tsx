@@ -25,7 +25,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
     } = props;
 
     return <div
-        className={getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '')}
+        className={`${styles.toggleButtonContainer}` + getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '')}
     >
 
         <Button

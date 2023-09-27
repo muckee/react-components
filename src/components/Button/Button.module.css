@@ -93,7 +93,7 @@ primary {
 }
 
 /* Disabled state override */
-/* TODO: Add state-specific styles for disabled state. i.e. dim red for `.danger.disabled` */
+/* TODO: Add state-specific styles for disabled state. i.e. dim red for `.danger.disabled ` */
 
 .button:disabled {
   background-color: var(--disabled-background-color, #EEE);

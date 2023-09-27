@@ -1,10 +1,7 @@
 .toggleButtonContainer {
     align-self: stretch;
-    border: 1px solid var(--disabled-color, #888);
-    border-bottom: none;
-    border-left: none;
-    border-top-right-radius: 0.3em;
-    border-bottom-right-radius: 0.3em;    
+    border: none;
+    background-color: transparent;
 }
 
 .toggleButton {
@@ -21,18 +18,5 @@
 .toggleButton,
 .toggleButton:disabled {
     border: none;
-    background: none;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.expanded {
-    border-bottom: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.outline {
-    border-width: 3px;
     background-color: transparent;
 }

@@ -18,18 +18,17 @@ export interface ToggleButtonProps extends SplitButtonProps {
 const ToggleButton = (props: ToggleButtonProps) => {
 
     const {
-        outline,
         splitButtonProps,
         menuIsVisible,
         setMenuIsVisible,
     } = props;
 
     return <div
-        className={`${styles.toggleButtonContainer}` + getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '')}
+        className={`${styles.toggleButtonContainer}` + getClassNamesFromProps(props)}
     >
 
         <Button
-            className={`${styles.toggleButton}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
+            className={`${styles.toggleButton}`}
             onClick={() => setMenuIsVisible(!menuIsVisible)}
             {...splitButtonProps}
         >

@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import Button, {
     ButtonProps,
+    getClassNamesFromProps,
 } from '../Button';
 import Menu from '../../Menu';
 import styles from './SplitButton.module.css';
@@ -27,10 +28,7 @@ const SplitButton = (props: SplitButtonProps) => {
         className={`${styles.container}${disabled ? ` ${styles.disabled}` : ''}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
     >
 
-        <PrimaryButton
-            {...props}
-            menuIsVisible={menuIsVisible}
-        />
+        <PrimaryButton {...props} />
 
         {!menuIsVisible && <hr className={`${styles.verticalRule}${disabled ? ` ${styles.disabled}` : ''}`} />}
 
@@ -41,7 +39,7 @@ const SplitButton = (props: SplitButtonProps) => {
         />
 
         {menuIsVisible && <Menu
-            className={`${styles.menu}${disabled ?  ` ${styles.disabled}` : ''}`}
+            className={`${styles.menu}${getClassNamesFromProps(props)}${disabled ?  ` ${styles.disabled}` : ''}`}
             items={menuItems ? menuItems.map((item) => {
                 return <Button
                     {...{

@@ -78,6 +78,12 @@ export const getClassNamesFromProps = (props: ButtonProps) => {
     return '';
   });
 
+  // Add `styles.disabled` to class list
+  const className:keyof ButtonProps = 'disabled';
+  if(props[className]) {
+    classNames.push(styles[className as keyof typeof styles]);
+  }
+
   // If no class names were found, don't add any classes.
   if(!classNames.length) {
     return '';

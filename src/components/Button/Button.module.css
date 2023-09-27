@@ -26,27 +26,26 @@
 }
 
 /* Primary */
-
-.button.primary {
+primary {
   background-color: var(--primary-button-background-color, teal);
   color: var(--primary-button-color, #EEE);
   border: 2px solid var(--primary-color, #EEE);
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
-.button.primary:active {
+.primary:active {
   background-color: var(--tertiary-link-color, cadetblue);
   color: var(--secondary-color, #222);
   border-color: var(--secondary-color, #222);
 }
 
-.button.primary:focus {
+.primary:focus {
   outline: none;
 }
 
 /* Secondary */
 
-.button.secondary {
+.secondary {
   background: var(--secondary-button-background-color, #EEE);
   color: var(--secondary-button-color, #222);
   border: 1px solid var(--secondary-button-color, #222);
@@ -55,7 +54,7 @@
 
 /* Success */
 
-.button.success {
+.success {
   background: var(--success-background-color, lightgreen);
   color: var(--success-color, green);
   border: 2px solid var(--success-color, green);
@@ -64,7 +63,7 @@
 
 /* Warning */
 
-.button.warning {
+.warning {
   background: var(--warning-background-color, #EEE);
   color: var(--warning-color, #222);
   border: 2px solid var(--warning-color, #222);
@@ -73,7 +72,7 @@
 
 /* Danger */
 
-.button.danger {
+.danger {
   background: var(--danger-background-color, pink);
   color: var(--danger-color, red);
   border: 1px solid var(--danger-color, red);
@@ -82,12 +81,19 @@
 
 /* Outline */
 
-.button.outline {
+.outline {
   background: transparent;
   color: #000;
   border: 2px solid var(--primary-background-color, #222);
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
+
+.outline:disabled {
+  background-color: transparent;
+}
+
+/* Disabled state override */
+/* TODO: Add state-specific styles for disabled state. i.e. dim red for `.danger.disabled` */
 
 .button:disabled {
   background-color: var(--disabled-background-color, #EEE);
@@ -96,8 +102,4 @@
   outline: none;
   text-shadow: none;
   cursor: not-allowed;
-}
-
-.button.outline:disabled {
-  background-color: transparent;
 }

@@ -131,7 +131,7 @@
 }
 
 .radial {
-  color: var(--secondary-color, official);
+  color: var(--primary-color, official);
   display: inline-block;
   position: relative;
   width: 80px;
@@ -150,7 +150,7 @@
   width: 6px;
   height: 18px;
   border-radius: 20%;
-  background: var(--secondary-background-color, #EEE);
+  background: var(--primary-color, #EEE);
 }
 .radial div:nth-child(1) {
   transform: rotate(0deg);

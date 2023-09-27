@@ -22,34 +22,37 @@
         'Courier New',
         Courier,
         monospace;
-    /* Accent */
-    --accent-one: #556F44;
-    /* Background */
-    --primary-background-color: #2B2D42;
-    --secondary-background-color: #E4E6C3;
-    /* Body */
-    --primary-color: var(--secondary-background-color);
-    --secondary-color: #048A81;
-    /* Anchors */
-    --primary-link-color: #F0F2F5;
-    --secondary-link-color: var(--secondary-color);
-    --tertiary-link-color: #A799B7;
-    /* Buttons */
-    --primary-button-color: var(--secondary-background-color);
-    --primary-button-background-color: var(--secondary-color);
-    --secondary-button-color: var(--primary-background-color);
-    --secondary-button-background-color: var(--secondary-background-color);
-    --tertiary-button-color: purple;
-    --tertiary-button-background-color: lavender;
-    --primary-transparent-button-color: rgba(0, 255, 255, 0.5);
-    /* States */
+    /* Color palette */
+        /* Theme */
+    --primary-color: #E4E6C3; /* Text */
+    --secondary-color: #2B2D42; /* Background */
+    --tertiary-color: #048A81;
+    --accent-one: #F0F2F5;
+    --accent-two: #A799B7;
+        /* State */
     --success-color: green;
-    --success-background-color: lightgreen;
     --warning-color: goldenrod;
-    --warning-background-color: lightyellow;
     --danger-color: darkred;
-    --danger-background-color: palevioletred;
-    --danger-glow: rgba(255, 0, 0, 0.23);
     --disabled-color: #888;
-    --disabled-background-color: #ECDBFF;
+    /* Filters */
+    --active-filter: saturate(0.9) grayscale(0.3) brightness(1.2) contrast(0.9);
+    --background-filter: saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3);
+    /* Headings */
+    --primary-heading-color: var(--primary-color);
+    --primary-heading-background-color: var(--tertiary-color);
+    --secondary-heading-color: var(--secondary-color);
+    --secondary-heading-background-color: var(--primary-color);
+    --tertiary-heading-color: var(--tertiary-color);
+    --tertiary-heading-background-color: var(--secondary-color);
+    /* Anchors */
+    --primary-link-color: var(--accent-one);
+    --secondary-link-color: var(--primary-color);
+    --tertiary-link-color: var(--accent-two);
+    /* Buttons */
+    --primary-button-color: var(--primary-color);
+    --primary-button-background-color: var(--tertiary-color);
+    --secondary-button-color: var(--secondary-color);
+    --secondary-button-background-color: var(--primary-color);
+    --tertiary-button-color: var(--secondary-color);
+    --tertiary-button-background-color: var(--accent-two);
 }

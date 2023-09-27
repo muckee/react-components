@@ -28,7 +28,10 @@ const SplitButton = (props: SplitButtonProps) => {
         className={`${styles.container}${disabled ? ` ${styles.disabled}` : ''}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
     >
 
-        <PrimaryButton {...props} />
+        <PrimaryButton
+            menuIsVisible={menuIsVisible}
+            {...props}
+        />
 
         {!menuIsVisible && <hr className={`${styles.verticalRule}${disabled ? ` ${styles.disabled}` : ''}`} />}
 

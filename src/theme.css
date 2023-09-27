@@ -2,7 +2,7 @@
 
 html,
 body {
-  background-color: var(--primary-background-color, #222);
+  background-color: var(--secondary-color, #222);
 }
 
 body {
@@ -12,15 +12,15 @@ body {
   font-family: var(--primary-body-font-family, 'Times New Roman', Times, serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--primary-color, #EEE);
+  color: var(--tertiary-color, #EEE);
 }
 
 code,
 pre {
   padding: 0.3em;
   font-family: var(--primary-mono-font-family, 'Courier New', Courier, monospace);
-  background-color: var(--secondary-background-color, black);
-  color: var(--secondary-color, green);
+  background-color: var(--primary-color, black);
+  color: var(--tertiary-color, green);
 }
 
 hr {
@@ -33,7 +33,7 @@ a {
 }
 
 a:hover {
-  color: var(--secondary-color, lightblue);
+  color: var(--tertiary-color, lightblue);
 }
 
 a:visited,
@@ -42,7 +42,7 @@ a:active {
 }
 
 a:visited:hover {
-  color: var(--secondary-color, lightblue);
+  color: var(--tertiary-color, lightblue);
 }
 
 a:focus {

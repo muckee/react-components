@@ -30,19 +30,17 @@
 
 .menu {
     position: absolute;
+    width: 100%;
     top: 100%;
-    align-self: stretch;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
     flex-wrap: nowrap;
     gap: 0;
-    width: 100%;
-    border: 1px solid var(--disabled-color, #888);
+    border: 1px solid var(--primary-background-color, #222);
     border-top: none;
     border-radius: 0 0 0.3em 0.3em;
-    outline: 1px solid var(--disabled-color, #888);
     background-color: var(--secondary-color, teal);
 }
 
@@ -53,12 +51,7 @@
 }
 
 .menuItem {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 0;
-    flex-wrap: nowrap;
+    width: 100%;
     padding: 0.6em 0;
     color: inherit;
 }

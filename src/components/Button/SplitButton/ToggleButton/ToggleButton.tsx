@@ -25,16 +25,11 @@ const ToggleButton = (props: ToggleButtonProps) => {
     } = props;
 
     return <div
-        className={
-            `${styles.toggleButtonContainer}`
-            + getClassNamesFromProps(props)
-            + (outline ? ` ${styles.outline}` : '')
-            + (menuIsVisible ? ` ${styles.expanded}` : '')
-        }
+        className={`${styles.toggleButtonContainer}` + getClassNamesFromProps(props) + (outline ? ` ${styles.outline}` : '')}
     >
 
         <Button
-            className={`${styles.toggleButton}`}
+            className={`${styles.toggleButton}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
             onClick={() => setMenuIsVisible(!menuIsVisible)}
             {...splitButtonProps}
         >

@@ -1,4 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs';
+import eslint from '@rollup/plugin-eslint';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
@@ -40,6 +41,7 @@ export default [
       }),
       nodeBuiltins(),
       commonjs(),
+      eslint(),
       typescript({ 
         sourceMap: false,
         tsconfig: './tsconfig.json',

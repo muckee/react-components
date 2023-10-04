@@ -40,7 +40,7 @@
     flex-wrap: nowrap;
     gap: 0;
     width: calc(100% + 2px); /* Align border with parent */
-    border: 1px solid var(--secondary-color, #222);
+    border-color: inherit;
     border-top: none;
     border-radius: 0 0 0.3em 0.3em;
     background-color: var(--primary-color, teal);

@@ -11,14 +11,19 @@ import {
 } from 'react-select/dist/declarations/src/types';
 import { InputProps } from '../Input';
 
-export interface SelectProps extends InputProps {
-    onSelectChange?: ((newValue: MultiValue<string | { label: string; value: string; }> | SingleValue<string | { label: string; value: string; }>, actionMeta: ActionMeta<string | { label: string; value: string; }>) => void) | undefined;
+export type SelectInputOnChange = ((
+    newValue: MultiValue<string | { label: string; value: string; }> | SingleValue<string | { label: string; value: string; }>,
+    actionMeta: ActionMeta<string | { label: string; value: string; }>,
+) => void);
+
+export interface SelectProps extends Omit<InputProps, 'onChange'> {
     options?: OptionsOrGroups<string | { label: string; value: string; }, GroupBase<string | { label: string; value: string; }>> | undefined;
     defaultValue?: string | undefined;
     isClearable?: boolean | undefined;
     isMulti?: boolean | undefined;
     isSearchable?: boolean | undefined;
     classNames?: ClassNamesConfig<string | { label: string; value: string; }, boolean, GroupBase<string | { label: string; value: string; }>> | undefined;
+    onChange?: SelectInputOnChange | undefined;
 }
 
 const Select = (props: SelectProps) => {
@@ -33,7 +38,7 @@ const Select = (props: SelectProps) => {
         isMulti,
         isSearchable,
         classNames,
-        onSelectChange,
+        onChange,
     } = props;
 
     const selectProps = {
@@ -45,7 +50,7 @@ const Select = (props: SelectProps) => {
         },
         placeholder: placeholder ? placeholder : undefined,
         value: value === undefined ? (isMulti ? [] : '') : value,
-        onChange: onSelectChange,
+        onChange: onChange,
         isDisabled: disabled ? true : false,
         isClearable: isClearable ? true : false,
         isMulti: isMulti ? true : false,

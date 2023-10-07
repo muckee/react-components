@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {
+    ChangeEventHandler,
+} from 'react';
 
 import { InputProps } from '../Input';
 
 import styles from './DefaultInput.module.css';
 
-export interface DefaultInputProps extends InputProps {
+export interface DefaultInputProps extends Omit<InputProps, 'onChange'> {
   min?: string | undefined;
   max?: string | undefined;
   size?: number | undefined;
   accept?: string | undefined;
   placeholder?: string | undefined;
   value?: string | undefined;
+  onChange?:  ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
 const DefaultInput = (props: DefaultInputProps) => {

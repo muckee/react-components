@@ -6,7 +6,7 @@
     align-items: center;
     flex-wrap: nowrap;
     gap: 0;
-    width: calc(100% - 2px);
+    width: calc(100% - 1px);
     border: 1px solid var(--secondary-color, #222);
     border-radius: 0.3em;
     background-color: var(--accent-two, #EEE);

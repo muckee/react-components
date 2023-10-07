@@ -4,18 +4,23 @@ import React, {
 } from 'react';
 import DefaultInput from './DefaultInput';
 import Select from './Select';
+import { SelectInputOnChange } from './Select/Select';
+
+export type InputOnChange = ChangeEventHandler<HTMLInputElement>
+    | SelectInputOnChange
+    | undefined;
 
 export interface InputProps {
-  name: string;
-  id?: string | undefined;
-  type?: string | undefined;
-  children?: ReactNode | undefined;
-  hidden?: boolean | undefined;
-  onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
-  className?: string | undefined;
-  disabled?: boolean | undefined;
-  placeholder?: string | undefined;
-  value?: string | undefined;
+    name: string;
+    id?: string | undefined;
+    type?: string | undefined;
+    children?: ReactNode | undefined;
+    hidden?: boolean | undefined;
+    onChange?: InputOnChange;
+    className?: string | undefined;
+    disabled?: boolean | undefined;
+    placeholder?: string | undefined;
+    value?: string | undefined;
 }
 
 const Input = (props: InputProps) => {
@@ -26,13 +31,15 @@ const Input = (props: InputProps) => {
 
     switch (type) {
     case 'select':
-        delete Object.assign(props, { // Mutate `onChange` to `onSelectChange`
-            ['onSelectChange']: props['onChange']
-        })['onChange'];
-        console.log(props);
-        return <Select {...props} />;
+        return <Select {...{
+            ...props,
+            onChange: props.onChange as SelectInputOnChange,
+        }} />;
     default:
-        return <DefaultInput {...props} />;
+        return <DefaultInput {...{
+            ...props,
+            onChange: props.onChange as ChangeEventHandler<HTMLInputElement>,
+        }} />;
     }
 
 };

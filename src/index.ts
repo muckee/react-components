@@ -1,4 +1,4 @@
 // Normalize CSS
-import 'initialise.css';
+import './initialise.css';
 
 export * from './components';

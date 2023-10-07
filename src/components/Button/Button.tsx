@@ -95,7 +95,7 @@ export const getClassNamesFromProps = (
     }
 
     // Concatenate class names, separated by - and prepended with - a single whitespace character
-    return ` ${classNames.join(' ')}`;
+    return ` ${classNames.join(' ')}`.trim();
 };
 
 const Button = (props: ButtonProps) => {

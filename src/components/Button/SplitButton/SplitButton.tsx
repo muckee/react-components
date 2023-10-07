@@ -40,7 +40,7 @@ const SplitButton = (props: SplitButtonProps) => {
         <ToggleButton
             {...{
                 ...props,
-                className: `${className}${toggleButtonClassName ? ` ${toggleButtonClassName}` : ''}`,
+                className: `${className ? className : ''}${toggleButtonClassName ? ` ${toggleButtonClassName}` : ''}`.trim(),
             }}
             menuIsVisible={menuIsVisible}
             setMenuIsVisible={setMenuIsVisible} // TODO: Use a ForwardRef to declare `setMenuIsVisible()` within the `ToggleButton` component

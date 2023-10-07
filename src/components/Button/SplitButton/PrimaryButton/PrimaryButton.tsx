@@ -23,6 +23,7 @@ const PrimaryButton = (props: PrimaryButtonProps) => {
         onMouseOut,
         disabled,
         menuIsVisible,
+        children,
     } = props;
 
     return <Button
@@ -36,7 +37,7 @@ const PrimaryButton = (props: PrimaryButtonProps) => {
         onMouseOut={onMouseOut}
         disabled={disabled}
     >
-        {props.children}
+        {children}
     </Button>;
 };
 

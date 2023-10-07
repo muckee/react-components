@@ -1,25 +1,35 @@
-import React from 'react';
+import React, {
+    ReactNode,
+} from 'react';
 
 import styles from './Fieldset.module.css';
 
 export interface FieldsetProps {
   id?: string | undefined;
   className?: string | undefined;
-  legend?: any;
-  children?: any;
+  legend?: ReactNode | undefined;
+  children?: ReactNode | undefined;
 }
 
 const Fieldset = (props: FieldsetProps) => {
-  return <fieldset
-    id={props.id ? props.id : ''}
-    className={`${styles.fieldset}${props.className ? ` ${props.className}` : ''}`}
-  >
 
-    {props.legend ? <legend>{props.legend}</legend> : ''}
+    const {
+        id,
+        className,
+        legend,
+        children,
+    } = props;
 
-    {props.children}
+    return <fieldset
+        id={id ? id : ''}
+        className={`${styles.fieldset}${className ? ` ${className}` : ''}`}
+    >
 
-  </fieldset>;
+        {legend ? <legend>{legend}</legend> : ''}
+
+        {children}
+
+    </fieldset>;
 };
 
 export default Fieldset;

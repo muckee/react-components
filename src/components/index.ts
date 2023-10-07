@@ -15,5 +15,5 @@ export { default as Pagination } from './Pagination';
 export { default as Portal } from './Portal';
 export { default as Section } from './Section';
 export { default as Spinner } from './Spinner';
-export * from './Tooltip';
+export { default as Tooltip } from './Tooltip';
 

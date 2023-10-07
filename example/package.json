@@ -3,7 +3,6 @@
   "description": "A skeleton React application designed to showcase the @thugnerdz/react-components library.",
   "author": "Muckee <muckee@thugnerdz.com>",
   "license": "EPL-2.0",
-  "packageManager": "yarn@4.0.0-rc.51",
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",

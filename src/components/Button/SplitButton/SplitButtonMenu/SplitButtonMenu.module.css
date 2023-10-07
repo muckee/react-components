@@ -1,0 +1,53 @@
+.menu {
+    z-index: 2;
+    position: absolute;
+    top: 100%;
+    left: -1px; /* Offset to compensate for width overflow */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 0;
+    width: calc(100% + 2px); /* Align border with parent */
+    border: 1px solid;
+    border-top: none;
+    border-color: inherit;
+    border-radius: 0 0 0.3em 0.3em;
+    background-color: var(--primary-color, #EEE);
+    color: var(--secondary-color, #222);
+}
+
+.menu.disabled {
+    background-color: var(--disabled-background-color, #EEE);
+    color: var(--disabled-color, #888);
+    border-color: var(--disabled-color, #888);
+}
+
+.menuItem {
+    width: 100%;
+    padding: 0.6em 0;
+    border: none;
+    border-radius: 0;
+    color: inherit;
+    -webkit-backdrop-filter: unset;
+    backdrop-filter: unset;
+}
+
+.menuItem.disabled {
+    background-color: var(--disabled-background-color, #EEE);
+    color: var(--disabled-color, #888);
+    border: none;
+}
+
+.menuItem:hover,
+.menuItem:focus {
+    filter: saturate(0.6) brightness(1.2); /* Make the hovered element stand out next to its siblings */
+    -webkit-backdrop-filter: saturate(0.6) brightness(1.2) contrast(0.6);
+    backdrop-filter: saturate(0.6) brightness(1.2) contrast(0.6);
+}
+
+.menuItem.disabled:hover,
+.menuItem.disabled:focus {
+    filter: unset;
+}

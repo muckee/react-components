@@ -1,142 +1,150 @@
 import React, {
-  Fragment
+    Fragment
 } from 'react';
 import {
-  Article,
-  Button,
-  Footer,
-  Header,
-  ListItem,
-  Main,
-  OrderedList,
-  Section,
-  Spinner,
-  SplitButton,
-  UnorderedList,
+    Article,
+    Button,
+    Footer,
+    Header,
+    ListItem,
+    Main,
+    OrderedList,
+    Section,
+    Spinner,
+    SplitButton,
+    UnorderedList,
+    Tooltip,
 } from '@muckington/react-components';
 
 const App = () => {
 
-  return (<Fragment>
+    return <Fragment>
 
-    <Header>
+        <Header>
 
-      <h1>ThugNerdz' React Components Example</h1>
+            <Tooltip
+                text={'Example heading tooltip'}
+            >
+                <h1>ThugNerdz&apos; React Components Example</h1>
+            </Tooltip>
 
-      <p>Date: {new Date().toDateString()}</p>
+            <p>Date: {new Date().toDateString()}</p>
 
-    </Header>
+        </Header>
 
-    <Main>
+        <Main>
 
-      <Section>
+            <Section>
 
-        <h2>Section component</h2>
 
-        <Article>
+                <h2>Section component</h2>
 
-          <h3>Article component</h3>
+                <Article>
 
-          <UnorderedList>
+                    <h3>Article component</h3>
 
-            <h4>UnorderedList</h4>
+                    <UnorderedList>
 
-            <ListItem>
+                        <Tooltip
+                            text={'Example unordered list tooltip'}
+                        >
+                            <h4>UnorderedList</h4>
+                        </Tooltip>
 
-              <h5>List item #1</h5>
+                        <ListItem>
 
-              <p>Lorem ipsum...</p>
+                            <h5>List item #1</h5>
 
-              <Button
-                disabled={true}
-              >
-                Disabled button
-              </Button>
-              
-              <SplitButton
-                splitButtonProps={{
-                  title: `Split button options`,
-                  type: `button`,
-                  // className: props.className,
-                  // status: props.status,
-                  // onClick: props.onClick,
-                  // onMouseDown: props.onMouseDown,
-                  // onMouseUp: props.onMouseUp,
-                  // onMouseOut: props.onMouseOut,
-                  // disabled: props.disabled,
+                            <p>Lorem ipsum...</p>
 
-                }}
-                menuItems={[
-                  {
-                    title: `Option #1`,
-                    type: `button`,
-                    children: `Option #1`,
-                  },
-                  {
-                    title: `Option #2`,
-                    type: `button`,
-                    children: `Option #2`,
-                  },
-                  {
-                    title: `Option #3`,
-                    type: `button`,
-                    children: `Option #3`,
-                  },
-                ]}
-              >
-                Split Button
-              </SplitButton>
+                            <Button
+                                disabled={true}
+                            >
+                                Disabled button
+                            </Button>
 
-            </ListItem>
+                            <SplitButton
+                                splitButtonProps={{
+                                    title: 'Split button options',
+                                    type: 'button',
+                                    status: 'primary',
 
-            <ListItem>
+                                }}
+                                menuItems={[
+                                    {
+                                        title: 'Option #1',
+                                        type: 'button',
+                                        children: 'Option #1',
+                                        status: 'warning',
+                                    },
+                                    {
+                                        title: 'Option #2',
+                                        type: 'button',
+                                        children: 'Option #2',
+                                        disabled: true,
+                                        status: 'success',
+                                    },
+                                    {
+                                        title: 'Option #3',
+                                        type: 'button',
+                                        children: 'Option #3',
+                                        status: 'danger',
+                                    },
+                                ]}
+                            >
+                                Split Button
+                            </SplitButton>
 
-              <h5>List item #2</h5>
+                        </ListItem>
 
-              <Spinner
-                isLoading={true}
-                loadingMessage={`Example spinner`}
-              />
+                        <ListItem>
 
-            </ListItem>
+                            <h5>List item #2</h5>
 
-            <ListItem>
+                            <Spinner
+                                isLoading={true}
+                                loadingMessage={'Example spinner'}
+                            />
 
-              <h5>List item #3</h5>
+                        </ListItem>
 
-              <OrderedList>
+                        <ListItem>
 
-                <h6>Ordered list</h6>
+                            <h5>List item #3</h5>
 
-                <ListItem>
-                  List item A
-                </ListItem>
+                            <OrderedList>
 
-                <ListItem>
-                  List item B
-                </ListItem>
+                                <h6>Ordered list</h6>
 
-                <ListItem>
-                  List item C
-                </ListItem>
+                                <ListItem>
+                                    List item A
+                                </ListItem>
 
-              </OrderedList>
+                                <ListItem>
+                                    List item B
+                                </ListItem>
 
-            </ListItem>
+                                <ListItem>
+                                    List item C
+                                </ListItem>
 
-          </UnorderedList>
+                            </OrderedList>
 
-        </Article>
+                        </ListItem>
 
-      </Section>
+                    </UnorderedList>
 
-    </Main>
+                </Article>
 
-    <Footer>
-      <p><small>Copyright &copy; {new Date().getFullYear()} ThugNerdz. All rights reserved.</small></p>
-    </Footer>
+            </Section>
 
-  </Fragment>);
+        </Main>
+
+        <Footer>
+            <p><small>Copyright &copy; {new Date().getFullYear()} ThugNerdz. All rights reserved.</small></p>
+        </Footer>
+
+    </Fragment>;
 };
 
 export default App;

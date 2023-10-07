@@ -1,14 +1,15 @@
-.tooltip {
-    z-index: 3;
+.tooltipContainer {
+    z-index: 10;
     position: fixed;
-    top: 100px;
-    bottom: 100px;
-    display: inline-block;
-    margin: 0;
-    padding: 0.3em 0.6em;
-    border: 1px solid #000;
-    border-radius: 0.3em;
-    background-color: green;
-    white-space: nowrap;
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    padding: 0.3em;
+}
+
+.tooltip {
+    padding: 0.6em 0.3em;
+    border: 1px solid var(--tertiary-color, teal);
+    border-radius: 0.6em;
+    background-color: var(--primary-color, #EEE);
+    color: var(--tertiary-color, teal);
 }

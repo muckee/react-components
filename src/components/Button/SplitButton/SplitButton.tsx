@@ -1,19 +1,22 @@
 import React, {
     useState,
 } from 'react';
-import Button, {
-    ButtonProps,
-    getClassNamesFromProps,
+// import Button, {
+import {
+    ButtonProps, getClassNamesFromProps,
+    // getClassNamesFromProps,
 } from '../Button';
-import Menu from '../../Menu';
-import styles from './SplitButton.module.css';
+import Menu from './SplitButtonMenu';
+// import Menu from '../../Menu';
 import PrimaryButton from './PrimaryButton';
 import ToggleButton from './ToggleButton';
 
+import styles from './SplitButton.module.css';
+
 export interface SplitButtonProps extends ButtonProps {
-    splitButtonProps?: ButtonProps | undefined,
+    splitButtonProps: ButtonProps,
     menuItems?: ButtonProps[] | undefined,
-};
+}
 
 const SplitButton = (props: SplitButtonProps) => {
 
@@ -25,7 +28,7 @@ const SplitButton = (props: SplitButtonProps) => {
     const [menuIsVisible, setMenuIsVisible] = useState(false);
 
     return <div
-        className={`${styles.container}${disabled ? ` ${styles.disabled}` : ''}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
+        className={`${styles.container}${getClassNamesFromProps(props.splitButtonProps, styles)}${disabled ? ` ${styles.disabled}` : ''}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
     >
 
         <PrimaryButton
@@ -33,25 +36,16 @@ const SplitButton = (props: SplitButtonProps) => {
             {...props}
         />
 
-        {!menuIsVisible && <hr className={`${styles.verticalRule}${disabled ? ` ${styles.disabled}` : ''}`} />}
-
         <ToggleButton
             {...props}
             menuIsVisible={menuIsVisible}
-            setMenuIsVisible={setMenuIsVisible} // TODO: Use ForwardRefs
+            setMenuIsVisible={setMenuIsVisible} // TODO: Use a ForwardRef to declare `setMenuIsVisible()` within the `ToggleButton` component
         />
 
         {menuIsVisible && <Menu
-            className={`${styles.menu}${getClassNamesFromProps(props)}${disabled ?  ` ${styles.disabled}` : ''}`}
-            items={menuItems ? menuItems.map((item) => {
-                return <Button
-                    {...{
-                        ...item,
-                        className: styles.menuItem + (item.className ? ` ${item.className}` : ''), // Prepend parent style to button
-                        disabled: item.disabled ? item.disabled : disabled, // If item is not disabled, pass `props.disabled` from parent
-                    }}
-                />;
-            }) : []}
+            menuItems={menuItems}
+            disabled={disabled}
+            className={getClassNamesFromProps(props.splitButtonProps, styles)}
         />}
 
     </div>;

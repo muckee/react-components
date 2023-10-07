@@ -31,9 +31,10 @@
     --accent-two: #A799B7;
         /* State */
     --success-color: green;
-    --warning-color: goldenrod;
+    --warning-color: yellow;
     --danger-color: darkred;
     --disabled-color: #888;
+    --disabled-background-color: #EEE;
     /* Filters */
     --active-filter: saturate(0.9) grayscale(0.3) brightness(1.2) contrast(0.9);
     --background-filter: saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3);

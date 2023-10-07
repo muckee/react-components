@@ -1,41 +1,62 @@
-import React from 'react';
+import React, {
+    FormEventHandler,
+    ReactNode,
+} from 'react';
 
 import Button from '../Button/Button';
-import InputList from './InputList/InputList';
+import InputList, {
+    InputListItem,
+} from './InputList/InputList';
 
 import styles from './Form.module.css';
 
 export interface FormProps {
-  preInputs: any;
-  children: any;
-  inputs: any;
-  postInputs: any;
-  onSubmit?: () => any | undefined;
-  className?: string | undefined;
-  heading?: string | undefined;
+    heading?: string | undefined;
+    preInputs?: ReactNode | undefined;
+    children?: ReactNode | undefined;
+    inputs?: InputListItem[] | undefined;
+    postInputs?: ReactNode | undefined;
+    onSubmit?: FormEventHandler<HTMLFormElement> | undefined;
+    className?: string | undefined;
 }
 
 const Form = (props: FormProps) => {
 
+    const {
+        heading,
+        preInputs,
+        children,
+        inputs,
+        postInputs,
+        onSubmit,
+        className,
+    } = props;
+
     return <form
-        onSubmit={props.onSubmit}
-        className={`${styles.form} ${props.className ? props.className : ''}`}
+        onSubmit={onSubmit}
+        className={`${styles.form} ${className ? className : ''}`}
     >
-        {props.heading && <h3>props.heading</h3>}
+        {heading && <h3>{heading}</h3>}
 
-        {props.preInputs && props.preInputs}
+        {preInputs && preInputs}
 
-        {props.children}
+        {children}
 
-        {props.inputs && <InputList inputs={props.inputs} />}
+        {inputs && <InputList
+            inputs={inputs}
+        />}
 
-        <div className={styles.postInputs}>{props.postInputs && props.postInputs}</div>
+        <div
+            className={styles.postInputs}
+        >{postInputs}</div>
 
-        {props.onSubmit && <Button type='submit'>
+        {onSubmit && <Button
+            type='submit'
+        >
             Submit
         </Button>}
 
     </form>;
-}
+};
 
 export default Form;

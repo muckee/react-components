@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import Button from "../Button/Button";
-import ListItem from "../List/ListItem";
-import Menu from "../Menu/Menu";
+import Button from '../Button/Button';
+import ListItem from '../List/ListItem';
+import Menu from '../Menu/Menu';
 
 import styles from './Pagination.module.css';
 
 export interface PaginationMenuProps {
   total: number;
   currentPage: number;
-  setCurrentPage: (pageNumber: number) => any;
+  setCurrentPage: (pageNumber: number) => void;
   buttons?: React.JSX.Element[] | undefined;
   className?: string | undefined;
 }
@@ -47,14 +47,14 @@ const PaginationMenu = (props: PaginationMenuProps) => {
         </ListItem>
 
     </Menu>;
-}
+};
 
 export interface PaginationProps {
   itemCount: number;
   pageSize: number;
   currentPage: number;
   visiblePillCount: number;
-  setCurrentPage: (pageNumber: number) => any;
+  setCurrentPage: (pageNumber: number) => void;
   className?: string | undefined;
 }
 
@@ -161,6 +161,6 @@ const Pagination = (props: PaginationProps) => {
         setCurrentPage={setCurrentPage}
         className={className}
     />;
-}
+};
 
 export default Pagination;

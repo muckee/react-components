@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+    ReactNode,
+} from 'react';
 
 import styles from './Article.module.css';
 
@@ -6,49 +8,53 @@ export interface ArticleProps {
   heading?: string | undefined;
   headingSize?: number | string | undefined;
   className?: string | undefined;
-  children?: any;
+  children?: ReactNode | undefined;
 }
 
 const Article = (props: ArticleProps) => {
 
-  let heading: React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLHeadingElement>,
-    HTMLHeadingElement
-  > | undefined = props.heading ? <h2 className={`${styles.title}`}>{props.heading}</h2> : undefined;
+    const {
+        heading,
+        headingSize,
+        className,
+        children,
+    } = props;
 
-  if(props.headingSize) {
-    switch(props.headingSize.toString()) {
-      case '1':
-        heading = <h1 className={`${styles.title}`}>{props.heading}</h1>;
-        break;
-      case '2':
-        heading = <h2 className={`${styles.title}`}>{props.heading}</h2>;
-        break;
-      case '3':
-        heading = <h3 className={`${styles.title}`}>{props.heading}</h3>;
-        break;
-      case '4':
-        heading = <h4 className={`${styles.title}`}>{props.heading}</h4>;
-        break;
-      case '5':
-        heading = <h5 className={`${styles.title}`}>{props.heading}</h5>;
-        break;
-      case '6':
-        heading = <h6 className={`${styles.title}`}>{props.heading}</h6>;
-        break;
-      default:
-        heading = <h2 className={`${styles.title}`}>{props.heading}</h2>;
+    let htmlHeading: ReactNode | undefined = heading ? <h2 className={`${styles.title}`}>{heading}</h2> : undefined;
+
+    if(headingSize) {
+        switch(headingSize.toString()) {
+        case '1':
+            htmlHeading = <h1 className={`${styles.title}`}>{heading}</h1>;
+            break;
+        case '2':
+            htmlHeading = <h2 className={`${styles.title}`}>{heading}</h2>;
+            break;
+        case '3':
+            htmlHeading = <h3 className={`${styles.title}`}>{heading}</h3>;
+            break;
+        case '4':
+            htmlHeading = <h4 className={`${styles.title}`}>{heading}</h4>;
+            break;
+        case '5':
+            htmlHeading = <h5 className={`${styles.title}`}>{heading}</h5>;
+            break;
+        case '6':
+            htmlHeading = <h6 className={`${styles.title}`}>{heading}</h6>;
+            break;
+        default:
+            htmlHeading = <h2 className={`${styles.title}`}>{heading}</h2>;
+        }
     }
-  }
-  return <article
-    className={`${styles.article}${props.className ? ` ${props.className}` : ''}`}
-  >
+    return <article
+        className={`${styles.article}${className ? ` ${className}` : ''}`}
+    >
 
-    {heading}
+        {htmlHeading}
 
-    {props.children}
+        {children}
 
-  </article>;
+    </article>;
 };
 
 export default Article;

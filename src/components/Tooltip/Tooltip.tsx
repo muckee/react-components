@@ -1,159 +1,153 @@
-import * as React from "react";
-import {
-  useFloating,
-  autoUpdate,
-  offset,
-  flip,
-  shift,
-  useHover,
-  useFocus,
-  useDismiss,
-  useRole,
-  useInteractions,
-  useMergeRefs,
-  FloatingPortal
-} from "@floating-ui/react";
-import type { Placement } from "@floating-ui/react";
+import React, {
+    Fragment,
+    MouseEvent,
+    ReactNode,
+    cloneElement,
+    isValidElement,
+    useEffect,
+    useRef,
+    useState,
+} from 'react';
+import { createPortal } from 'react-dom';
 
-interface TooltipOptions {
-  initialOpen?: boolean | undefined;
-  placement?: Placement | undefined;
-  open?: boolean | undefined;
-  onOpenChange?: (open: boolean) => void | undefined;
+import styles from './Tooltip.module.css';
+
+export interface TooltipProps {
+    text: string;
+    children: ReactNode;
+    offset?: number | undefined;
 }
 
-export function useTooltip({
-  initialOpen = false,
-  placement = "top",
-  open: controlledOpen,
-  onOpenChange: setControlledOpen
-}: TooltipOptions = {}) {
-  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen);
+const Tooltip = (props: TooltipProps) => {
 
-  const open = controlledOpen ?? uncontrolledOpen;
-  const setOpen = setControlledOpen ?? setUncontrolledOpen;
+    const {
+        text,
+        children,
+    } = props;
 
-  const data = useFloating({
-    placement,
-    open,
-    onOpenChange: setOpen,
-    whileElementsMounted: autoUpdate,
-    middleware: [
-      offset(5),
-      flip({
-        crossAxis: placement.includes("-"),
-        fallbackAxisSideDirection: "start",
-        padding: 5
-      }),
-      shift({ padding: 5 })
-    ]
-  });
+    const tooltipRef = useRef<HTMLDivElement>(null);
+    const anchorRef = useRef<HTMLElement>(null);
 
-  const context = data.context;
+    const [position, setPosition] = useState<{
+        x: number;
+        y: number;
+    } | undefined>(undefined);
 
-  const hover = useHover(context, {
-    move: false,
-    enabled: controlledOpen == null
-  });
-  const focus = useFocus(context, {
-    enabled: controlledOpen == null
-  });
-  const dismiss = useDismiss(context);
-  const role = useRole(context, { role: "tooltip" });
+    const [positionHasChanged, setPositionHasChanged] = useState(false);
 
-  const interactions = useInteractions([hover, focus, dismiss, role]);
+    const handleMouseOver = (
+        e: MouseEvent<HTMLElement>,
+    ) => {
 
-  return React.useMemo(
-    () => ({
-      open,
-      setOpen,
-      ...interactions,
-      ...data
-    }),
-    [open, setOpen, interactions, data]
-  );
-}
+        const anchorBounds = e.currentTarget.getBoundingClientRect();
 
-type ContextType = ReturnType<typeof useTooltip> | null;
+        // Initially, the tooltip is positioned above its anchor
 
-const TooltipContext = React.createContext<ContextType>(null);
+        const updatedX = anchorBounds.x;
 
-export const useTooltipContext = () => {
-  const context = React.useContext(TooltipContext);
+        const updatedY = anchorBounds.y - anchorBounds.height;
 
-  if (context == null) {
-    throw new Error("Tooltip components must be wrapped in <Tooltip />");
-  }
+        setPosition({
+            x: updatedX,
+            y: updatedY,
+        });
 
-  return context;
+        // TODO: Do something better than this...
+        setPositionHasChanged(true);
+    };
+
+    useEffect(() => {
+
+        if(positionHasChanged) {
+
+            const anchorBounds = anchorRef.current?.getBoundingClientRect() || {
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0,
+            };
+    
+            const tooltipWidth = tooltipRef.current?.getBoundingClientRect().width || 0;
+            const tooltipHeight = tooltipRef.current?.getBoundingClientRect().height || 0;
+    
+            // Assign fallback values (left-hand side of anchor), overflowing downwards
+            let updatedX = anchorBounds.x - tooltipWidth;
+            let updatedY = anchorBounds.y;
+
+            // If the tooltip is below the viewport, move it up
+            if(updatedY > (window.innerHeight - tooltipHeight)) {
+
+                updatedY = anchorBounds.y + anchorBounds.height;
+            }
+
+            // If the tooltip is beyond the left-hand side of the viewport, move it up and right
+            if(updatedX < 0) {
+                updatedX = anchorBounds.x;
+                updatedY = anchorBounds.y - tooltipHeight;
+            }
+
+            // If the tooltip is beyond the top of the viewport, move it down and right
+            if (updatedY < 0) {
+                updatedX = anchorBounds.x + anchorBounds.width;
+                updatedY = anchorBounds.y;
+            }
+
+            // If the tooltip is beyond the right-hand side of the viewport, move it down and left
+            if(updatedX + tooltipWidth > window.innerWidth) {
+                updatedX = anchorBounds.x;
+                updatedY = anchorBounds.y + anchorBounds.height;
+            }
+
+            setPosition({
+                x: updatedX,
+                y: updatedY,
+            });
+
+            setPositionHasChanged(false);
+        }
+
+    }, [positionHasChanged]);
+
+    const handleMouseOut = () => setPosition(undefined);
+
+    const anchorProps = {
+        onMouseOver: handleMouseOver,
+        onMouseOut: handleMouseOut,
+        ref: anchorRef,
+        
+    };
+
+    const anchor = isValidElement(children)
+        ? cloneElement(children, {...anchorProps})
+        : <span {...anchorProps}>{children}</span>;
+
+    return <Fragment>
+
+        {anchor}
+
+        {position && createPortal(
+            <div
+                ref={tooltipRef}
+                className={styles.tooltipContainer}
+                style={{
+                    top: position.y,
+                    left: position.x,
+                }}
+            >
+                <div
+                    className={styles.tooltip}
+                >
+                    {text}
+                </div>
+            </div>,
+            document.body,
+        )}
+
+    </Fragment>;
 };
 
-export function Tooltip({
-  children,
-  ...options
-}: { children: React.ReactNode } & TooltipOptions) {
-  // This can accept any props as options, e.g. `placement`,
-  // or other positioning options.
-  const tooltip = useTooltip(options);
-  return (
-    <TooltipContext.Provider value={tooltip}>
-      {children}
-    </TooltipContext.Provider>
-  );
-}
-
-export const TooltipTrigger = React.forwardRef<
-  HTMLElement,
-  React.HTMLProps<HTMLElement> & { asChild?: boolean | undefined }
->(function TooltipTrigger({ children, asChild = false, ...props }, propRef) {
-  const context = useTooltipContext();
-  const childrenRef = (children as any).ref;
-  const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef]);
-
-  // `asChild` allows the user to pass any element as the anchor
-  if (asChild && React.isValidElement(children)) {
-    return React.cloneElement(
-      children,
-      context.getReferenceProps({
-        ref,
-        ...props,
-        ...children.props,
-        "data-state": context.open ? "open" : "closed"
-      })
-    );
-  }
-
-  return (
-    <button
-      ref={ref}
-      // The user can style the trigger based on the state
-      data-state={context.open ? "open" : "closed"}
-      {...context.getReferenceProps(props)}
-    >
-      {children}
-    </button>
-  );
-});
-
-export const TooltipContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLProps<HTMLDivElement>
->(function TooltipContent({ style, ...props }, propRef) {
-  const context = useTooltipContext();
-  const ref = useMergeRefs([context.refs.setFloating, propRef]);
-
-  if (!context.open) return null;
-
-  return (
-    <FloatingPortal>
-      <div
-        ref={ref}
-        style={{
-          ...context.floatingStyles,
-          ...style
-        }}
-        {...context.getFloatingProps(props)}
-      />
-    </FloatingPortal>
-  );
-});
+export default Tooltip;

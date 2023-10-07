@@ -12,7 +12,7 @@ body {
   font-family: var(--primary-body-font-family, 'Times New Roman', Times, serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--tertiary-color, #EEE);
+  color: var(--primary-color, #EEE);
 }
 
 code,
@@ -57,6 +57,7 @@ h5,
 h6,
 button,
 input[type='button'] {
+  color: var(--tertiary-color, teal);
   font-family: var(--primary-heading-font-family, Arial, Helvetica, sans-serif);
 }
 

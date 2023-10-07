@@ -1,10 +1,6 @@
-import React from 'react';
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
-} from '../Tooltip/Tooltip';
+import React, {
+    ReactNode,
+} from 'react';
 
 import styles from './Figure.module.css';
 
@@ -15,53 +11,38 @@ export interface FigureProps {
   imgSrc?: string | undefined;
   imgAlt?: string | undefined;
   imgClassName?: string | undefined;
-  imgStyle?: React.CSSProperties | undefined;
-  tooltip?: string | undefined;
-  children?: any;
+  children?: ReactNode | undefined;
 }
 
 const Figure = (props: FigureProps) => {
 
-  const {
-    className,
-    heading,
-    shiftCaptionUp,
-    imgSrc,
-    imgAlt,
-    imgClassName,
-    imgStyle,
-    tooltip,
-    children,
-  } = props;
+    const {
+        className,
+        heading,
+        shiftCaptionUp,
+        imgSrc,
+        imgAlt,
+        imgClassName,
+        children,
+    } = props;
 
-  return (
-    <figure className={`${styles.figure}${className ? ` ${className}` : ''}`}>
+    return (
+        <figure className={`${styles.figure}${className ? ` ${className}` : ''}`}>
 
-      {heading && heading}
+            {heading && heading}
 
-      {shiftCaptionUp && <figcaption>{children}</figcaption>}
+            {shiftCaptionUp && <figcaption>{children}</figcaption>}
 
-      {tooltip ? <Tooltip>
-        <TooltipTrigger className={styles.tooltipTrigger}><img
-          data-tooltip-id={tooltip ? `${imgAlt}-tooltip` : undefined}
-          src={imgSrc}
-          alt={imgAlt}
-          className={`${styles.image}${imgClassName ? ` ${imgClassName}` : ''}`}
-          style={imgStyle ? imgStyle : {}}
-        /></TooltipTrigger>
-        <TooltipContent className={styles.tooltipContent}>{tooltip}</TooltipContent>
-      </Tooltip> : <img
-        data-tooltip-id={tooltip ? `${imgAlt}-tooltip` : undefined}
-        src={imgSrc}
-        alt={imgAlt}
-        className={`${styles.image}${imgClassName ? ` ${imgClassName}` : ''}`}
-        style={imgStyle ? imgStyle : {}}
-      />}
+            <img
+                src={imgSrc}
+                alt={imgAlt}
+                className={`${styles.image}${imgClassName ? ` ${imgClassName}` : ''}`}
+            />
 
-      {!shiftCaptionUp && <figcaption>{children}</figcaption>}
+            {!shiftCaptionUp && <figcaption>{children}</figcaption>}
 
-    </figure>
-  );
+        </figure>
+    );
 };
 
 export default Figure;

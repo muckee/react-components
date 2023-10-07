@@ -1,14 +1,14 @@
 import React from 'react';
-import Button from "../../Button";
+import Button from '../../Button';
 import {
     SplitButtonProps,
-} from "../SplitButton";
+} from '../SplitButton';
 
 import styles from './PrimaryButton.module.css';
 
 export interface PrimaryButtonProps extends SplitButtonProps {
     menuIsVisible: boolean;
-};
+}
 
 const PrimaryButton = (props: PrimaryButtonProps) => {
 
@@ -37,7 +37,7 @@ const PrimaryButton = (props: PrimaryButtonProps) => {
         disabled={disabled}
     >
         {props.children}
-    </Button>
+    </Button>;
 };
 
 export default PrimaryButton;

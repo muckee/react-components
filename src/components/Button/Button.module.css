@@ -19,7 +19,7 @@
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
-  background-color: var(--secondary-color, #EEE)  / 0.72;
+  background-color: var(--accent-two, #98A);
   -webkit-backdrop-filter: var(--background-filter);
   backdrop-filter: var(--background-filter);
   color: var(--secondary-color, #222);
@@ -34,10 +34,9 @@
 
 /* Primary */
 primary {
-  background-color: var(--primary-button-background-color, teal)  / 0.72;
+  background-color: var(--primary-button-background-color, teal);
   color: var(--primary-button-color, #EEE);
   border: 2px solid var(--primary-button-color, #EEE);
-  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .primary:focus {
@@ -47,43 +46,33 @@ primary {
 /* Secondary */
 
 .secondary {
-  background-color: var(--secondary-button-background-color, #EEE)  / 0.72;
+  background-color: var(--secondary-button-background-color, #EEE);
   color: var(--secondary-button-color, #222);
   border: 1px solid var(--secondary-button-color, #222);
-  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 /* Success */
 
 .success {
-  background-color: var(--success-color, green)  / 0.72;
-  -webkit-backdrop-filter: var(--background-filter);
-  backdrop-filter: var(--background-filter);
+  background-color: var(--success-color, green);
   color: var(--success-color, green);
   border: 2px solid var(--success-color, green);
-  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 /* Warning */
 
 .warning {
-  background-color: var(--warning-color, goldenrod)  / 0.72;
-  -webkit-backdrop-filter: var(--background-filter);
-  backdrop-filter: var(--background-filter);
+  background-color: var(--warning-color, goldenrod);
   color: var(--warning-color, #222);
   border: 2px solid var(--warning-color, #222);
-  text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.63);
 }
 
 /* Danger */
 
 .danger {
-  background-color: var(--danger-color, darkred)  / 0.72;
-  -webkit-backdrop-filter: var(--background-filter);
-  backdrop-filter: var(--background-filter);
+  background-color: var(--danger-color, darkred);
   color: var(--danger-color, darkred);
   border: 1px solid var(--danger-color, darkred);
-  text-shadow: 0px 2px 2px var(--danger-color, darkred);
 }
 
 /* Outline */
@@ -92,7 +81,6 @@ primary {
   background-color: transparent;
   color: #000;
   border: 2px solid var(--secondary-color, #222);
-  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .outline:disabled {
@@ -103,11 +91,9 @@ primary {
 /* TODO: Add state-specific styles for disabled state. i.e. dim red for `.danger.disabled ` */
 
 .button:disabled {
-  background-color: var(--disabled-color, #EEE)  / 0.72;
-  -webkit-backdrop-filter: var(--background-filter);
-  backdrop-filter: var(--background-filter);
-  color: var(--disabled-color, #666);
-  border: 2px solid var(--disabled-color, #666);
+  background-color: var(--disabled-background-color, #EEE);
+  color: var(--disabled-color, #888);
+  border: 2px solid var(--disabled-color, #888);
   outline: none;
   text-shadow: none;
   cursor: not-allowed;

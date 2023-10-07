@@ -1,20 +1,22 @@
-import React from 'react';
+import React, {
+    ReactNode,
+} from 'react';
 
 import styles from './Main.module.css';
 
 export interface MainProps {
   className?: string | undefined;
-  children?: any;
+  children?: ReactNode | undefined;
 }
 
 const Main = (props: MainProps) => {
-  return <main
-    className={`${styles.main} ${props.className ? props.className : ''}`}
-  >
+    return <main
+        className={`${styles.main} ${props.className ? props.className : ''}`}
+    >
 
-    {props.children}
+        {props.children}
 
-  </main>;
+    </main>;
 };
 
 export default Main;

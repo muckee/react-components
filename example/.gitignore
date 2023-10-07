@@ -1,13 +1,13 @@
-// Webpack
+# Webpack
 dist
 
-// Yarn (Berry)
+# Yarn (Berry)
 yarn.lock
 .yarnrc
 .yarnrc.yml
 .pnp.*
 .yarn
 
-// NPM
+# NPM
 build
 node_modules

@@ -11,5 +11,5 @@ const root = createRoot(document.getElementById('root'));
 
 // Render the React application within the root element
 root.render(<React.StrictMode>
-  <App />
+    <App />
 </React.StrictMode>);

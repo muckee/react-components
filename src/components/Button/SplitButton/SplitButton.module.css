@@ -6,84 +6,19 @@
     align-items: center;
     flex-wrap: nowrap;
     gap: 0;
+    width: calc(100% - 2px);
     border: 1px solid var(--secondary-color, #222);
     border-radius: 0.3em;
-    background-color: var(--primary-color, cyan);
+    background-color: var(--accent-two, #EEE);
+    -webkit-backdrop-filter: var(--background-filter);
+    backdrop-filter: var(--background-filter);
     color: var(--secondary-color, #222);
 }
 
-.menuContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 0.3em;
-}
-
-.container.disabled,
-.menuContainer.disabled {
-    border-color: var(--disabled-color, #888);
-    /* background-color: var(--disabled-background-color, #222); */
-    /* color: var(--disabled-color, #888); */
-}
-
-.menu {
-    z-index: 2;
-    position: absolute;
-    top: 100%;
-    left: -1px; /* Offset to compensate for width overflow */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-wrap: nowrap;
-    gap: 0;
-    width: calc(100% + 2px); /* Align border with parent */
-    border-color: inherit;
-    border-top: none;
-    border-radius: 0 0 0.3em 0.3em;
-    background-color: var(--primary-color, teal);
-    color: var(--secondary-color, #222);
-}
-
-.menu.disabled {
-    /* border-color: var(--disabled-color, #888);
-    background-color: var(--disabled-background-color, #222);
-    color: var(--disabled-color, #888); */
-}
-
-.menuItem {
-    width: 100%;
-    padding: 0.6em 0;
-    color: inherit;
-}
-
-.menuItem:hover {
-    background-color: var(--primary-color, cyan);
-    filter: saturate(0.6) brightness(1.2) contrast(0.4); /* Make the hovered element stand out next to its siblings */
-}
-
-.menuItem,
-.menuItem:disabled {
-    border: none;
-    border-radius: 0;
-    background: none;
-}
-
-.verticalRule {
-    flex: 1;
-    align-self: stretch;
-    max-width: 1px;
-    height: auto;
-    border: inherit;
-    border-left: none;
-    border-right: none;
-    color: var(--secondary-color, #222);
-}
-
-.verticalRule.disabled {
+.container.disabled {
+    background-color: var(--disabled-background-color, #EEE);
     color: var(--disabled-color, #888);
+    border-color: var(--disabled-color, #888);
 }
 
 .expanded {
@@ -94,31 +29,26 @@
 
 .primary {
     border-color: var(--primary-button-color, cyan);
-    background-color: var(--primary-button-background-color, #EEE);
-    color: var(--primary-button-color, cyan);
+    color: var(--secondary-color, #222);
 }
 
 .secondary {
     border-color: var(--secondary-button-color, #222);
-    background-color: var(--secondary-button-background-color, #EEE);
     color: var(--secondary-button-color, #222);
 }
 
 .success {
     border-color: var(--success-color, green);
-    background-color: var(--success-background-color, lightgreen);
     color: var(--success-color, green);
 }
 
 .warning {
-    border-color: var(--warning-color, yellow);
-    background-color: var(--warning-background-color, lightyellow);
+    border-color: var(--warning-color, black);
     color: var(--warning-color, black);
 }
 
 .danger {
     border-color: var(--danger-color, red);
-    background-color: var(--danger-background-color, pink);
     color: var(--danger-color, red);
 }
 

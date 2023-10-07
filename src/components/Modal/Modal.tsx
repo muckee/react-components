@@ -1,33 +1,36 @@
-import React, { Fragment } from 'react';
+import React, {
+    Fragment,
+    ReactNode,
+} from 'react';
 
 import Backdrop from '../Backdrop/Backdrop';
-import Button from "../Button/Button";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Button from '../Button/Button';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 import styles from './Modal.module.css';
-import Section from "../Section/Section";
+import Section from '../Section/Section';
 import Portal from '../Portal/Portal';
 
 export interface ModalProps {
-  handleClose: () => any;
+  handleClose: () => void;
   show?: boolean | undefined;
   className?: string | undefined;
   mainClassName?: string | undefined;
   contentClassName?: string | undefined;
   heading?: string | undefined;
-  children?: any;
+  children?: ReactNode | undefined;
 }
 
 const Modal = (props: ModalProps) => {
 
     return <Fragment>
 
-        {<Portal id={`thugnerdz-modal-backdrop-root`}>
+        {<Portal id={'thugnerdz-modal-backdrop-root'}>
             <Backdrop onClick={props.handleClose}className={props.show ? ` ${styles.visible}` : ''} />
         </Portal>}
 
-        {<Portal id={`thugnerdz-modal-overlay-root`}>
+        {<Portal id={'thugnerdz-modal-overlay-root'}>
             <div className={`${styles.modal}${props.show ? ` ${styles.visible}` : ''}${props.className ? ` ${props.className}` : ''}`}>
 
                 <Section className={`${styles.modalMain}${props.mainClassName ? ` ${props.mainClassName}` : ''}`}>

@@ -9,9 +9,9 @@ export interface BackdropProps {
 
 const Backdrop = (props: BackdropProps) => {
 
-  return <div
-    className={`${styles.backdrop}${props.className ? ` ${props.className}` : ''}`} onClick={props.onClick}
-  />;
+    return <div
+        className={`${styles.backdrop}${props.className ? ` ${props.className}` : ''}`} onClick={props.onClick}
+    />;
 };
 
 export default Backdrop;

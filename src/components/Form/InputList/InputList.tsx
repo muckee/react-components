@@ -1,32 +1,33 @@
 import React, {
     Fragment,
-} from "react";
+    ReactNode,
+} from 'react';
 import {
     RiDeleteBinLine,
 } from 'react-icons/ri';
-import Button from "../../Button/Button";
-import Fieldset from "../Fieldset/Fieldset";
+import Button from '../../Button/Button';
+import Fieldset from '../Fieldset/Fieldset';
 import Input, {
     InputProps,
-} from "../Input/Input";
+} from '../Input/Input';
 
 import styles from './InputList.module.css';
-import Label from "../Label";
+import Label from '../Label';
 
 export interface InputListItem extends InputProps {
-    before?: any;
-    after?: any;
+    before?: ReactNode | undefined;
+    after?: ReactNode | undefined;
     errorMsg?: string | undefined;
     labelClassName?: string | undefined;
-    legend?: any;
-    label: any;
+    legend?: ReactNode | undefined;
+    label: string | undefined;
     fields?: InputListItem[] | undefined;
     childrenAreDeletable?: boolean | undefined;
     deleteChild?: (
-        toDelete: any,
+        toDelete: InputListItem[] | React.MouseEvent<HTMLButtonElement, MouseEvent> | undefined,
         index?: number | undefined,
-    ) => any;
-};
+    ) => number | boolean | undefined | void;
+}
 
 export interface InputListProps {
     inputs: InputListItem[];
@@ -95,7 +96,11 @@ export const createFieldset = (input: InputListItem) => <Fieldset legend={input.
 
 const InputList = (props: InputListProps) => {
 
-    return props.inputs.map((input, idx) => {
+    const {
+        inputs,
+    } = props;
+
+    return inputs.map((input, idx) => {
 
         return <Fragment key={idx}>
 
@@ -104,6 +109,6 @@ const InputList = (props: InputListProps) => {
         </Fragment>;
 
     });
-}
+};
 
 export default InputList;

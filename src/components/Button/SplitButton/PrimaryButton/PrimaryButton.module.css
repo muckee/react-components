@@ -1,10 +1,22 @@
-.button,
-.button:disabled {
-    border: none;
-}
-
 .button {
     flex: 1;
-    background-color: transparent;
+    border: none;
     border-radius: 0;
+    background-color: transparent;
+    color: inherit;
+    filter: none;
+    -webkit-backdrop-filter: unset;
+    backdrop-filter: unset;
+}
+
+.button.expanded {
+    border-bottom: 1px solid;
+    border-color: inherit;
+}
+
+.button:hover,
+.button:focus {
+    filter: saturate(0.6) brightness(1.2); /* Make the hovered element stand out next to its siblings */
+    -webkit-backdrop-filter: saturate(0.6) brightness(1.2) contrast(0.6);
+    backdrop-filter: saturate(0.6) brightness(1.2) contrast(0.6);
 }

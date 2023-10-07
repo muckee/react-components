@@ -1,22 +1,24 @@
-import React from 'react';
+import React, {
+    ReactNode,
+} from 'react';
 
 import styles from './Footer.module.css';
 
 export interface FooterProps {
   className?: string | undefined;
-  children?: any;
+  children?: ReactNode | undefined;
 }
 
 const Footer = (props: FooterProps) => {
 
-  return <footer
-    data-testid={`footer`}
-    className={`${styles.footer}${props.className ? ` ${props.className}` : ''}`}
-  >
+    return <footer
+        data-testid={'footer'}
+        className={`${styles.footer}${props.className ? ` ${props.className}` : ''}`}
+    >
 
-    {props.children}
+        {props.children}
 
-  </footer>;
+    </footer>;
 };
 
 export default Footer;

@@ -9,73 +9,74 @@ import nodeBuiltins from 'rollup-plugin-node-builtins';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import sourcemaps from 'rollup-plugin-sourcemaps';
-
 import packageJson from './package.json' assert { type: 'json' };
 
 export default [
-  {
-    context: 'this',
-    input: 'src/index.ts',
-    output: [
-      {
-        file: packageJson.main,
-        format: 'cjs',
-        sourcemap: true,
-      },
-      {
-        file: packageJson.module,
-        format: 'esm',
-        sourcemap: true,
-      },
-    ],
-    plugins: [
-      peerDepsExternal(),
-      postcss({
-        minimize: true,
-        modules: true,
-        extract: true,
-        sourceMap: true,
-      }),
-      resolve({
-        preferBuiltins: true,
-      }),
-      nodeBuiltins(),
-      commonjs(),
-      eslint(),
-      typescript({ 
-        sourceMap: false,
-        tsconfig: './tsconfig.json',
-      }),
-      sourcemaps(),
-      terser(),
-      copy({
-        targets: [
-          {
-            src: 'src/theme.css',
-            dest: 'dist',
-          },
-          {
-            src: 'src/theme.min.css',
-            dest: 'dist',
-          },
-          {
-            src: 'src/variables.css',
-            dest: 'dist',
-          },
-          {
-            src: 'src/variables.min.css',
-            dest: 'dist',
-          },
-        ]
-      }),
-    ],
-  },
-  {
-    input: 'dist/esm/types/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [
-      dts()
-    ],
-    external: [/\.css$/],
-  },
+    {
+        context: 'this',
+        input: 'src/index.ts',
+        output: [
+            {
+                file: packageJson.main,
+                format: 'cjs',
+                sourcemap: true,
+            },
+            {
+                file: packageJson.module,
+                format: 'esm',
+                sourcemap: true,
+            },
+        ],
+        plugins: [
+            eslint(),
+            peerDepsExternal(),
+            postcss({
+                minimize: true,
+                modules: true,
+                extract: true,
+                sourceMap: true,
+            }),
+            resolve({
+                jsnext: true,
+                main: true,
+                browser: true,
+            }),
+            nodeBuiltins(),
+            commonjs(),
+            typescript({
+                sourceMap: true,
+                tsconfig: './tsconfig.json',
+            }),
+            sourcemaps(),
+            terser(),
+            copy({
+                targets: [
+                    {
+                        src: 'src/theme.css',
+                        dest: 'dist',
+                    },
+                    {
+                        src: 'src/theme.min.css',
+                        dest: 'dist',
+                    },
+                    {
+                        src: 'src/variables.css',
+                        dest: 'dist',
+                    },
+                    {
+                        src: 'src/variables.min.css',
+                        dest: 'dist',
+                    },
+                ]
+            }),
+        ],
+    },
+    {
+        input: 'dist/esm/types/index.d.ts',
+        output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+        plugins: [
+            dts()
+        ],
+        external: [/\.css$/],
+    },
 ];

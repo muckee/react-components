@@ -1,7 +1,7 @@
 import React from 'react';
 import Button, {
     getClassNamesFromProps,
-} from "../../Button";
+} from '../../Button';
 import { SplitButtonProps } from '../SplitButton';
 import {
     RiArrowDropDownLine,
@@ -13,7 +13,7 @@ import styles from './ToggleButton.module.css';
 export interface ToggleButtonProps extends SplitButtonProps {
     menuIsVisible: boolean;
     setMenuIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
 
 const ToggleButton = (props: ToggleButtonProps) => {
 
@@ -24,8 +24,10 @@ const ToggleButton = (props: ToggleButtonProps) => {
     } = props;
 
     return <div
-        className={`${styles.toggleButtonContainer}` + getClassNamesFromProps(props)}
+        className={`${styles.toggleButtonContainer}${getClassNamesFromProps(props)}${menuIsVisible ? ` ${styles.expanded}` : ''}`}
     >
+
+        <hr className={styles.verticalRule} />
 
         <Button
             className={`${styles.toggleButton}`}
@@ -36,7 +38,7 @@ const ToggleButton = (props: ToggleButtonProps) => {
 
         </Button>
 
-    </div>
+    </div>;
 };
 
 export default ToggleButton;

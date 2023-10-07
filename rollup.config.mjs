@@ -11,6 +11,8 @@ import postcss from 'rollup-plugin-postcss';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import packageJson from './package.json' assert { type: 'json' };
 
+// TODO: Optimise sourcemap generation
+// TODO: Optimise css minification
 export default [
     {
         context: 'this',
@@ -52,19 +54,7 @@ export default [
             copy({
                 targets: [
                     {
-                        src: 'src/theme.css',
-                        dest: 'dist',
-                    },
-                    {
-                        src: 'src/theme.min.css',
-                        dest: 'dist',
-                    },
-                    {
-                        src: 'src/variables.css',
-                        dest: 'dist',
-                    },
-                    {
-                        src: 'src/variables.min.css',
+                        src: 'src/*.css',
                         dest: 'dist',
                     },
                 ]

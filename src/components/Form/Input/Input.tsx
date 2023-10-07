@@ -29,6 +29,7 @@ const Input = (props: InputProps) => {
         delete Object.assign(props, { // Mutate `onChange` to `onSelectChange`
             ['onSelectChange']: props['onChange']
         })['onChange'];
+        console.log(props);
         return <Select {...props} />;
     default:
         return <DefaultInput {...props} />;

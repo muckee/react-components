@@ -67,28 +67,25 @@ const App = () => {
                                 splitButtonProps={{
                                     title: 'Split button options',
                                     type: 'button',
-                                    status: 'primary',
-
+                                    status: 'danger',
                                 }}
                                 menuItems={[
                                     {
                                         title: 'Option #1',
                                         type: 'button',
                                         children: 'Option #1',
-                                        status: 'warning',
+                                        status: 'primary',
                                     },
                                     {
                                         title: 'Option #2',
                                         type: 'button',
                                         children: 'Option #2',
                                         disabled: true,
-                                        status: 'success',
                                     },
                                     {
                                         title: 'Option #3',
                                         type: 'button',
                                         children: 'Option #3',
-                                        status: 'danger',
                                     },
                                 ]}
                             >

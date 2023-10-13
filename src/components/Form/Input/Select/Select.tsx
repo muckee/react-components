@@ -60,9 +60,9 @@ const Select = (props: SelectProps) => {
     );
 
     const value = multi === true
-        ? selected.map(s => s.toString())
-        : selected.length
-            ? selected[0]
+        ? selected.map(selectedOption => selectedOption.value.toString())
+        : (selected.length > 0)
+            ? selected[0].value.toString()
             : '';
 
     return <Fragment>

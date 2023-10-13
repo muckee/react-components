@@ -69,7 +69,7 @@ const Select = (props: SelectProps) => {
             label={label}
             title={title}
             name={name}
-            value={multi ? selected.map(selectedOption => selectedOption.value.toString()) : selected[0].value.toString()}
+            value={multi ? selected.map(selectedOption => selectedOption.value.toString()) : selected.length ? selected[0].value.toString() : []}
             onChange={formElementChange}
         />
 

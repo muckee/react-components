@@ -59,9 +59,9 @@ const Select = (props: SelectProps) => {
         onChange,
     );
 
-    const value = multi
+    const value = multi === true
         ? selected.map(selectedOption => selectedOption.value.toString())
-        : selected.length
+        : (selected.length > 0)
             ? selected[0].value.toString()
             : '';
 

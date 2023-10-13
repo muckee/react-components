@@ -12,7 +12,6 @@ import Input, {
     InputProps,
 } from '../Input';
 
-import themeStyles from '../../../theme.module.css';
 import styles from './InputList.module.css';
 
 export interface InputListItem extends InputProps {
@@ -38,7 +37,7 @@ export const createLabel = (input: InputListItem) => <Fragment>
 
     {input.before && input.before}
 
-    {(input.type === 'file' && input.errorMsg) && <span className={`${input.errorMsg ? themeStyles.danger : ''}`}>{input.errorMsg}</span>}
+    {(input.type === 'file' && input.errorMsg) && <span className={`${input.errorMsg ? styles.error : ''}`}>{input.errorMsg}</span>}
 
     {(!input.hidden) && <Label
         label={input.label}
@@ -47,7 +46,7 @@ export const createLabel = (input: InputListItem) => <Fragment>
 
         {<Input {...input} />}
 
-        {(input.type !== 'file' && input.errorMsg) && <span className={`${input.errorMsg ? themeStyles.danger : ''}`}>{input.errorMsg}</span>}
+        {(input.type !== 'file' && input.errorMsg) && <span className={`${input.errorMsg ? styles.error : ''}`}>{input.errorMsg}</span>}
     </Label>}
 
     {input.after && input.after}
@@ -91,7 +90,7 @@ export const createFieldset = (input: InputListItem) => <Fieldset legend={input.
 
     })}
 
-    {input.errorMsg && <span className={`${input.errorMsg ? themeStyles.danger : ''}`}>{input.errorMsg}</span>}
+    {input.errorMsg && <span className={`${input.errorMsg ? styles.error : ''}`}>{input.errorMsg}</span>}
 
 </Fieldset>;
 
@@ -105,7 +104,13 @@ const InputList = (props: InputListProps) => {
 
         return <Fragment key={idx}>
 
-            {input.type === 'fieldset' ? createFieldset(input) : createLabel(input)}
+            {input.type === 'fieldset'
+                ? createFieldset({
+                    ...input,
+
+                })
+                : createLabel(input)
+            }
 
         </Fragment>;
 

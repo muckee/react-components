@@ -4,7 +4,6 @@ import React, {
     ReactNode,
 } from 'react';
 
-import themeStyles from '../../theme.module.css';
 import styles from './Button.module.css';
 import { useClassNames } from '../../hooks';
 
@@ -122,7 +121,7 @@ const Button = (props: ButtonProps) => {
     // Start with the default `styles.button` class.
     // If defined, add the value of `props.className` and derive the appropriate className from `props.status`.
     // If `props.outline` is set to true, add the outline class.
-    const className = styles.button + `${classNames ? ` ${classNames}` : ''}` + (highlight ? ` ${themeStyles.highlight}` : '') + (outline ? ` ${styles.outline}` : '');
+    const className = styles.button + `${classNames ? ` ${classNames}` : ''}` + (highlight ? ' highlight' : '') + (outline ? ' outline' : '');
 
     return <button
         title={title}

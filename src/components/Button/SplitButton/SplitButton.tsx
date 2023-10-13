@@ -6,10 +6,9 @@ import React, {
 import Button, {
     ButtonProps,
 } from '../';
-import { useClassNames } from '../../../hooks';
 
-import themeStyles from '../../../theme.module.css';
 import styles from './SplitButton.module.css';
+import { useClassNames } from '../../../hooks';
 
 export enum SplitButtonPosition {
     Left = 'left',
@@ -74,7 +73,7 @@ const SplitButton = (props: SplitButtonProps) => {
             return <Fragment
                 key={idx}
             >
-                {idx !== 0 && <hr className={themeStyles.verticalRule} />}
+                {idx !== 0 && <hr className='verticalRule' />}
 
                 <Button
                     {...{
@@ -117,7 +116,7 @@ const SplitButton = (props: SplitButtonProps) => {
 //             {...primaryButtonProps}
 //         />
 
-//         <hr className={themeStyles.verticalRule} />
+//         <hr className='verticalRule' />
 
 //         <SecondaryButton
 //             {...secondaryButtonProps}

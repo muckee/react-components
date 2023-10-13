@@ -1,0 +1,46 @@
+/* Stylesheet */
+
+.highlight:hover, /* TODO: Move to global styles */
+.highlight:focus {
+    filter: var(--highlight-filter), saturate(0.6) brightness(1.2);
+    -webkit-backdrop-filter: var(--highlight-backdrop-filter, saturate(0.6) brightness(1.2) contrast(0.6));
+    backdrop-filter: var(--highlight-backdrop-filter, saturate(0.6) brightness(1.2) contrast(0.6));
+}
+
+.highlight:active {
+  -webkit-backdrop-filter: var(--active-filter);
+  backdrop-filter: var(--active-filter);
+}
+
+/* Disabled state override */
+/* TODO: Add state-specific styles for disabled state. i.e. dim red for `.danger.disabled ` ... use filters */
+
+.disabled {
+  background-color: var(--disabled-background-color, #EEF);
+  color: var(--disabled-color, #888);
+  border: 2px solid var(--disabled-color, #888);
+  outline: none;
+  text-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Outline */
+
+.outline,
+.outline.disabled {
+  background-color: transparent;
+}
+
+.outline {
+  border: 2px solid var(--secondary-color, #222);
+  color: #000;
+}
+
+/* Rules */
+
+.verticalRule {
+  align-self: stretch;
+  padding: .05em;
+  border: none;
+  background-color: #AAA6;
+}

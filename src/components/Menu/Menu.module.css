@@ -22,4 +22,8 @@
   .menu {
     flex-direction: row;
   }
+
+  .menuItem {
+    width: unset;
+  }
 }

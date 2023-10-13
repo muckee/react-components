@@ -4,13 +4,13 @@ import React, {
 } from 'react';
 import SelectedItem, {
     SelectedItemType,
-} from '../components/Form/Input/Select/SelectedItem';
-import { SelectOption } from '../components/Form/Input/Select/Select';
-import Dropdown from '../components/Dropdown';
+} from '../../components/Form/Input/Select/SelectedItem';
+import { SelectOption } from '../../components/Form/Input/Select/Select';
+import Dropdown from '../../components/Dropdown';
 import Button, {
     ButtonStatus,
-} from '../components/Button';
-import { SplitButtonPosition } from '../components/Button/SplitButton/SplitButton';
+} from '../../components/Button';
+import { SplitButtonPosition } from '../../components/Button/SplitButton/SplitButton';
 
 import styles from './use-select-input.module.css';
 

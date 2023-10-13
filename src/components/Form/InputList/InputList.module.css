@@ -6,3 +6,9 @@
 .fieldWrapper button {
     align-self: center;
 }
+
+.error {
+    border: 1px solid red;
+    background-color: pink;
+    color: red;
+}

@@ -1,5 +1,5 @@
-import { ButtonProps } from '../components';
-import styles from '../theme.module.css';
+import { ButtonProps } from '../../components';
+import styles from './use-class-names.module.css';
 
 // Dynamically concatenate classes from props
 const useClassNames = (
@@ -49,6 +49,11 @@ const useClassNames = (
     const className:keyof ButtonProps = 'disabled';
     if(props[className]) {
         classNames.push(sourceStyles[className as keyof typeof sourceStyles]);
+    }
+
+    // If no status was specified, add `sourceStyles.default` to class list
+    if(!props['status']) {
+        classNames.push(sourceStyles['default' as keyof typeof sourceStyles]);
     }
 
     // If no class names were found, don't add any classes.

@@ -13,11 +13,11 @@ import {
     SplitButtonProps,
 } from '../Button';
 import Menu from './Menu';
+import { SplitButtonPosition } from '../Button/SplitButton/SplitButton';
 
 import { useClassNames } from '../../hooks';
 
 import styles from './Dropdown.module.css';
-import { SplitButtonPosition } from '../Button/SplitButton/SplitButton';
 
 export interface DropdownProps extends SplitButtonProps {
     buttonProps?: ButtonProps | undefined;
@@ -54,12 +54,14 @@ const Dropdown = (props: DropdownProps) => {
                 {
                     children: children,
                     ...buttonProps,
+                    className: `${buttonProps?.className ? ` ${buttonProps.className}` : ''}`,
                 },
                 {
                     children: menuIsVisible ? <RiArrowDropUpLine /> : <RiArrowDropDownLine />,
                     onClick: () => setMenuIsVisible(!menuIsVisible),
                     ...toggleButtonProps,
-                }
+                    className: `${toggleButtonProps?.className ? ` ${toggleButtonProps.className}` : ''}`,
+                },
             ]}
             // primaryButtonProps={{
             //     children: children,

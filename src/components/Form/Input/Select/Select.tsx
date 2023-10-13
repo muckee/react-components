@@ -10,7 +10,7 @@ import {
 } from './SelectedItem';
 import useSelectInput, {
     SelectEvent,
-} from '../../../../hooks/use-select-input';
+} from '../../../../hooks/useSelectInput/use-select-input';
 import { ButtonStatus } from '../../../Button';
 
 export interface SelectOption {
@@ -59,6 +59,12 @@ const Select = (props: SelectProps) => {
         onChange,
     );
 
+    const value = multi
+        ? selected.map(selectedOption => selectedOption.value.toString())
+        : selected.length
+            ? selected[0].value.toString()
+            : '';
+
     return <Fragment>
 
         {itemsList}
@@ -69,7 +75,7 @@ const Select = (props: SelectProps) => {
             label={label}
             title={title}
             name={name}
-            value={multi ? selected.map(selectedOption => selectedOption.value.toString()) : selected.length ? selected[0].value.toString() : []}
+            value={value}
             onChange={formElementChange}
         />
 

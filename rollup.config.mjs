@@ -1,14 +1,17 @@
-import commonjs from '@rollup/plugin-commonjs';
-import eslint from '@rollup/plugin-eslint';
+// import commonjs from '@rollup/plugin-commonjs';
+// import eslint from '@rollup/plugin-eslint';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import autoprefixer from 'autoprefixer';
+import babel from 'rollup-plugin-babel';
 import copy from 'rollup-plugin-copy';
+import { createTransform } from 'rollup-copy-transform-css';
 import dts from 'rollup-plugin-dts';
-import nodeBuiltins from 'rollup-plugin-node-builtins';
+// import nodeBuiltins from 'rollup-plugin-node-builtins';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-import sourcemaps from 'rollup-plugin-sourcemaps';
+// import sourcemaps from 'rollup-plugin-sourcemaps';
 import packageJson from './package.json' assert { type: 'json' };
 
 // TODO: Optimise sourcemap generation
@@ -30,32 +33,40 @@ export default [
             },
         ],
         plugins: [
-            eslint(),
+            // eslint(),
             peerDepsExternal(),
-            postcss({
-                minimize: true,
-                modules: true,
-                extract: true,
-                sourceMap: true,
-            }),
             resolve({
                 jsnext: true,
                 main: true,
                 browser: true,
             }),
-            nodeBuiltins(),
-            commonjs(),
+            babel(),
+            // resolve({
+            //     jsnext: true,
+            //     main: true,
+            //     browser: true,
+            // }),
+            // nodeBuiltins(),
+            // commonjs(),
             typescript({
-                sourceMap: true,
+                // sourceMap: true,
                 tsconfig: './tsconfig.json',
             }),
-            sourcemaps(),
+            postcss({
+                plugins: [autoprefixer()],
+                minimize: true,
+                modules: true,
+                extract: true,
+                sourceMap: true,
+            }),
+            // sourcemaps(),
             terser(),
             copy({
                 targets: [
                     {
                         src: 'src/*.css',
                         dest: 'dist',
+                        transform: createTransform({ inline: true, minify: true }),
                     },
                 ]
             }),

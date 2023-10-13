@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import DefaultInput from './DefaultInput';
 import Select from './Select';
-import { SelectEvent } from '../../../hooks/use-select-input';
+import { SelectEvent } from '../../../hooks/useSelectInput/use-select-input';
 
 export interface InputProps {
     name: string;
@@ -25,8 +25,6 @@ const Input = (props: InputProps) => {
 
     const {
         label,
-        title,
-        name,
         type,
         onChange,
     } = props;
@@ -34,10 +32,11 @@ const Input = (props: InputProps) => {
     switch (type) {
     case 'select':
         return <Select
-            label={label}
-            title={title}
-            name={name}
-            onChange={onChange && onChange as SelectEvent}
+            {...{
+                ...props,
+                label: label ? label : '',
+                onChange: onChange && onChange as SelectEvent,
+            }}
         />;
     default:
         return <DefaultInput {...{

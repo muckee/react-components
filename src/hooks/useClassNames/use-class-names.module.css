@@ -1,0 +1,56 @@
+.default {
+    border: 2px solid var(--accent-one, #F0F2F5);
+    background-color: var(--accent-two, #A799B7);
+    color: var(--accent-one, #F0F2F5);
+}
+
+.primary,
+.secondary,
+.success,
+.warning,
+.danger,
+.disabled {
+    -webkit-backdrop-filter: var(--background-filter, saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3));
+    backdrop-filter: var(--background-filter, saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3));
+}
+
+.primary {
+    background-color: var(--primary-button-background-color, teal);
+    color: var(--primary-button-color, #EEC);
+    border: 2px solid var(--primary-button-color, #EEC);
+}
+
+.primary:focus {
+    outline: none;
+}
+
+.secondary {
+    border: 1px solid var(--secondary-button-color, #222);
+    background-color: var(--secondary-button-background-color, #EEC);
+    color: var(--secondary-button-color, #222);
+}
+
+.success {
+    border: 2px solid var(--success-color, green);
+    background-color: var(--success-color, green);
+    color: var(--success-color, green);
+}
+
+
+.warning {
+    border: 2px solid #222;
+    background-color: var(--warning-color, yellow);
+    color: #222;
+}
+
+.danger {
+    border: 1px solid var(--danger-color, darkred);
+    background-color: var(--danger-color, darkred);
+    color: #000;
+}
+
+.disabled {
+    border: 1px solid var(--disabled-color, #EEF);
+    background-color: var(--disabled-background-color, #888);
+    color: var(--disabled-color, #EEF);
+}

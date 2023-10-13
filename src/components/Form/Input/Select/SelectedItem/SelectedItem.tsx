@@ -6,7 +6,6 @@ import {
 } from 'react-icons/ri';
 // import { SelectedOptionsList } from '../Select';
 
-import themeStyles from '../../../../../theme.module.css';
 import styles from './SelectedItem.module.css';
 
 export type SelectedItemType = string | number | readonly string[];
@@ -41,7 +40,7 @@ const SelectedItem = (props: SelectedItemProps) => {
         <span
             className={styles.selectedOption}
         >{label}</span>
-        <hr className={themeStyles.verticalRule} />
+        <hr className='verticalRule' />
         <span
             className={styles.unselectOptionButton}
             onClick={() => deselectOption(item)}

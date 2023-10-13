@@ -13,6 +13,9 @@
 
 .selectedOption {
     padding: 0 0.3em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .unselectOptionButton {
@@ -22,6 +25,7 @@
     justify-content: center;
     align-content: center;
     flex-wrap: nowrap;
+    flex-basis: fit-content;
     gap: 0.1em;
     width: 100%;
     padding: 0 0.3em;

@@ -46,6 +46,25 @@ const useSelectInput = (
     };
 
     useEffect(() => {
+
+        const updatedSelectedItems = selectedItems.filter(item => {
+
+            const foundItem = options.find(option => option.value === item);
+
+            if(foundItem === undefined) {
+                return false;
+            }
+
+            return true;
+        });
+
+        if(selectedItems.length !== updatedSelectedItems.length) {
+            setSelectedItems(updatedSelectedItems);
+        }
+
+    }, [options]);
+
+    useEffect(() => {
         if(handleChange) {
             handleChange(selectedItems);
         }
@@ -55,8 +74,6 @@ const useSelectInput = (
         ? placeholder
         : multi
             ? selectedItems.map((selectedItem, idx) => {
-
-                console.log(selectedItem);
 
                 return <SelectedItem
                     key={idx}
@@ -95,7 +112,7 @@ const useSelectInput = (
     />;
 
     return {
-        selected: selectedOptions,
+        selected: selectedItems,
         itemsList: itemsList,
     };
 };

@@ -15,9 +15,9 @@
 }
 
 .primary {
+    border: 2px solid var(--primary-button-color, #EEC);
     background-color: var(--primary-button-background-color, teal);
     color: var(--primary-button-color, #EEC);
-    border: 2px solid var(--primary-button-color, #EEC);
 }
 
 .primary:focus {
@@ -32,7 +32,7 @@
 
 .success {
     border: 2px solid var(--success-color, green);
-    background-color: var(--success-color, green);
+    background-color: lightgreen;
     color: var(--success-color, green);
 }
 

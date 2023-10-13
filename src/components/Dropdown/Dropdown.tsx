@@ -75,7 +75,7 @@ const Dropdown = (props: DropdownProps) => {
         />
 
         {menuIsVisible && <Menu
-            className={menuClassName}
+            className={`${styles.menu}${menuClassName ? ` ${menuClassName}` : ''}`}
             items={menuItems}
         />}
 

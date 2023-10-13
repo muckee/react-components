@@ -1,6 +1,10 @@
 {
   "name": "@muckington/react-components",
+<<<<<<< HEAD
   "version": "0.0.119",
+=======
+  "version": "0.0.117",
+>>>>>>> parent of dfcba87 (Fix button spacing)
   "description": "A library of re-usable React components, built for ThugNerdz templates.",
   "author": "Muckee <muckee@thugnerdz.com>",
   "license": "EPL-2.0",

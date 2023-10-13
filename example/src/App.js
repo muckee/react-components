@@ -4,18 +4,18 @@ import React, {
 import {
     Article,
     Button,
-    Dropdown,
     Footer,
     Header,
+    InputList,
     ListItem,
     Main,
-    Select,
     OrderedList,
+    Select,
     Section,
     Spinner,
     SplitButton,
-    UnorderedList,
     Tooltip,
+    UnorderedList,
 } from '@muckington/react-components';
 
 const App = () => {
@@ -46,6 +46,42 @@ const App = () => {
                     <h3>Article component</h3>
 
                     <UnorderedList>
+
+
+                        {/* <SplitButton
+                            splitButtonProps={{
+                                title: 'Split button options',
+                                type: 'button',
+                                // status: 'danger',
+                            }}
+                            menuItems={[
+                                {
+                                    title: 'Option #1: Primary example',
+                                    type: 'button',
+                                    children: 'Option #1: Primary example',
+                                    status: 'primary',
+                                },
+                                {
+                                    title: 'Option #2: Disabled example',
+                                    type: 'button',
+                                    children: 'Option #2: Disabled example',
+                                    disabled: true,
+                                },
+                                {
+                                    title: 'Option #3: Warning example',
+                                    type: 'button',
+                                    children: 'Option #3: Warning example',
+                                    status: 'warning',
+                                },
+                                {
+                                    title: 'Option #4: Default example',
+                                    type: 'button',
+                                    children: 'Option #4: Default example',
+                                }
+                            ]}
+                        >
+                            Split Button
+                        </SplitButton> */}
 
                         <Tooltip
                             text={'Example unordered list tooltip'}
@@ -86,55 +122,65 @@ const App = () => {
                                 Disabled button
                             </Button>
 
-                            {/* <SplitButton
-                                position='left'
-                                status='danger'
-                                primaryButtonProps={{
-                                    children: 'Primary button',
-                                    type: 'button',
-                                    status: 'danger',
-                                }}
-                                secondaryButtonProps={{
-                                    children: '>',
-                                    type: 'button',
-                                    status: 'warning',
-                                }}
-                            /> */}
-
-                            {/* <SplitButton
-                                splitButtonProps={{
-                                    title: 'Split button options',
-                                    type: 'button',
-                                    // status: 'danger',
-                                }}
-                                menuItems={[
+                            <SplitButton
+                                position='right'
+                                status='warning'
+                                items={[
                                     {
-                                        title: 'Option #1: Primary example',
+                                        children: 'Primary button',
                                         type: 'button',
-                                        children: 'Option #1: Primary example',
-                                        status: 'primary',
+                                        status: 'danger',
                                     },
                                     {
-                                        title: 'Option #2: Disabled example',
+                                        children: '>',
                                         type: 'button',
-                                        children: 'Option #2: Disabled example',
-                                        disabled: true,
-                                    },
-                                    {
-                                        title: 'Option #3: Warning example',
-                                        type: 'button',
-                                        children: 'Option #3: Warning example',
                                         status: 'warning',
                                     },
-                                    {
-                                        title: 'Option #4: Default example',
-                                        type: 'button',
-                                        children: 'Option #4: Default example',
-                                    }
                                 ]}
-                            >
-                                Split Button
-                            </SplitButton> */}
+                            />
+
+                            <InputList inputs={[
+                                {
+                                    label: 'Conflicting layers: ',
+                                    type: 'select',
+                                    name: 'conflicts',
+                                    placeholder: 'No possible conflicts.',
+                                    options: [],
+                                    multi: true,
+                                    disabled: true,
+                                },
+                            ]} />;
+
+
+
+                            <InputList inputs={[
+                                {
+                                    label: 'Quality :',
+                                    type: 'select',
+                                    name: 'trait-quality',
+                                    multi: false,
+                                    isSearchable: false,
+                                    options: [],
+                                    value: [].find(option => option.value === 1),
+                                    onChange: (e) => {
+                                        console.log(e.value);
+                                    },
+                                    // onChange: (e) => setRarity({
+                                    //   quality: qualitySettings.types.find(type => type.id === e.value),
+                                    // }),
+                                    errorMsg: '',
+                                    disabled: false,
+                                },
+                                {
+                                    label: 'Rarity :',
+                                    type: 'number',
+                                    name: 'trait-rarity',
+                                    value: '',
+                                    onChange: (e) => console.log(e.target.value),
+                                    errorMsg: '',
+                                    disabled: false,
+                                },
+                            ]} />
 
                             <Select
                                 status='primary'

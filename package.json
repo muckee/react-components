@@ -1,6 +1,6 @@
 {
   "name": "@muckington/react-components",
-  "version": "0.0.108",
+  "version": "0.0.109",
   "description": "A library of re-usable React components, built for ThugNerdz templates.",
   "author": "Muckee <muckee@thugnerdz.com>",
   "license": "EPL-2.0",
@@ -65,15 +65,18 @@
     "typescript-plugin-css-modules": "^5.0.1"
   },
   "dependencies": {
-    "react-icons": "^4.11.0",
-    "react-select": "^5.7.4"
+    "react-icons": "^4.11.0"
   },
   "scripts": {
-    "lint": "eslint ./src/ --ext .ts,.tsx",
+    "lint": "eslint --fix ./src/ --ext .ts,.tsx -c ./.eslintrc.yml",
     "minify": "css-minify -d ./src -o ./src",
     "rollup": "rollup -c",
     "clean": "rimraf --glob ./src/*.min.css",
-    "build": "yarn lint && yarn minify && yarn rollup && yarn clean",
+    "flush": "rimraf --glob ./build",
+    "build": "yarn lint && yarn minify && yarn flush && yarn rollup && yarn clean",
     "test": "jest --passWithNoTests"
-  }
+  },
+  "workspaces": [
+    "./example"
+  ]
 }

@@ -5,7 +5,7 @@ import React, {
 import styles from './Label.module.css';
 
 export interface LabelProps {
-  label?: string | undefined;
+  label: ReactNode | string;
   className?: string | undefined;
   children?: ReactNode | undefined;
 }

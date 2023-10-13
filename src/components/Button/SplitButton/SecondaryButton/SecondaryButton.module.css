@@ -1,6 +1,5 @@
 .button {
-    flex: 1;
-    gap: 0.6em;
+    align-self: stretch;
     border: none;
     border-radius: 0;
     background: inherit;

@@ -2,15 +2,14 @@ import React, {
     Fragment,
     ReactNode,
 } from 'react';
-
 import Backdrop from '../Backdrop/Backdrop';
-import Button from '../Button/Button';
+import Button from '../Button';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Portal from '../Portal/Portal';
+import Section from '../Section/Section';
 
 import styles from './Modal.module.css';
-import Section from '../Section/Section';
-import Portal from '../Portal/Portal';
 
 export interface ModalProps {
   handleClose: () => void;
@@ -24,13 +23,16 @@ export interface ModalProps {
 
 const Modal = (props: ModalProps) => {
 
+    const backdropPortalId = 'thugnerdz-modal-backdrop-root';
+    const modalPortalId = 'thugnerdz-modal-root';
+
     return <Fragment>
 
-        {<Portal id={'thugnerdz-modal-backdrop-root'}>
+        {<Portal id={backdropPortalId}>
             <Backdrop onClick={props.handleClose}className={props.show ? ` ${styles.visible}` : ''} />
         </Portal>}
 
-        {<Portal id={'thugnerdz-modal-overlay-root'}>
+        {<Portal id={modalPortalId}>
             <div className={`${styles.modal}${props.show ? ` ${styles.visible}` : ''}${props.className ? ` ${props.className}` : ''}`}>
 
                 <Section className={`${styles.modalMain}${props.mainClassName ? ` ${props.mainClassName}` : ''}`}>
@@ -55,6 +57,7 @@ const Modal = (props: ModalProps) => {
                 </Section>
             </div>
         </Portal>}
+
     </Fragment>;
 };
 

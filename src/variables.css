@@ -34,10 +34,12 @@
     --warning-color: yellow;
     --danger-color: darkred;
     --disabled-color: #888;
-    --disabled-background-color: #EEE;
+    --disabled-background-color: #EEF;
     /* Filters */
     --active-filter: saturate(0.9) grayscale(0.3) brightness(1.2) contrast(0.9);
     --background-filter: saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3);
+    --highlight-filter: saturate(0.6) brightness(1.2);
+    --highlight-backdrop-filter: saturate(0.6) brightness(1.2) contrast(0.6);
     /* Headings */
     --primary-heading-color: var(--primary-color);
     --primary-heading-background-color: var(--tertiary-color);

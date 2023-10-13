@@ -4,7 +4,9 @@ import React, {
     ReactNode,
 } from 'react';
 
+import themeStyles from '../../theme.module.css';
 import styles from './Button.module.css';
+import { useClassNames } from '../../hooks';
 
 export interface DraggableButtonProps {
   'aria-describedby'?: string;
@@ -16,7 +18,7 @@ export interface DraggableButtonProps {
   onDragStart?: MouseEvent;
 }
 
-enum ButtonStatus {
+export enum ButtonStatus {
   Primary = 'primary',
   Secondary = 'secondary',
   Tertiary = 'tertiary',
@@ -36,67 +38,68 @@ export interface ButtonProps {
   onMouseUp?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   onMouseOut?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   disabled?: boolean | undefined;
-  dragHandleProps?: DraggableButtonProps | undefined;
+  highlight?: boolean | undefined;
   children?: ReactNode | undefined;
+  dragHandleProps?: DraggableButtonProps | undefined;
 }
 
-// Dynamically concatenate classes from props
-export const getClassNamesFromProps = (
-    props: ButtonProps,
-    sourceStyles: object = styles,
-) => {
+// // Dynamically concatenate classes from props
+// export const getClassNamesFromProps = (
+//     props: ButtonProps,
+//     sourceStyles: object = styles,
+// ) => {
 
-    const classes = [
-        'className',
-        'status',
-    ];
+//     const classes = [
+//         'className',
+//         'status',
+//     ];
 
-    const classNames: string[] = classes.filter((name: string) => {
+//     const classNames: string[] = classes.filter((name: string) => {
 
-        // Remove any class names which are not found in props
-        if(props[name as keyof ButtonProps]) {
-            return true;
-        }
+//         // Remove any class names which are not found in props
+//         if(props[name as keyof ButtonProps]) {
+//             return true;
+//         }
 
-        return false;
+//         return false;
 
-    }).map((name: string) => {
+//     }).map((name: string) => {
 
-        // Return the value which corresponds with the class label.
+//         // Return the value which corresponds with the class label.
 
-        const className = name as keyof ButtonProps;
+//         const className = name as keyof ButtonProps;
 
-        // If we return the value of the targeted prop directly, the class name will be hardcoded. i.e. `.{className}`.
-        // We are using CSS modules, so we want to assign the value of `styles.{className}` instead.
-        // We can achieve this by using bracket notation to access the desired property of `styles`.
-        const propValue = props[className];
+//         // If we return the value of the targeted prop directly, the class name will be hardcoded. i.e. `.{className}`.
+//         // We are using CSS modules, so we want to assign the value of `styles.{className}` instead.
+//         // We can achieve this by using bracket notation to access the desired property of `styles`.
+//         const propValue = props[className];
 
-        if (className === 'status') {
+//         if (className === 'status') {
 
-            return `${sourceStyles[propValue as keyof typeof sourceStyles]}`;
-        }
+//             return `${sourceStyles[propValue as keyof typeof sourceStyles]}`;
+//         }
 
-        if (className === 'className') {
-            return `${propValue}`;
-        }
+//         if (className === 'className') {
+//             return `${propValue}`;
+//         }
 
-        return '';
-    });
+//         return '';
+//     });
 
-    // Add `sourceStyles.disabled` to class list
-    const className:keyof ButtonProps = 'disabled';
-    if(props[className]) {
-        classNames.push(sourceStyles[className as keyof typeof sourceStyles]);
-    }
+//     // Add `sourceStyles.disabled` to class list
+//     const className:keyof ButtonProps = 'disabled';
+//     if(props[className]) {
+//         classNames.push(sourceStyles[className as keyof typeof sourceStyles]);
+//     }
 
-    // If no class names were found, don't add any classes.
-    if(!classNames.length) {
-        return '';
-    }
+//     // If no class names were found, don't add any classes.
+//     if(!classNames.length) {
+//         return '';
+//     }
 
-    // Concatenate class names, separated by - and prepended with - a single whitespace character
-    return ` ${classNames.join(' ')}`;
-};
+//     // Concatenate class names, separated by - and prepended with - a single whitespace character
+//     return ` ${classNames.join(' ')}`;
+// };
 
 const Button = (props: ButtonProps) => {
 
@@ -109,13 +112,17 @@ const Button = (props: ButtonProps) => {
         onMouseUp,
         onMouseOut,
         disabled,
+        highlight = true,
+        children,
         dragHandleProps,
     } = props;
+
+    const classNames = useClassNames(props);
 
     // Start with the default `styles.button` class.
     // If defined, add the value of `props.className` and derive the appropriate className from `props.status`.
     // If `props.outline` is set to true, add the outline class.
-    const className = styles.button + getClassNamesFromProps(props, styles) + (outline ? ` ${styles.outline}` : '');
+    const className = styles.button + `${classNames ? ` ${classNames}` : ''}` + (highlight ? ` ${themeStyles.highlight}` : '') + (outline ? ` ${styles.outline}` : '');
 
     return <button
         title={title}
@@ -126,10 +133,11 @@ const Button = (props: ButtonProps) => {
         onMouseUp={onMouseUp}
         onMouseOut={onMouseOut}
         disabled={disabled}
+        // TODO: Create drag'n'drop component which can be used as a wrapper and remove any references `dragHandleProps` from this component.
         {... dragHandleProps ? dragHandleProps as DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> : []}
     >
 
-        {props.children}
+        {children}
 
     </button>;
 };

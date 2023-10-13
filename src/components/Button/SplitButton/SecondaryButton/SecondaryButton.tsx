@@ -3,9 +3,9 @@ import Button, {
     ButtonProps,
 } from '../../Button';
 
-import styles from './PrimaryButton.module.css';
+import styles from './SecondaryButton.module.css';
 
-const PrimaryButton = (props: ButtonProps) => {
+const SecondaryButton = (props: ButtonProps) => {
 
     const {
         children,
@@ -37,4 +37,4 @@ const PrimaryButton = (props: ButtonProps) => {
     </Button>;
 };
 
-export default PrimaryButton;
+export default SecondaryButton;

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import Button from '../Button/Button';
+import Button from '../Button';
 import ListItem from '../List/ListItem';
 import Menu from '../Menu/Menu';
 

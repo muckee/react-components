@@ -6,12 +6,3 @@
 .fieldWrapper button {
     align-self: center;
 }
-
-.errorMsg {
-    color: var(--danger-color, red);
-}
-
-.error {
-    border-color: var(--danger-color, red);
-    background-color: var(--danger-background-color, pink);
-}

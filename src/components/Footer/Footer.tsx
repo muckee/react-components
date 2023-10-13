@@ -12,7 +12,6 @@ export interface FooterProps {
 const Footer = (props: FooterProps) => {
 
     return <footer
-        data-testid={'footer'}
         className={`${styles.footer}${props.className ? ` ${props.className}` : ''}`}
     >
 

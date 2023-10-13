@@ -1,66 +1,79 @@
-import React from 'react';
-import SelectInput, {
-    ClassNamesConfig,
-    GroupBase,
-} from 'react-select';
+import React, {
+    ChangeEvent,
+    ChangeEventHandler,
+    Fragment,
+    ReactNode,
+} from 'react';
+import FormElement from './FormElement';
 import {
-    ActionMeta,
-    MultiValue,
-    OptionsOrGroups,
-    SingleValue,
-} from 'react-select/dist/declarations/src/types';
-import { InputProps } from '../Input';
+    SelectedItemType,
+} from './SelectedItem';
+import useSelectInput, {
+    SelectEvent,
+} from '../../../../hooks/use-select-input';
+import { ButtonStatus } from '../../../Button';
 
-export type SelectInputOnChange = ((
-    newValue: MultiValue<string | { label: string; value: string; }> | SingleValue<string | { label: string; value: string; }>,
-    actionMeta: ActionMeta<string | { label: string; value: string; }>,
-) => void);
+export interface SelectOption {
+    label: string;
+    value: SelectedItemType;
+}
 
-export interface SelectProps extends Omit<InputProps, 'onChange'> {
-    options?: OptionsOrGroups<string | { label: string; value: string; }, GroupBase<string | { label: string; value: string; }>> | undefined;
-    defaultValue?: string | undefined;
-    isClearable?: boolean | undefined;
-    isMulti?: boolean | undefined;
-    isSearchable?: boolean | undefined;
-    classNames?: ClassNamesConfig<string | { label: string; value: string; }, boolean, GroupBase<string | { label: string; value: string; }>> | undefined;
-    onChange?: SelectInputOnChange | undefined;
+export type SelectedOptionsList = SelectedItemType[];
+
+export interface SelectProps {
+    label: ReactNode | string;
+    title: string;
+    name: string;
+    placeholder?: string | undefined;
+    multi?: boolean | undefined;
+    options?: SelectOption[] | undefined;
+    status?: ButtonStatus | undefined;
+    onChange?: SelectEvent | undefined;
 }
 
 const Select = (props: SelectProps) => {
 
     const {
-        placeholder,
-        value,
-        options,
-        defaultValue,
-        disabled,
-        isClearable,
-        isMulti,
-        isSearchable,
-        classNames,
+        label,
+        name,
+        multi,
         onChange,
+        options = [],
+        placeholder,
+        status,
+        title,
     } = props;
 
-    const selectProps = {
-        name: 'quality',
-        options: options,
-        defaultValue: defaultValue ? defaultValue : {
-            label: '',
-            value: '',
-        },
-        placeholder: placeholder ? placeholder : undefined,
-        value: value === undefined ? (isMulti ? [] : '') : value,
-        onChange: onChange,
-        isDisabled: disabled ? true : false,
-        isClearable: isClearable ? true : false,
-        isMulti: isMulti ? true : false,
-        isSearchable: isSearchable ? true : false,
-        classNames: classNames ? classNames : undefined,
+    const formElementChange: ChangeEventHandler<HTMLSelectElement> = (e: ChangeEvent<HTMLSelectElement>) => {
+        console.log(e);
     };
 
-    return <SelectInput
-        {...selectProps}
-    />;
+    const {
+        itemsList,
+        selected,
+    } = useSelectInput(
+        options,
+        placeholder,
+        multi,
+        status,
+        onChange,
+    );
+
+    return <Fragment>
+
+        {itemsList}
+
+        {/* TODO: After testing, move FormElement inside useSelectInput hook */}
+
+        <FormElement
+            label={label}
+            title={title}
+            name={name}
+            value={multi ? selected.map(selectedOption => selectedOption.value.toString()) : selected[0].value.toString()}
+            onChange={formElementChange}
+        />
+
+    </Fragment>;
 };
 
 export default Select;

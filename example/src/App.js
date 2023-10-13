@@ -4,10 +4,12 @@ import React, {
 import {
     Article,
     Button,
+    Dropdown,
     Footer,
     Header,
     ListItem,
     Main,
+    Select,
     OrderedList,
     Section,
     Spinner,
@@ -57,40 +59,107 @@ const App = () => {
 
                             <p>Lorem ipsum...</p>
 
+                            {/* <Dropdown
+                                status='primary'
+                                primaryButtonProps={{
+                                    children: 'Primary button',
+                                    type: 'button',
+                                    status: 'danger',
+                                }}
+                                secondaryButtonProps={{
+                                    type: 'button',
+                                    status: 'warning',
+                                }}
+                                menuItems={[
+                                    'this',
+                                    'is',
+                                    'a',
+                                    'list',
+                                    'of',
+                                    'things',
+                                ]}
+                            /> */}
+
                             <Button
                                 disabled={true}
                             >
                                 Disabled button
                             </Button>
 
-                            <SplitButton
-                                splitButtonProps={{
-                                    title: 'Split button options',
+                            {/* <SplitButton
+                                position='left'
+                                status='danger'
+                                primaryButtonProps={{
+                                    children: 'Primary button',
                                     type: 'button',
                                     status: 'danger',
                                 }}
+                                secondaryButtonProps={{
+                                    children: '>',
+                                    type: 'button',
+                                    status: 'warning',
+                                }}
+                            /> */}
+
+                            {/* <SplitButton
+                                splitButtonProps={{
+                                    title: 'Split button options',
+                                    type: 'button',
+                                    // status: 'danger',
+                                }}
                                 menuItems={[
                                     {
-                                        title: 'Option #1',
+                                        title: 'Option #1: Primary example',
                                         type: 'button',
-                                        children: 'Option #1',
+                                        children: 'Option #1: Primary example',
                                         status: 'primary',
                                     },
                                     {
-                                        title: 'Option #2',
+                                        title: 'Option #2: Disabled example',
                                         type: 'button',
-                                        children: 'Option #2',
+                                        children: 'Option #2: Disabled example',
                                         disabled: true,
                                     },
                                     {
-                                        title: 'Option #3',
+                                        title: 'Option #3: Warning example',
                                         type: 'button',
-                                        children: 'Option #3',
+                                        children: 'Option #3: Warning example',
+                                        status: 'warning',
                                     },
+                                    {
+                                        title: 'Option #4: Default example',
+                                        type: 'button',
+                                        children: 'Option #4: Default example',
+                                    }
                                 ]}
                             >
                                 Split Button
-                            </SplitButton>
+                            </SplitButton> */}
+
+                            <Select
+                                status='primary'
+                                handleSelectChange={(selectedItems) => {
+                                    console.log(selectedItems);
+                                }}
+                                label={'test select'}
+                                multi={true}
+                                name={'test-select'}
+                                options={[
+                                    {
+                                        label: 'Fish',
+                                        value: 'fish',
+                                    },
+                                    {
+                                        label: 'Rodent',
+                                        value: 2,
+                                    },
+                                    {
+                                        label: 'Perceptual',
+                                        value: '17',
+                                    },
+                                ]}
+                                title={'Test select'}
+                            />
 
                         </ListItem>
 

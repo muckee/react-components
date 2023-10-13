@@ -1,0 +1,23 @@
+.splitButtonReset,
+.splitButtonReset:hover {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.splitButtonReset {
+    cursor: default;
+}
+
+.toggleButtonReset {
+    border-bottom-right-radius: 0.3em;
+}
+
+.formElement {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+}

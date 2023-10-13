@@ -1,4 +1,5 @@
 // Normalize CSS
-import './initialise.css';
+import './initialize.css';
 
 export * from './components';
+export * from './hooks';

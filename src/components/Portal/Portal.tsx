@@ -17,10 +17,10 @@ export interface PortalProps {
 const Portal = (props: PortalProps) => {
 
     const {
-        id,
-        className,
-        parentId,
         children,
+        className,
+        id,
+        parentId,
     } = props;
 
     const rootElement = useRef((id ? document.getElementById(id) : null) || document.createElement('div'));

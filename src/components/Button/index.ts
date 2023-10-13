@@ -1,2 +1,10 @@
-export { default as Button } from './Button';
-export { default as SplitButton } from './SplitButton';
+export {
+    default,
+    ButtonProps,
+    DraggableButtonProps,
+    ButtonStatus,
+} from './Button';
+export {
+    default as SplitButton,
+    SplitButtonProps,
+} from './SplitButton';

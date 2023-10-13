@@ -5,14 +5,15 @@ import React, {
 import {
     RiDeleteBinLine,
 } from 'react-icons/ri';
-import Button from '../../Button/Button';
-import Fieldset from '../Fieldset/Fieldset';
+import Button from '../../Button';
+import Fieldset from '../Fieldset';
+import Label from '../Label';
 import Input, {
     InputProps,
-} from '../Input/Input';
+} from '../Input';
 
+import themeStyles from '../../../theme.module.css';
 import styles from './InputList.module.css';
-import Label from '../Label';
 
 export interface InputListItem extends InputProps {
     before?: ReactNode | undefined;
@@ -37,7 +38,7 @@ export const createLabel = (input: InputListItem) => <Fragment>
 
     {input.before && input.before}
 
-    {(input.type === 'file' && input.errorMsg) && <span className={`${input.errorMsg ? styles.errorMsg : ''}`}>{input.errorMsg}</span>}
+    {(input.type === 'file' && input.errorMsg) && <span className={`${input.errorMsg ? themeStyles.danger : ''}`}>{input.errorMsg}</span>}
 
     {(!input.hidden) && <Label
         label={input.label}
@@ -46,7 +47,7 @@ export const createLabel = (input: InputListItem) => <Fragment>
 
         {<Input {...input} />}
 
-        {(input.type !== 'file' && input.errorMsg) && <span className={`${input.errorMsg ? styles.errorMsg : ''}`}>{input.errorMsg}</span>}
+        {(input.type !== 'file' && input.errorMsg) && <span className={`${input.errorMsg ? themeStyles.danger : ''}`}>{input.errorMsg}</span>}
     </Label>}
 
     {input.after && input.after}
@@ -90,7 +91,7 @@ export const createFieldset = (input: InputListItem) => <Fieldset legend={input.
 
     })}
 
-    {input.errorMsg && <span className={`${input.errorMsg ? styles.errorMsg : ''}`}>{input.errorMsg}</span>}
+    {input.errorMsg && <span className={`${input.errorMsg ? themeStyles.danger : ''}`}>{input.errorMsg}</span>}
 
 </Fieldset>;
 

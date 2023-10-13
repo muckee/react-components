@@ -76,6 +76,7 @@ const Select = (props: SelectProps) => {
             title={title}
             name={name}
             value={value}
+            multi={multi}
             onChange={formElementChange}
         />
 

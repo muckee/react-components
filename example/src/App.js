@@ -188,7 +188,7 @@ const App = () => {
                                     console.log(selectedItems);
                                 }}
                                 label={'test select'}
-                                multi={false}
+                                multi={true}
                                 name={'test-select'}
                                 options={[
                                     {

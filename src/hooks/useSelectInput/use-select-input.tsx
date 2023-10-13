@@ -26,7 +26,7 @@ const useSelectInput = (
 
     const [selectedItems, setSelectedItems] = useState<SelectedItemType[]>([]);
 
-    const selectedOptions = options.filter(option => !selectedItems.find(selectedItem => selectedItem === option.value));
+    const selectedOptions = options.filter(option => selectedItems.find(selectedItem => selectedItem === option.value) === undefined);
 
     const selectOption = (value: SelectedItemType) => {
 
@@ -55,6 +55,8 @@ const useSelectInput = (
         ? placeholder
         : multi
             ? selectedItems.map((selectedItem, idx) => {
+
+                console.log(selectedItem);
 
                 return <SelectedItem
                     key={idx}
@@ -92,10 +94,6 @@ const useSelectInput = (
         })}
     />;
 
-    // return [
-    //     itemsList,
-    //     selectedOptions
-    // ];
     return {
         selected: selectedOptions,
         itemsList: itemsList,

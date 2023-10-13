@@ -59,10 +59,10 @@ const Select = (props: SelectProps) => {
         onChange,
     );
 
-    const value = multi === true
-        ? selected.map(selectedOption => selectedOption.value.toString())
+    const formElementValue = multi === true
+        ? selected.map(s => s.toString())
         : (selected.length > 0)
-            ? selected[0].value.toString()
+            ? selected[0]
             : '';
 
     return <Fragment>
@@ -75,7 +75,7 @@ const Select = (props: SelectProps) => {
             label={label}
             title={title}
             name={name}
-            value={value}
+            value={formElementValue}
             multi={multi}
             onChange={formElementChange}
         />

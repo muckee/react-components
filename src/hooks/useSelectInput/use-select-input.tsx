@@ -26,8 +26,6 @@ const useSelectInput = (
 
     const [selectedItems, setSelectedItems] = useState<SelectedItemType[]>([]);
 
-    const selectedOptions = options.filter(option => selectedItems.find(selectedItem => selectedItem === option.value) === undefined);
-
     const selectOption = (value: SelectedItemType) => {
 
         setSelectedItems((existingSelection) => {
@@ -44,6 +42,40 @@ const useSelectInput = (
         });
 
     };
+
+    useEffect(() => {
+
+        // Remove any selected items which no longer exist as options
+        const updatedSelectedItems = selectedItems.filter(val => options.find(opt => opt.value === val) !== undefined);
+
+        // Only update the state if it has changed
+
+        if(updatedSelectedItems === selectedItems) {
+            return;
+        }
+
+        if(updatedSelectedItems.length !== selectedItems.length) {
+
+            setSelectedItems(updatedSelectedItems);
+            return;
+        }
+
+        // If the arrays are the same length, check if any values changed
+
+        for(let i = 0; i < selectedItems.length; i++) {
+
+            const alreadySelected = updatedSelectedItems.find(item => item === selectedItems[i]);
+
+            if(alreadySelected === undefined) {
+
+                setSelectedItems(updatedSelectedItems);
+
+                // Exit the loop
+                break;
+            }
+        }
+
+    }, [selectedItems]);
 
     useEffect(() => {
         if(handleChange) {
@@ -82,20 +114,22 @@ const useSelectInput = (
         toggleButtonProps={{
             className: styles.dropdownReset,
         }}
-        menuItems={selectedOptions.map((option, idx) => {
+        menuItems={selectedItems.map((optionId, idx) => {
+
+            const option = options.find(o => o.value === optionId);
 
             return <Button
                 key={idx}
-                title={option.label}
+                title={option?.label}
                 type={'button'}
                 className={styles.selectedOption}
-                onClick={() => selectOption(option.value)}
-            >{option.label}</Button>;
+                onClick={() => selectOption(option?.value ?? '')}
+            >{option?.label}</Button>;
         })}
     />;
 
     return {
-        selected: selectedOptions,
+        selected: selectedItems,
         itemsList: itemsList,
     };
 };

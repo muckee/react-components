@@ -36,6 +36,8 @@ const SelectInput = (props: SelectInputProps) => {
         onChange,
     } = props;
 
+    console.log(value);
+
     // TODO: Instead of initialising via props, derive values from select input. Not sure if this is reasonable/possible.
 
     return <select

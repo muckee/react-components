@@ -6,6 +6,8 @@ import DefaultInput from './DefaultInput';
 import Select from './Select';
 import { SelectEvent } from '../../../hooks/useSelectInput/use-select-input';
 
+import styles from './Input.module.css';
+
 export interface InputProps {
     name: string;
     title: string;
@@ -26,6 +28,7 @@ const Input = (props: InputProps) => {
     const {
         label,
         type,
+        className,
         onChange,
     } = props;
 
@@ -41,6 +44,7 @@ const Input = (props: InputProps) => {
     default:
         return <DefaultInput {...{
             ...props,
+            className: `${styles.input}${className ? ` ${className}` : ''}`,
             onChange: onChange && onChange as ChangeEventHandler<HTMLInputElement>,
         }} />;
     }

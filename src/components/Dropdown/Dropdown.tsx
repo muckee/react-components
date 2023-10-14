@@ -14,6 +14,7 @@ import {
 } from '../Button';
 import Menu from './Menu';
 import { SplitButtonPosition } from '../Button/SplitButton/SplitButton';
+import { SelectedOption } from '../Form/Input/Select/SelectedOptionButton';
 
 import { useClassNames } from '../../hooks';
 
@@ -22,7 +23,7 @@ import styles from './Dropdown.module.css';
 export interface DropdownProps extends SplitButtonProps {
     buttonProps?: ButtonProps | undefined;
     children?: ReactNode | string | undefined;
-    menuItems?: ReactNode[] | string[] | (ReactNode | string)[] | undefined;
+    menuItems?: (SelectedOption | ReactNode | string)[] | undefined;
     menuClassName?: string | undefined;
     status?: ButtonStatus | undefined;
     toggleButtonProps?: ButtonProps | undefined;

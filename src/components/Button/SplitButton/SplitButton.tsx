@@ -38,12 +38,6 @@ const SplitButton = (props: SplitButtonProps) => {
 
             let buttonClassName = `${styles.splitButtonItem}`;
 
-            // console.log(position === SplitButtonPosition.Middle);
-
-            // console.log(((idx === items.length -1) && (position === SplitButtonPosition.Left)));
-
-            // console.log(((idx == 0) && (position === SplitButtonPosition.Right)));
-
             if(
                 position === SplitButtonPosition.Middle
                 || (idx === 0 && position === SplitButtonPosition.Right)
@@ -51,22 +45,6 @@ const SplitButton = (props: SplitButtonProps) => {
             ) {
                 buttonClassName += ` ${styles.flex}`;
             }
-
-            // switch (true) {
-            // case (position === SplitButtonPosition.Middle):
-            //     console.log('hit middle');
-            //     buttonClassName += ` ${styles.flex}`;
-            //     break;
-            // case ((idx === items.length -1) && (position === SplitButtonPosition.Left)):
-            //     console.log('hit left');
-            //     buttonClassName += ` ${styles.flex}`;
-            //     break;
-            // case ((idx === 0) && (position === SplitButtonPosition.Right)):
-            // default:
-            //     console.log('hit right');
-            //     buttonClassName += ` ${styles.flex}`;
-            //     console.log(buttonClassName);
-            // }
 
             buttonClassName += item.className ? ` ${item.className}` : '';
 

@@ -1,23 +1,19 @@
-.splitButtonReset,
-.splitButtonReset:hover {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
+.button {
+  gap: 0.6em;
 }
 
-.splitButtonReset {
-    cursor: default;
+.cursorReset {
+  cursor: default;
 }
 
-.toggleButtonReset {
-    border-bottom-right-radius: 0.3em;
-}
-
-.formElement {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 0;
-    width: 0;
-    z-index: -1;
+.selectedOption {
+  width: 100%;
+  margin: 0;
+  padding: 0.6em 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  color: inherit;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }

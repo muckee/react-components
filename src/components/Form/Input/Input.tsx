@@ -4,9 +4,15 @@ import React, {
 } from 'react';
 import DefaultInput from './DefaultInput';
 import Select from './Select';
-import { SelectEvent } from '../../../hooks/useSelectInput/use-select-input';
+import {
+    SelectEvent,
+} from './Select';
+import {
+    SelectedOption,
+} from './Select/SelectedOptionButton';
 
 import styles from './Input.module.css';
+import { DeselectEvent } from './Select/Select';
 
 export interface InputProps {
     name: string;
@@ -16,11 +22,13 @@ export interface InputProps {
     type?: string | undefined;
     children?: ReactNode | undefined;
     hidden?: boolean | undefined;
-    onChange?: ChangeEventHandler<HTMLInputElement> | SelectEvent | undefined;
+    onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
+    onSelect?: SelectEvent | undefined;
+    onDeselect?: DeselectEvent | undefined;
     className?: string | undefined;
     disabled?: boolean | undefined;
     placeholder?: string | undefined;
-    value?: string | undefined;
+    value?: SelectedOption[] | string | undefined;
 }
 
 const Input = (props: InputProps) => {
@@ -28,25 +36,27 @@ const Input = (props: InputProps) => {
     const {
         label,
         type,
+        value,
         className,
-        onChange,
     } = props;
 
     switch (type) {
-    case 'select':
+    case 'select': {
         return <Select
             {...{
                 ...props,
-                label: label ? label : '',
-                onChange: onChange && onChange as SelectEvent,
+                label: label || '',
+                value: Array.isArray(value) ? value : [],
             }}
         />;
-    default:
+    }
+    default: {
         return <DefaultInput {...{
             ...props,
+            value: typeof value === 'string' ? value : '',
             className: `${styles.input}${className ? ` ${className}` : ''}`,
-            onChange: onChange && onChange as ChangeEventHandler<HTMLInputElement>,
         }} />;
+    }
     }
 
 };

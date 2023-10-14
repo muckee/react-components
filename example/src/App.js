@@ -1,5 +1,6 @@
 import React, {
-    Fragment
+    Fragment,
+    useState,
 } from 'react';
 import {
     Article,
@@ -19,6 +20,30 @@ import {
 } from '@muckington/react-components';
 
 const App = () => {
+
+    const [selectedOptions, setSelectedOptions] = useState([]);
+
+    const selectOption = (value) => {
+
+        if(!(value in selectedOptions)) {
+            setSelectedOptions([
+                ...selectedOptions,
+                value,
+            ]);
+        }
+    };
+
+    const deselectOption = (value) => {
+
+        const selectedOption = selectedOptions.find(option => option === value);
+
+        if(selectedOption !== undefined) {
+
+            const updatedSelectedOptions = selectedOptions.filter(option => option !== value);
+
+            setSelectedOptions(updatedSelectedOptions);
+        }
+    };
 
     return <Fragment>
 
@@ -163,7 +188,7 @@ const App = () => {
                                     options: [],
                                     value: [].find(option => option.value === 1),
                                     onChange: (e) => {
-                                        console.log(e.value);
+                                        console.debug(e.value);
                                     },
                                     // onChange: (e) => setRarity({
                                     //   quality: qualitySettings.types.find(type => type.id === e.value),
@@ -176,7 +201,7 @@ const App = () => {
                                     type: 'number',
                                     name: 'trait-rarity',
                                     value: '',
-                                    onChange: (e) => console.log(e.target.value),
+                                    onChange: (e) => console.debug(e.target.value),
                                     errorMsg: '',
                                     disabled: false,
                                 },
@@ -184,9 +209,8 @@ const App = () => {
 
                             <Select
                                 status='primary'
-                                handleSelectChange={(selectedItems) => {
-                                    console.log(selectedItems);
-                                }}
+                                onSelect={selectOption}
+                                onDeselect={deselectOption}
                                 label={'test select'}
                                 multi={true}
                                 name={'test-select'}
@@ -204,6 +228,7 @@ const App = () => {
                                         value: '17',
                                     },
                                 ]}
+                                value={selectedOptions}
                                 title={'Test select'}
                             />
 

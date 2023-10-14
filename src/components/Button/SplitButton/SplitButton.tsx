@@ -1,8 +1,6 @@
 import React, {
     Fragment,
 } from 'react';
-// import PrimaryButton from './PrimaryButton';
-// import SecondaryButton from './SecondaryButton';
 import Button, {
     ButtonProps,
 } from '../';
@@ -67,40 +65,5 @@ const SplitButton = (props: SplitButtonProps) => {
 
     </div>;
 };
-
-// export interface SplitButtonProps {
-//     className?: string | undefined;
-//     position?: 'left' | 'right' | undefined;
-//     primaryButtonProps?: ButtonProps | undefined;
-//     secondaryButtonProps?: ButtonProps | undefined;
-//     status?: ButtonStatus | undefined;
-// }
-
-// const SplitButton = (props: SplitButtonProps) => {
-
-//     const {
-//         position = 'right',
-//         primaryButtonProps,
-//         secondaryButtonProps,
-//     } = props;
-
-//     const classNames = useClassNames(props);
-
-//     return <div
-//         className={`${styles.splitButton}${position === 'left' ? ` ${styles.reverse}` : ''}${classNames ? ` ${classNames}` : ''}`}
-//     >
-
-//         <PrimaryButton
-//             {...primaryButtonProps}
-//         />
-
-//         <hr className='verticalRule' />
-
-//         <SecondaryButton
-//             {...secondaryButtonProps}
-//         />
-
-//     </div>;
-// };
 
 export default SplitButton;

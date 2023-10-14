@@ -22,6 +22,7 @@ export type DeselectEvent = (value: Value) => void;
 export interface SelectOption {
     label: string;
     value: SelectedOption;
+    title?: string | undefined;
 }
 
 export interface SelectProps {
@@ -105,7 +106,7 @@ const Select = (props: SelectProps) => {
 
                 return <Button
                     key={idx}
-                    title={option.label}
+                    title={option.title ? option.title : option.label}
                     type={'button'}
                     className={styles.selectedOption}
                     onClick={() => onSelect(option.value)}

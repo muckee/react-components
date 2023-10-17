@@ -1,0 +1,14 @@
+.button {
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0.6em 0.3em;
+    border-radius: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    color: inherit;
+}
+
+.button,
+.button:disabled {
+    border: none;
+}

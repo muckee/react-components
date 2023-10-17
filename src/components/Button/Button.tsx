@@ -32,14 +32,14 @@ export interface ButtonProps {
   className?: string | undefined;
   status?: ButtonStatus | undefined;
   outline?: boolean | undefined;
-  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-  onMouseDown?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-  onMouseUp?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-  onMouseOut?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   disabled?: boolean | undefined;
   highlight?: boolean | undefined;
-  children?: ReactNode | undefined;
   dragHandleProps?: DraggableButtonProps | undefined;
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  onMouseDown?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  onMouseOut?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  onMouseUp?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  children?: ReactNode | undefined;
 }
 
 const Button = (props: ButtonProps) => {
@@ -48,14 +48,14 @@ const Button = (props: ButtonProps) => {
         title,
         type,
         outline,
-        onClick,
-        onMouseDown,
-        onMouseUp,
-        onMouseOut,
         disabled,
         highlight = true,
-        children,
         dragHandleProps,
+        onClick,
+        onMouseDown,
+        onMouseOut,
+        onMouseUp,
+        children,
     } = props;
 
     const classNames = useClassNames(props);

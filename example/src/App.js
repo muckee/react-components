@@ -5,9 +5,10 @@ import React, {
 import {
     Article,
     Button,
+    Dropdown,
+    DropdownMenuButton,
     Footer,
     Header,
-    InputList,
     ListItem,
     Main,
     OrderedList,
@@ -22,6 +23,7 @@ import {
 const App = () => {
 
     const [selectedOptions, setSelectedOptions] = useState([]);
+    const [menuIsVisible, setMenuIsVisible] = useState(false);
 
     const selectOption = (value) => {
 
@@ -159,53 +161,46 @@ const App = () => {
                                     {
                                         children: '>',
                                         type: 'button',
-                                        status: 'warning',
+                                        status: 'success',
                                     },
                                 ]}
                             />
 
-                            <InputList inputs={[
-                                {
-                                    label: 'Conflicting layers: ',
-                                    type: 'select',
-                                    name: 'conflicts',
-                                    placeholder: 'No possible conflicts.',
-                                    options: [],
-                                    multi: true,
-                                    disabled: true,
-                                },
-                            ]} />;
-
-
-
-                            <InputList inputs={[
-                                {
-                                    label: 'Quality :',
-                                    type: 'select',
-                                    name: 'trait-quality',
-                                    multi: false,
-                                    isSearchable: false,
-                                    options: [],
-                                    value: [].find(option => option.value === 1),
-                                    onChange: (e) => {
-                                        console.debug(e.value);
-                                    },
-                                    // onChange: (e) => setRarity({
-                                    //   quality: qualitySettings.types.find(type => type.id === e.value),
-                                    // }),
-                                    errorMsg: '',
-                                    disabled: false,
-                                },
-                                {
-                                    label: 'Rarity :',
-                                    type: 'number',
-                                    name: 'trait-rarity',
-                                    value: '',
-                                    onChange: (e) => console.debug(e.target.value),
-                                    errorMsg: '',
-                                    disabled: false,
-                                },
-                            ]} />
+                            <Dropdown
+                                menuIsVisible={menuIsVisible}
+                                setMenuIsVisible={setMenuIsVisible}
+                                menuItems={[
+                                    <DropdownMenuButton
+                                        key={0}
+                                        status='primary'
+                                        highlight={true}
+                                        onClick={() => setMenuIsVisible(false)}
+                                    >Option #1: Primary example</DropdownMenuButton>,
+                                    // {
+                                    //     title: 'Option #1: Primary example',
+                                    //     type: 'button',
+                                    //     children: 'Option #1: Primary example',
+                                    //     status: 'primary',
+                                    // },
+                                    // {
+                                    //     title: 'Option #2: Disabled example',
+                                    //     type: 'button',
+                                    //     children: 'Option #2: Disabled example',
+                                    //     disabled: true,
+                                    // },
+                                    // {
+                                    //     title: 'Option #3: Warning example',
+                                    //     type: 'button',
+                                    //     children: 'Option #3: Warning example',
+                                    //     status: 'warning',
+                                    // },
+                                    // {
+                                    //     title: 'Option #4: Default example',
+                                    //     type: 'button',
+                                    //     children: 'Option #4: Default example',
+                                    // }
+                                ]}
+                            />
 
                             <Select
                                 status='primary'

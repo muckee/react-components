@@ -38,7 +38,7 @@ const DefaultInput = (props: DefaultInputProps) => {
         id={id ? id : ''}
         type={type ? type : 'text'}
         name={name}
-        min={min ? min : ''}
+        min={min ? min.toString() : ''}
         max={max ? max : ''}
         size={size}
         value={value ? value : ''}

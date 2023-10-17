@@ -1,5 +1,5 @@
 .default {
-    border: 2px solid var(--accent-one, #F0F2F5);
+    border: 1px solid var(--accent-one, #F0F2F5);
     background-color: var(--accent-two, #A799B7);
     color: var(--accent-one, #F0F2F5);
 }
@@ -15,9 +15,9 @@
 }
 
 .primary {
+    border: 1px solid var(--primary-button-color, #EEC);
     background-color: var(--primary-button-background-color, teal);
     color: var(--primary-button-color, #EEC);
-    border: 2px solid var(--primary-button-color, #EEC);
 }
 
 .primary:focus {
@@ -31,14 +31,14 @@
 }
 
 .success {
-    border: 2px solid var(--success-color, green);
-    background-color: var(--success-color, green);
-    color: var(--success-color, green);
+    border: 1px solid var(--success-color, green);
+    background-color: lightgreen;
+    color: var(--secondary-color, #2b2d42);
 }
 
 
 .warning {
-    border: 2px solid #222;
+    border: 1px solid #222;
     background-color: var(--warning-color, yellow);
     color: #222;
 }

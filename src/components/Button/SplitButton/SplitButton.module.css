@@ -7,11 +7,10 @@
     gap: 0;
 }
 
-.splitButtonItem {
+.splitButton .splitButtonItem {
     align-self: stretch;
     border: none;
     border-radius: 0;
-    background: none;
     color: inherit;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;

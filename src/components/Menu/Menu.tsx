@@ -12,7 +12,7 @@ export interface MenuProps {
   className?: string | undefined;
   style?: React.CSSProperties | undefined;
   children?: ReactNode | undefined;
-  items?: ReactNode[] | undefined;
+  items?: (ReactNode | string)[] | undefined;
   itemClassName?: string | undefined;
   categories?: {
     category: string;

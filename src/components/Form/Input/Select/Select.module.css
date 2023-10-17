@@ -5,15 +5,3 @@
 .cursorReset {
   cursor: default;
 }
-
-.selectedOption {
-  width: 100%;
-  margin: 0;
-  padding: 0.6em 0;
-  border: none;
-  border-radius: 0;
-  background-color: transparent;
-  color: inherit;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}

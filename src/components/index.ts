@@ -9,7 +9,11 @@ export {
     SplitButton,
     SplitButtonProps,
 } from './Button';
-export { default as Dropdown } from './Dropdown';
+export {
+    default as Dropdown,
+    DropdownMenu,
+    DropdownMenuButton,
+} from './Dropdown';
 export { default as Figure } from './Figure';
 export { default as Footer } from './Footer';
 export * from './Form';

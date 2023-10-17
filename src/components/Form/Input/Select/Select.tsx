@@ -1,12 +1,15 @@
 import React, {
     Fragment,
     ReactNode,
+    useState,
 } from 'react';
-import Button, {
+import {
     ButtonStatus,
 } from '../../../Button';
 import { SplitButtonPosition } from '../../../Button/SplitButton';
-import Dropdown from '../../../Dropdown';
+import Dropdown, {
+    DropdownMenuButton,
+} from '../../../Dropdown';
 import FormElement from './FormElement';
 import SelectedOptionButton, {
     SelectedOption,
@@ -34,9 +37,13 @@ export interface SelectProps {
     options?: SelectOption[] | undefined;
     value?: SelectedOption[] | undefined;
     status?: ButtonStatus | undefined;
+    closeOnSelect?: boolean | undefined;
     onSelect?: SelectEvent | undefined;
     onDeselect?: DeselectEvent | undefined;
 }
+
+// TODO: Add styles for `multiple=false`
+// TODO: Test form input
 
 const Select = (props: SelectProps) => {
 
@@ -49,9 +56,12 @@ const Select = (props: SelectProps) => {
         value = [],
         placeholder,
         status,
+        closeOnSelect,
         onSelect = () => {},
         onDeselect = () => {},
     } = props;
+
+    const [menuIsVisible, setMenuIsVisible] = useState(false);
 
     const primaryButtonLabel = !value.length
         ? placeholder
@@ -60,14 +70,18 @@ const Select = (props: SelectProps) => {
 
                 return <SelectedOptionButton
                     key={idx}
-                    label={options.find(option => option.value === selectedItem)?.label || ''}
-                    value={selectedItem}
+                    option={options.find(o => o.value === selectedItem) || {
+                        label: '',
+                        value: '',
+                    }}
                     deselectOption={onDeselect}
                 />;
             })
             : <SelectedOptionButton
-                label={options.find(option => option.value === value[0])?.label || ''}
-                value={value[0]}
+                option={options.find(o => o.value === value[0]) || {
+                    label: '',
+                    value: '',
+                }}
                 deselectOption={onDeselect}
             />;
 
@@ -92,6 +106,8 @@ const Select = (props: SelectProps) => {
     return <Fragment>
 
         <Dropdown
+            menuIsVisible={menuIsVisible}
+            setMenuIsVisible={setMenuIsVisible}
             status={status}
             position={SplitButtonPosition.Right}
             buttonProps={{
@@ -104,13 +120,24 @@ const Select = (props: SelectProps) => {
             }}
             menuItems={availableOptions.map((option, idx) => {
 
-                return <Button
+                const optionTitle = option.title
+                    ? option.title
+                    : option.label
+                        ? option.label
+                        : `Menu item #${idx+1}`;
+
+                return <DropdownMenuButton
                     key={idx}
-                    title={option.title ? option.title : option.label}
-                    type={'button'}
-                    className={styles.selectedOption}
-                    onClick={() => onSelect(option.value)}
-                >{option.label}</Button>;
+                    title={optionTitle}
+                    onClick={() => {
+
+                        if(closeOnSelect || !multi) {
+                            setMenuIsVisible(false);
+                        }
+
+                        onSelect(option.value);
+                    }}
+                >{option.label}</DropdownMenuButton>;
             })}
         />
 

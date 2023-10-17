@@ -6,8 +6,9 @@ import DefaultMenu from '../../Menu';
 import styles from './Menu.module.css';
 
 export interface MenuProps {
-    items: ReactNode[] | string[] | (ReactNode | string)[] | undefined;
+    items: (ReactNode | string)[] | undefined;
     className?: string | undefined;
+    itemClassName?: string | undefined;
 }
 
 // TODO: Get menu item height
@@ -19,6 +20,7 @@ const Menu = (props: MenuProps) => {
 
     const {
         className,
+        itemClassName,
         items,
     } = props;
 
@@ -30,6 +32,7 @@ const Menu = (props: MenuProps) => {
 
     return <DefaultMenu
         className={`${styles.menu}${className ? ` ${className}` : ''}`}
+        itemClassName={itemClassName}
         items={items}
     />;
 };

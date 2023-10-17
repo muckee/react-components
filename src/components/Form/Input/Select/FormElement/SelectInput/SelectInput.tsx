@@ -13,7 +13,8 @@ export interface SelectInputProps {
     value?: string | number | readonly string[] | undefined;
     options?: {
         value: string | number | readonly string[] | undefined,
-        label?: ReactNode | string | undefined,
+        label?: ReactNode | undefined,
+        optionLabel?: string | undefined,
     }[] | undefined;
     children?: ReactNode | undefined;
     className?: string | undefined;
@@ -54,7 +55,7 @@ const SelectInput = (props: SelectInputProps) => {
                 key={idx}
                 value={option.value}
                 className={optionClassName}
-            >{option.label}</option>;
+            >{option.optionLabel ? option.optionLabel : option.value}</option>;
         })}
 
         {children}

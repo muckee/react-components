@@ -18,7 +18,7 @@
 .disabled {
   background-color: var(--disabled-background-color, #EEF);
   color: var(--disabled-color, #888);
-  border: 2px solid var(--disabled-color, #888);
+  border: 1px solid var(--disabled-color, #888);
   outline: none;
   text-shadow: none;
   cursor: not-allowed;
@@ -32,7 +32,7 @@
 }
 
 .outline {
-  border: 2px solid var(--secondary-color, #222);
+  border: 1px solid var(--secondary-color, #222);
   color: #000;
 }
 

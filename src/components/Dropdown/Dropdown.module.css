@@ -15,3 +15,23 @@
     border: none;
     border-radius: 0;
 }
+
+.primaryButton {
+    padding: 0.3em;
+    background: transparent;
+    border-top-left-radius: 0.3em;
+    border-bottom-left-radius: 0.3em;
+}
+
+.primaryButton.expanded {
+    border-bottom-left-radius: 0;
+}
+
+button.toggleButton {
+    border-top-right-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+}
+
+button.toggleButton.expanded {
+    border-bottom-right-radius: 0;
+}

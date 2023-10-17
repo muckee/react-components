@@ -11,7 +11,7 @@ export interface ListItemProps {
 
 const ListItem = (props: ListItemProps) => {
     return <li
-        className={`${styles.listItem} ${props.className ? props.className : ''}`}
+        className={`${styles.listItem}${props.className ? ` ${props.className}` : ''}`}
     >
         {props.children}
     </li>;

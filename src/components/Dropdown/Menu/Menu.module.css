@@ -1,14 +1,17 @@
 .menu {
     position: absolute;
     top: 100%;
-    left: -2px; /* Align border with parent */
+    left: -1px; /* Align border with parent */
     flex-direction: column;
-    width: calc(100% + 4px); /* Align border with parent */
-    background: inherit;
-    color: inherit;
+    align-items: stretch;
+    gap: 0;
+    width: calc(100% + 2px); /* Align border with parent */
     border: inherit;
     border-bottom-right-radius: 0.3em;
     border-bottom-left-radius: 0.3em;
+    overflow: hidden;
+    background: inherit;
     -webkit-backdrop-filter: var(--background-filter);
     backdrop-filter: var(--background-filter);
+    color: inherit;
 }

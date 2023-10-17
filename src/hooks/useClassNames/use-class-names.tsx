@@ -1,67 +1,102 @@
 import { ButtonProps } from '../../components';
-import styles from './use-class-names.module.css';
+import defaultStyles from './use-class-names.module.css';
+
+export interface Class {
+    property: string;
+    format: (
+        styles: object,
+        property: string,
+    ) => string;
+}
+
+// Find a set of values in an array, filtered by property name.
+// Concatenate the found values into a string, each separated by a single whitespace character.
+// Trim excess whitespace
+// The resulting string is suitable for use as the value of an HTML element's `class` property.
 
 // Dynamically concatenate classes from props
 const useClassNames = (
     props: ButtonProps,
-    sourceStyles: object = styles,
+    styles: object = defaultStyles,
+    classes: Class[] = [
+        {
+            property: 'className',
+            format: (_, property) => {
+                return property;
+            }
+        },
+        {
+            property: 'status',
+            format: (styles, property) => {
+                return defaultStyles[property as keyof typeof defaultStyles];
+            }
+        },
+    ],
+    useDefault: string[] = [
+        'status',
+    ],
+    useDisabled: boolean = true,
 ) => {
 
-    // TODO: Add support for dynamic property names
-    const classes = [
-        'className',
-        'status',
-    ];
+    // Derive an array of class names from the `props` parameter
+    const classNames: string[] = classes.filter((c) => {
 
-    const classNames: string[] = classes.filter((name: string) => {
+        // Check if the specified property exists
 
-        // Remove any class names which are not found in props
-        if(props[name as keyof ButtonProps]) {
+        if (props[c.property as keyof ButtonProps]) {
             return true;
         }
 
         return false;
 
-    }).map((name: string) => {
+    }).map((c) => {
 
-        // Return the value which corresponds with the class label.
+        // Find the corresponding class name for each existing property and then format it
 
-        const className = name as keyof ButtonProps;
+        const property = props[c.property as keyof typeof props] as string;
 
-        // If we return the value of the targeted prop directly, the class name will be hardcoded. i.e. `.{className}`.
-        // We are using CSS modules, so we want to assign the value of `styles.{className}` instead.
-        // We can achieve this by using bracket notation to access the desired property of `styles`.
-        const propValue = props[className];
+        // const className: string = props[property];
 
-        if (className === 'status') {
+        return c.format(styles, property) || '';
 
-            return `${sourceStyles[propValue as keyof typeof sourceStyles]}`;
+        // Finally, remove any empty strings from the list of classes
+    }).filter((c) => c.trim().length);
+
+    // If `useDefault` is set to true, add the default class to the classes list
+    // This is useful for ensuring that rules are honoured in cases where webpack renders stylesheets in the incorrect order
+    if (useDefault.length) {
+
+        // Find any specified properties which could not be satisfied to a class
+        const unassignedProperties = useDefault.filter(propertyName => !props[propertyName as keyof typeof props]);
+
+        // Check if all specified properties were unsatisfied
+        if (unassignedProperties.length === useDefault.length) {
+
+            // Add the default class to the list of class names
+            const defaultClass = styles['default' as keyof typeof styles] || defaultStyles['default' as keyof typeof defaultStyles];
+            classNames.push(defaultClass);
         }
-
-        if (className === 'className') {
-            return `${propValue}`;
-        }
-
-        return '';
-    });
-
-    // Add `sourceStyles.disabled` to class list
-    const className:keyof ButtonProps = 'disabled';
-    if(props[className]) {
-        classNames.push(sourceStyles[className as keyof typeof sourceStyles]);
     }
 
-    // If no status was specified, add `sourceStyles.default` to class list
-    if(!props['status']) {
-        classNames.push(sourceStyles['default' as keyof typeof sourceStyles]);
+    // Conditionally add the `disabled` class to the list
+    if (useDisabled) {
+
+        // Check if the disabled flag is set to true
+        const className: keyof ButtonProps = 'disabled';
+        if (props[className]) {
+
+            // Add the disabled class to the list of class names
+            const disabledClass = styles[className as keyof typeof styles] || defaultStyles[className as keyof typeof defaultStyles];
+            classNames.push(disabledClass);
+        }
     }
 
     // If no class names were found, don't add any classes.
-    if(!classNames.length) {
+    if (!classNames.length) {
         return undefined;
     }
 
-    // Concatenate class names, separated by - and prepended with - a single whitespace character
+    // Concatenate class names, separated by a single whitespace character
     return classNames.join(' ');
 };
 

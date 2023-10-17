@@ -53,7 +53,7 @@ const Input = (props: InputProps) => {
     default: {
         return <DefaultInput {...{
             ...props,
-            value: typeof value === 'string' ? value : '',
+            value: value as string,
             className: `${styles.input}${className ? ` ${className}` : ''}`,
         }} />;
     }

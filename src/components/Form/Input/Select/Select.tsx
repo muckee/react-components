@@ -36,6 +36,7 @@ export interface SelectProps {
     multi?: boolean | undefined;
     options?: SelectOption[] | undefined;
     value?: SelectedOption[] | undefined;
+    className?: string | undefined;
     status?: ButtonStatus | undefined;
     closeOnSelect?: boolean | undefined;
     onSelect?: SelectEvent | undefined;
@@ -55,6 +56,7 @@ const Select = (props: SelectProps) => {
         options = [],
         value = [],
         placeholder,
+        className,
         status,
         closeOnSelect,
         onSelect = () => {},
@@ -108,6 +110,7 @@ const Select = (props: SelectProps) => {
         <Dropdown
             menuIsVisible={menuIsVisible}
             setMenuIsVisible={setMenuIsVisible}
+            className={className}
             status={status}
             position={SplitButtonPosition.Right}
             buttonProps={{

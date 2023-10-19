@@ -7,7 +7,7 @@
   align-items: center;
   flex-wrap: nowrap;
   gap: 0.1em;
-  padding: .6em;
+  padding: 0.3em 0.6em;
   border: 1px solid var(--secondary-color, #222);
   border-radius: 0.3em;
   background-color: var(--accent-two, #98A);

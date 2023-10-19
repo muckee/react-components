@@ -1,6 +1,7 @@
 import {
     Arrows,
     Buildings,
+    Business,
 } from './Icons';
 
 type Icon = (

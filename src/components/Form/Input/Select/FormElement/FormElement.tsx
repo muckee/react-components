@@ -39,7 +39,7 @@ const FormElement = (props: FormElementProps) => {
             name={name}
             id={name}
             multi={multi ? true : false}
-            value={value}
+            value={value as string}
             options={options}
             className={className ? ` ${className}` : ''}
             optionClassName={optionClassName}

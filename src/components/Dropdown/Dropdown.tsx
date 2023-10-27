@@ -2,10 +2,6 @@ import React, {
     ReactNode,
 } from 'react';
 import {
-    RiArrowDropDownLine,
-    RiArrowDropUpLine,
-} from 'react-icons/ri';
-import {
     ButtonProps,
     ButtonStatus,
     SplitButton,
@@ -15,11 +11,12 @@ import Menu from './Menu';
 import { SplitButtonPosition } from '../Button/SplitButton/SplitButton';
 import { SelectedOption } from '../Form/Input/Select/SelectedOptionButton';
 import {
-    useClassNames,
+    useGetClassesFromProps,
     useClickTracker,
 } from '../../hooks';
 
 import styles from './Dropdown.module.css';
+import RemixIcon, { Arrows } from '../RemixIcon';
 
 export interface DropdownProps extends SplitButtonProps {
     menuIsVisible: boolean;
@@ -49,7 +46,7 @@ const Dropdown = (props: DropdownProps) => {
         toggleButtonProps,
     } = props;
 
-    const classNames = useClassNames(props);
+    const classNames = useGetClassesFromProps(props);
 
     const clickTracker = useClickTracker(() => {
         setMenuIsVisible(false);
@@ -78,7 +75,7 @@ const Dropdown = (props: DropdownProps) => {
                     className: `${styles.primaryButton}${menuIsVisible ? ` ${styles.expanded}` : ''}${buttonProps?.className ? ` ${buttonProps.className}` : ''}`,
                 },
                 {
-                    children: menuIsVisible ? <RiArrowDropUpLine /> : <RiArrowDropDownLine />,
+                    children: menuIsVisible ? <RemixIcon icon={Arrows.ArrowDropUpLine} /> : <RemixIcon icon={Arrows.ArrowDropDownLine} />,
                     onClick: () => setMenuIsVisible(!menuIsVisible),
                     ...toggleButtonProps,
                     className: `${styles.toggleButton}${menuIsVisible ? ` ${styles.expanded}` : ''}${toggleButtonProps?.className ? ` ${toggleButtonProps.className}` : ''}`,

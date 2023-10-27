@@ -61,7 +61,43 @@ body {
     color: var(--primary-color, #EEC);
 }
 
-
+div,
+a,
+button,
+details,
+input[type=button],
+input[type=checkbox],
+input[type=file],
+input[type=image],
+input[type=radio],
+input[type=range],
+input[type=reset],
+input[type=submit],
+label,
+select,
+article,
+aside,
+audio,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+rt,
+ruby,
+section,
+summary,
+embed,
+iframe,
+img,
+object,
+picture,
+video {
+    max-width: 100%;
+}
 
 a,
 button,
@@ -149,7 +185,6 @@ svg,
 video {
     display: block;
     height: auto;
-    max-width: 100%;
 }
 
 blockquote,

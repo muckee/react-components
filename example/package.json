@@ -19,7 +19,8 @@
   "dependencies": {
     "@muckington/react-components": "workspace:^",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remixicon": "^3.5.0"
   },
   "scripts": {
     "start": "webpack serve --mode development",

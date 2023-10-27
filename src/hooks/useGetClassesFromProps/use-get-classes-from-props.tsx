@@ -1,34 +1,46 @@
-import { ButtonProps } from '../../components';
-import defaultStyles from './use-class-names.module.css';
+import {
+    ButtonProps,
+    InputListItem,
+    // InputProps,
+} from '../../components';
+import defaultStyles from './use-get-classes-from-props.module.css';
 
 export interface Class {
     property: string;
     format: (
+        // TODO: Refine type of styles once pre-processors are added
         styles: object,
         property: string,
     ) => string;
 }
 
+// TODO: InputListItem should adhere to naming convention.. probably.
+export type ElementProps = ButtonProps | InputListItem;
+
+// Dynamically concatenate classes from props
+////
 // Find a set of values in an array, filtered by property name.
 // Concatenate the found values into a string, each separated by a single whitespace character.
 // Trim excess whitespace
 // The resulting string is suitable for use as the value of an HTML element's `class` property.
 
-// Dynamically concatenate classes from props
-const useClassNames = (
-    props: ButtonProps,
+
+const useGetClassesFromProps = (
+    props: ElementProps,
     styles: object = defaultStyles,
     classes: Class[] = [
         {
             property: 'className',
-            format: (_, property) => {
+            // TODO: Refine type of styles once pre-processors are added
+            format: (_: object, property: string) => {
                 return property;
             }
         },
         {
             property: 'status',
-            format: (styles, property) => {
-                return defaultStyles[property as keyof typeof defaultStyles];
+            // TODO: Refine type of styles once pre-processors are added
+            format: (styles: object, property: string) => {
+                return styles[property as keyof typeof styles];
             }
         },
     ],
@@ -43,7 +55,7 @@ const useClassNames = (
 
         // Check if the specified property exists
 
-        if (props[c.property as keyof ButtonProps]) {
+        if (props[c.property as keyof ElementProps]) {
             return true;
         }
 
@@ -72,7 +84,8 @@ const useClassNames = (
         // Check if all specified properties were unsatisfied
         if (unassignedProperties.length === useDefault.length) {
 
-            // Add the default class to the list of class names
+            // Add the default class to the list of class names,
+            // using the default style as a fallback in case user-provided styles do not contain a 'default' class
             const defaultClass = styles['default' as keyof typeof styles] || defaultStyles['default' as keyof typeof defaultStyles];
             classNames.push(defaultClass);
         }
@@ -96,8 +109,8 @@ const useClassNames = (
         return undefined;
     }
 
-    // Concatenate class names, separated by a single whitespace character
+    // Return concatenated class names, separated by a single whitespace character
     return classNames.join(' ');
 };
 
-export default useClassNames;
+export default useGetClassesFromProps;

@@ -1,9 +1,10 @@
 import React, {
+    Fragment,
     ReactNode,
 } from 'react';
-import {
-    RiDeleteBackLine,
-} from 'react-icons/ri';
+import RemixIcon, {
+    System,
+} from '../../../../RemixIcon';
 import { DeselectEvent } from '../Select';
 
 import styles from './SelectedOptionButton.module.css';
@@ -19,7 +20,7 @@ export interface SelectedItemProps {
         title?: string | undefined,
         selectedLabel?: ReactNode | string | undefined,
     };
-    deselectOption: DeselectEvent | undefined;
+    deselectOption?: DeselectEvent | undefined;
 }
 
 const SelectedOptionButton = (props: SelectedItemProps) => {
@@ -32,7 +33,7 @@ const SelectedOptionButton = (props: SelectedItemProps) => {
             selectedLabel,
             value,
         },
-        deselectOption = () => {},
+        deselectOption,
     } = props;
 
     const htmlTitle = title
@@ -47,16 +48,18 @@ const SelectedOptionButton = (props: SelectedItemProps) => {
 
     return <span
         title={htmlTitle}
-        className={styles.selectedOptionContainer}
+        className={deselectOption ? styles.selectedOptionContainer : ''}
     >
         <span
-            className={styles.selectedOption}
+            className={deselectOption ? styles.selectedOption : ''}
         >{htmlLabel}</span>
-        <hr className='verticalRule' />
-        <span
-            className={styles.unselectOptionButton}
-            onClick={() => deselectOption(value)}
-        ><RiDeleteBackLine /></span>
+        {deselectOption && <Fragment>
+            <hr className='verticalRule' />
+            <span
+                className={styles.unselectOptionButton}
+                onClick={() => deselectOption(value)}
+            ><RemixIcon icon={System.DeleteBackLine} /></span>
+        </Fragment>}
     </span>;
 };
 

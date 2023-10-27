@@ -1,7 +1,6 @@
 .dropdown {
     position: relative;
     border-radius: 0.3em;
-    max-width: 100%;
 }
 
 .dropdown.expanded {
@@ -14,13 +13,13 @@
     background-color: transparent;
     color: inherit;
     border: none;
-    border-radius: 0;
 }
 
 .primaryButton {
     justify-content: flex-start;
     padding: 0.3em;
     background: transparent;
+    border: 0;
     border-top-left-radius: 0.3em;
     border-bottom-left-radius: 0.3em;
     overflow-x: hidden;

@@ -2,15 +2,16 @@ import React, {
     Fragment,
     ReactNode,
 } from 'react';
-import {
-    RiDeleteBinLine,
-} from 'react-icons/ri';
+import RemixIcon, {
+    System,
+} from '../../RemixIcon';
 import Button from '../../Button';
 import Fieldset from '../Fieldset';
 import Label from '../Label';
 import Input, {
     InputProps,
 } from '../Input';
+import { useGetClassesFromProps } from '../../../hooks';
 
 import styles from './InputList.module.css';
 
@@ -32,6 +33,8 @@ export interface InputListItem extends InputProps {
 export interface InputListProps {
     inputs: InputListItem[];
 }
+
+// TODO: Refactor components as separate files
 
 export const createLabel = (input: InputListItem) => <Fragment>
 
@@ -79,7 +82,7 @@ export const createFieldset = (input: InputListItem) => <Fieldset legend={input.
                     }}
                 >
 
-                    <RiDeleteBinLine />
+                    <RemixIcon icon={System.DeleteBinLine} />
 
                 </Button>}
             </div>
@@ -102,14 +105,19 @@ const InputList = (props: InputListProps) => {
 
     return inputs.map((input, idx) => {
 
+        const classNames = useGetClassesFromProps(input);
+
         return <Fragment key={idx}>
 
             {input.type === 'fieldset'
                 ? createFieldset({
                     ...input,
-
+                    className: classNames,
                 })
-                : createLabel(input)
+                : createLabel({
+                    ...input,
+                    className: classNames,
+                })
             }
 
         </Fragment>;

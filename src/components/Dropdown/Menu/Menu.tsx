@@ -26,7 +26,7 @@ const Menu = (props: MenuProps) => {
 
     if(((items?.length || 0) < 1) ) {
         return <div
-            className={`${styles.menu}${styles.cursorReset}${className ? ` ${className}` : ''}`}
+            className={`${styles.menu} ${styles.cursorReset}${className ? ` ${className}` : ''}`}
         >No options available</div>;
     }
 

@@ -1,21 +1,11 @@
 import React, {
-    ButtonHTMLAttributes,
-    DetailedHTMLProps,
+    MouseEventHandler,
     ReactNode,
+    TouchEventHandler,
 } from 'react';
 
 import styles from './Button.module.css';
-import { useClassNames } from '../../hooks';
-
-export interface DraggableButtonProps {
-  'aria-describedby'?: string;
-  'data-rbd-drag-handle-context-id'?: number;
-  'data-rbd-drag-handle-draggable-id'?: number;
-  draggable?: boolean;
-  role?: string;
-  tabIndex?: number;
-  onDragStart?: MouseEvent;
-}
+import { useGetClassesFromProps } from '../../hooks';
 
 export enum ButtonStatus {
   Primary = 'primary',
@@ -34,11 +24,11 @@ export interface ButtonProps {
   outline?: boolean | undefined;
   disabled?: boolean | undefined;
   highlight?: boolean | undefined;
-  dragHandleProps?: DraggableButtonProps | undefined;
-  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-  onMouseDown?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-  onMouseOut?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-  onMouseUp?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+  onMouseDown?: MouseEventHandler<HTMLButtonElement> | undefined;
+  onMouseOut?: MouseEventHandler<HTMLButtonElement> | undefined;
+  onMouseUp?: MouseEventHandler<HTMLButtonElement> | undefined;
+  onTouchStart?: TouchEventHandler<HTMLButtonElement> | undefined;
   children?: ReactNode | undefined;
 }
 
@@ -50,15 +40,15 @@ const Button = (props: ButtonProps) => {
         outline,
         disabled,
         highlight = true,
-        dragHandleProps,
         onClick,
         onMouseDown,
         onMouseOut,
         onMouseUp,
+        onTouchStart,
         children,
     } = props;
 
-    const classNames = useClassNames(props);
+    const classNames = useGetClassesFromProps(props);
 
     // Start with the default `styles.button` class.
     // If defined, add the value of `props.className` and derive the appropriate className from `props.status`.
@@ -73,9 +63,8 @@ const Button = (props: ButtonProps) => {
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}
         onMouseOut={onMouseOut}
+        onTouchStart={onTouchStart}
         disabled={disabled}
-        // TODO: Create drag'n'drop component which can be used as a wrapper and remove any references `dragHandleProps` from this component.
-        {... dragHandleProps ? dragHandleProps as DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> : []}
     >
 
         {children}

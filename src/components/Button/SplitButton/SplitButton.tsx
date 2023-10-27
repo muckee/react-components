@@ -3,10 +3,10 @@ import React, {
 } from 'react';
 import Button, {
     ButtonProps,
-} from '../';
+} from '../Button';
 
 import styles from './SplitButton.module.css';
-import { useClassNames } from '../../../hooks';
+import { useGetClassesFromProps } from '../../../hooks';
 
 export enum SplitButtonPosition {
     Left = 'left',
@@ -26,7 +26,10 @@ const SplitButton = (props: SplitButtonProps) => {
         position = SplitButtonPosition.Middle,
     } = props;
 
-    const classNames = useClassNames(props);
+    const classNames = useGetClassesFromProps(
+        props,
+        [],
+    );
 
     return <div
         className={`${styles.splitButton}${classNames ? ` ${classNames}` : ''}`}
@@ -34,14 +37,15 @@ const SplitButton = (props: SplitButtonProps) => {
 
         {items?.map((item, idx) => {
 
-            let buttonClassName = `${styles.splitButtonItem}`;
+            let buttonClassName = styles.splitButtonItem;
 
-            if(
-                position === SplitButtonPosition.Middle
-                || (idx === 0 && position === SplitButtonPosition.Right)
-                || (idx === (items.length - 1) && position === SplitButtonPosition.Left)
-            ) {
+            switch(true) {
+            case position === SplitButtonPosition.Middle:
+            case idx === 0 && position === SplitButtonPosition.Right:
+            case idx === (items.length - 1) && position === SplitButtonPosition.Left:
                 buttonClassName += ` ${styles.flex}`;
+                break;
+            default: break;
             }
 
             buttonClassName += item.className ? ` ${item.className}` : '';

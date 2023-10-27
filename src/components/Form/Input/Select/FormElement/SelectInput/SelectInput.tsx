@@ -2,17 +2,18 @@ import React, {
     ChangeEventHandler,
     ReactNode,
 } from 'react';
-
-import styles from './SelectInput.module.css';
+import {
+    SelectedOption,
+} from '../..//SelectedOptionButton';
 
 export interface SelectInputProps {
     title: string;
     name: string;
     id?: string | undefined;
     multi?: boolean | undefined;
-    value?: string | number | readonly string[] | undefined;
+    value?: string | readonly string[] | undefined;
     options?: {
-        value: string | number | readonly string[] | undefined,
+        value: SelectedOption,
         label?: ReactNode | undefined,
         optionLabel?: string | undefined,
     }[] | undefined;
@@ -46,7 +47,7 @@ const SelectInput = (props: SelectInputProps) => {
         multiple={multi ? true : false}
         value={value}
         onChange={onChange}
-        className={`${styles.select}${className ? ` ${className}` : ''}`}
+        className={className}
     >
 
         {options?.map((option, idx) => {

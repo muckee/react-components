@@ -1,7 +1,6 @@
 export {
     default,
     ButtonProps,
-    DraggableButtonProps,
     ButtonStatus,
 } from './Button';
 export {

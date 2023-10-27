@@ -41,8 +41,7 @@
 .unselectOptionButton:active,
 .unselectOptionButton:focus {
     cursor: pointer;
-    filter:
-        saturate(0.6) brightness(1.2);
+    /* filter: saturate(0.6) brightness(1.2); */
     -webkit-backdrop-filter: saturate(0.6) brightness(1.2) contrast(0.6);
     backdrop-filter: saturate(0.6) brightness(1.2) contrast(0.6);
 }

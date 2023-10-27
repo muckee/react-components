@@ -5,29 +5,115 @@ import React, {
 import {
     Article,
     Button,
+    DragHandle,
     Dropdown,
     DropdownMenuButton,
     Footer,
     Header,
+    InputList,
     ListItem,
     Main,
     OrderedList,
     Select,
     Section,
+    SortableList,
+    SortableListItem,
     Spinner,
     SplitButton,
     Tooltip,
     UnorderedList,
+    useDragItem,
+    useDragItemContext,
 } from '@muckington/react-components';
 
 const App = () => {
+
+    const defaultSortableItems = [
+        {
+            index: 0,
+            content: <Fragment
+                key={0}
+            >
+
+                <p>Color 1</p>
+
+                <Button
+                    onClick={() => handleDelete(0)}
+                >Delete</Button>
+            </Fragment>,
+        },
+        {
+            index: 1,
+            content: <Fragment
+                key={1}
+            >
+
+                <p>Color 2</p>
+
+                <Button
+                    onClick={() => handleDelete(1)}
+                >Delete</Button>
+            </Fragment>,
+        },
+        {
+            index: 2,
+            content: <Fragment
+                key={2}
+            >
+
+                <p>Color 3</p>
+
+                <Button
+                    onClick={() => handleDelete(2)}
+                >Delete</Button>
+            </Fragment>,
+        },
+        {
+            index: 3,
+            content: <Fragment
+                key={3}
+            >
+
+                <p>Color 4</p>
+
+                <Button
+                    onClick={() => handleDelete(3)}
+                >Delete</Button>
+            </Fragment>,
+        },
+        {
+            index: 4,
+            content: <Fragment
+                key={4}
+            >
+
+                <p>Color 5</p>
+
+                <Button
+                    onClick={() => handleDelete(4)}
+                >Delete</Button>
+            </Fragment>,
+        },
+    ];
+
+    const [sortableListItems, setSortableListItems] = useState(defaultSortableItems);
+
+    const handleDelete = (index) => {
+
+        setSortableListItems(existingItems => {
+
+            // The entire useState callback must be defined in order to ensure that the sortable list honours indexes
+
+            return existingItems.filter((item) => item.index !== index);
+        });
+    };
 
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [menuIsVisible, setMenuIsVisible] = useState(false);
 
     const selectOption = (value) => {
 
-        if(!(value in selectedOptions)) {
+        if (!(value in selectedOptions)) {
             setSelectedOptions([
                 ...selectedOptions,
                 value,
@@ -39,13 +125,87 @@ const App = () => {
 
         const selectedOption = selectedOptions.find(option => option === value);
 
-        if(selectedOption !== undefined) {
+        if (selectedOption !== undefined) {
 
             const updatedSelectedOptions = selectedOptions.filter(option => option !== value);
 
             setSelectedOptions(updatedSelectedOptions);
         }
     };
+
+    const moveItems = (items = [], activeIndex, desiredIndex) => {
+        const draftItems = [...items];
+        const activeItem = draftItems[activeIndex];
+        draftItems.splice(activeIndex, 1);
+        draftItems.splice(desiredIndex, 0, activeItem);
+        return draftItems;
+    };
+
+    const onDrop = (
+        dragIndex,
+        overIndex,
+    ) => {
+
+        const updatedItems = moveItems(sortableListItems, dragIndex, overIndex);
+
+        setSortableListItems(updatedItems);
+    };
+
+    const context = useDragItemContext({
+        onDrop,
+    });
+
+    const rarities = [
+        {
+            id: 0,
+            label: 'Common',
+            rarity: 1
+        },
+        {
+            id: 1,
+            label: 'Uncommon',
+            rarity: 2
+        },
+        {
+            id: 2,
+            label: 'Rare',
+            rarity: 3
+        },
+        {
+            id: 3,
+            label: 'Epic',
+            rarity: 4
+        },
+        {
+            id: 4,
+            label: 'Legendary',
+            rarity: 5
+        },
+        {
+            id: 5,
+            label: 'Mythic',
+            rarity: 6
+        }
+    ];
+
+    const [rarity, setRarity] = useState({
+        qualityId: 0,
+        rarity: 1,
+    });
+
+    const handleQSelect = (val) => {
+
+        console.log('val', val);
+
+        const newRarity = rarities.find(r => r.id === val);
+
+        setRarity({
+            ...rarity,
+            qualityId: newRarity.id,
+        });
+    };
+
+    console.log(rarity);
 
     return <Fragment>
 
@@ -71,6 +231,74 @@ const App = () => {
                 <Article>
 
                     <h3>Article component</h3>
+
+                    <InputList inputs={[
+                        {
+                            label: 'Quality :',
+                            type: 'select',
+                            name: 'trait-quality',
+                            multi: false,
+                            isSearchable: false,
+                            placeholder: 'Nipples',
+                            options: [
+                                {
+                                    label: 'Common',
+                                    value: 0,
+                                    title: 'Common'
+                                },
+                                {
+                                    label: 'Uncommon',
+                                    value: 1,
+                                    title: 'Uncommon'
+                                },
+                                {
+                                    label: 'Rare',
+                                    value: 2,
+                                    title: 'Rare'
+                                },
+                                {
+                                    label: 'Epic',
+                                    value: 3,
+                                    title: 'Epic'
+                                },
+                                {
+                                    label: 'Legendary',
+                                    value: 4,
+                                    title: 'Legendary'
+                                },
+                                {
+                                    label: 'Mythic',
+                                    value: 5,
+                                    title: 'Mythic'
+                                }
+                            ],
+                            value: rarity.qualityId,
+                            onSelect: handleQSelect,
+                            errorMsg: '',
+                            disabled: false,
+                        },
+                    ]} />
+
+                    <SortableList
+                        items={sortableListItems.map((item, idx) => {
+
+                            const {
+                                listeners,
+                            } = useDragItem(context, idx);
+
+                            return <SortableListItem
+                                key={idx}
+                                index={idx}
+                                context={context}
+                                preview={<ListItem>
+                                    {item.content}
+                                </ListItem>}
+                            >
+                                <DragHandle listeners={listeners} />
+                                {item.content}
+                            </SortableListItem>;
+                        })}
+                    />
 
                     <UnorderedList>
 

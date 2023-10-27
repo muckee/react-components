@@ -1,0 +1,23 @@
+button.dragHandleButton {
+  width: unset;
+  padding: 0;
+  border: none;
+  width: 1.5em;
+  height: auto;
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  font-size: 1.5em;
+}
+
+button.dragHandleButton svg {
+  fill: var(--primary-color, #E4E6C3);
+  padding: 0;
+}
+
+.dragHandle {
+  width: 100%;
+  height: 100%;
+  padding: 0.6em;
+  font-size: 1em;
+}

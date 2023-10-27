@@ -5,14 +5,15 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0;
+    max-width: unset;
     width: calc(100% + 2px); /* Align border with parent */
     border: inherit;
     border-bottom-right-radius: 0.3em;
     border-bottom-left-radius: 0.3em;
     overflow: hidden;
     background: inherit;
-    -webkit-backdrop-filter: var(--background-filter);
-    backdrop-filter: var(--background-filter);
+    -webkit-backdrop-filter: var(--background-filter, saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3));
+    backdrop-filter: var(--background-filter, saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3));
     color: inherit;
 }
 

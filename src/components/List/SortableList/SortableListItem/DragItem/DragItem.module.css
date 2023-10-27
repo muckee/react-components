@@ -1,0 +1,13 @@
+.wrapper {
+    position: relative;
+}
+
+.preview {
+    display: none;
+    position: fixed;
+    z-index: 750;
+}
+
+.preview.dragging {
+    display: block;
+}

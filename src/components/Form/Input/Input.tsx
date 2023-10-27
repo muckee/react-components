@@ -28,7 +28,7 @@ export interface InputProps {
     className?: string | undefined;
     disabled?: boolean | undefined;
     placeholder?: string | undefined;
-    value?: SelectedOption[] | string | undefined;
+    value?: SelectedOption[] | SelectedOption | undefined;
 }
 
 const Input = (props: InputProps) => {
@@ -46,7 +46,7 @@ const Input = (props: InputProps) => {
             {...{
                 ...props,
                 label: label || '',
-                value: Array.isArray(value) ? value : [],
+                value: value,
             }}
         />;
     }

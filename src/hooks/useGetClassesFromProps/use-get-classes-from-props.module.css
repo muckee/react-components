@@ -1,0 +1,197 @@
+/* Global */
+
+.default {
+    color: var(--accent-one, #F0F2F5);
+}
+
+.primary,
+button.success,
+button.warning,
+input.success,
+input.warning,
+div.success,
+div.warning {
+    color: var(--primary-button-color, #2B2D42);
+}
+
+.secondary {
+    color: var(--secondary-button-color, #2B2D42);
+}
+
+.success {
+    color: var(--success-color, green);
+}
+
+.warning {
+    color: var(--warning-color, yellow);
+}
+
+.danger {
+    color: var(--danger-color, darkred);
+}
+
+.disabled {
+    color: var(--disabled-color, lightsteelblue);
+}
+
+/* Common */
+
+button.primary:hover,
+button.primary:focus,
+button.secondary:hover,
+button.secondary:focus,
+button.success:hover,
+button.success:focus,
+button.warning:hover,
+button.warning:focus,
+button.danger:hover,
+button.danger:focus,
+button.disabled:hover,
+button.disabled:focus,
+input.primary:hover,
+input.primary:focus,
+input.secondary:hover,
+input.secondary:focus,
+input.success:hover,
+input.success:focus,
+input.warning:hover,
+input.warning:focus,
+input.danger:hover,
+input.danger:focus,
+input.disabled:hover,
+input.disabled:focus {
+    -webkit-backdrop-filter: var(--background-filter, saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3));
+    backdrop-filter: var(--background-filter, saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3));
+    outline: none;
+}
+
+/* Division */
+/* TODO: Reduce shared styles */
+div.default {
+    border: 1px solid var(--accent-one, #F0F2F5);
+    background-color: var(--accent-two, #A799B7);
+}
+
+div.primary,
+div.secondary {
+    border: 1px solid var(--primary-button-color, #2B2D42);
+}
+
+div.primary {
+    background-color: var(--primary-button-background-color, #E4E6C3);
+}
+
+div.secondary {
+    background-color: var(--secondary-button-background-color, #048A81);
+}
+
+div.tertiary {
+    border: 1px solid var(--tertiary-button-color, #048A81);
+    background-color: var(--tertiary-button-background-color, #2B2D42);
+    color: 1px solid var(--tertiary-button-color, #048A81);
+}
+
+div.success {
+    border: 1px solid var(--success-color, green);
+    background-color: var(--success-background-color, palegreen);
+}
+
+div.warning {
+    border: 1px solid #222;
+    background-color: var(--warning-background-color, lightgoldenrodyellow);
+}
+
+div.danger {
+    border: 1px solid var(--danger-color, darkred);
+    background-color: var(--danger-background-color, palevioletred);
+    color: var(--danger-color, darkred);
+}
+
+div.disabled {
+    border: 1px solid var(--disabled-color, lightsteelblue);
+    background-color: var(--disabled-background-color, whitesmoke);
+    color: dimgrey;
+}
+
+/* Button */
+
+button.default {
+    border: 1px solid var(--accent-one, #F0F2F5);
+    background-color: var(--accent-two, #A799B7);
+}
+
+button.primary,
+button.secondary {
+    border: 1px solid var(--primary-button-color, #2B2D42);
+}
+
+button.primary {
+    background-color: var(--primary-button-background-color, #E4E6C3);
+}
+
+button.secondary {
+    background-color: var(--secondary-button-background-color, #048A81);
+}
+
+button.tertiary {
+    border: 1px solid var(--tertiary-button-color, #048A81);
+    background-color: var(--tertiary-button-background-color, #2B2D42);
+    color: 1px solid var(--tertiary-button-color, #048A81);
+}
+
+button.success {
+    border: 1px solid var(--success-color, green);
+    background-color: var(--success-background-color, palegreen);
+}
+
+button.warning {
+    border: 1px solid #222;
+    background-color: var(--warning-background-color, lightgoldenrodyellow);
+}
+
+button.danger {
+    border: 1px solid var(--danger-color, darkred);
+    background-color: var(--danger-background-color, palevioletred);
+    color: var(--danger-color, darkred);
+}
+
+button.disabled {
+    border: 1px solid var(--disabled-color, lightsteelblue);
+    background-color: var(--disabled-background-color, whitesmoke);
+    color: dimgrey;
+}
+
+/* Input */
+
+input.default {
+    border: 1px solid var(--secondary-color, #2B2D42);
+    background-color: var(--accent-one, #F0F2F5);
+    color: var(--secondary-color, #2B2D42);
+}
+
+input.primary {
+    border: 1px solid var(--tertiary-color, #048A81);
+    background-color: var(--primary-color, #E4E6C3);
+    color: 1px solid var(--tertiary-color, #048A81);
+}
+
+input.secondary {
+    border: 1px solid var(--accent-one, #F0F2F5);
+    background-color: var(--secondary-color, #2B2D42);
+    color: 1px solid var(--accent-one, #F0F2F5);
+}
+
+input.success {
+    border: 1px solid var(--success-color, green);
+    background-color: var(--success-background-color, palegreen);
+}
+
+input.warning {
+    border: 1px solid var(--warning-color, yellow);
+    background-color: var(--warning-background-color, lightgoldenrodyellow);
+}
+
+input.danger {
+    border: 1px solid var(--danger-color, darkred);
+    background-color: var(--danger-background-color, palevioletred);
+}

@@ -2,14 +2,14 @@
 
 .highlight:hover, /* TODO: Move to global styles */
 .highlight:focus {
-    filter: var(--highlight-filter), saturate(0.6) brightness(1.2);
+    /* filter: var(--highlight-filter, saturate(0.6) brightness(1.2)); */
     -webkit-backdrop-filter: var(--highlight-backdrop-filter, saturate(0.6) brightness(1.2) contrast(0.6));
     backdrop-filter: var(--highlight-backdrop-filter, saturate(0.6) brightness(1.2) contrast(0.6));
 }
 
 .highlight:active {
-  -webkit-backdrop-filter: var(--active-filter);
-  backdrop-filter: var(--active-filter);
+  -webkit-backdrop-filter: var(--active-filter, saturate(0.9) grayscale(0.3) brightness(1.2) contrast(0.9));
+  backdrop-filter: var(--active-filter, saturate(0.9) grayscale(0.3) brightness(1.2) contrast(0.9));
 }
 
 /* Disabled state override */
@@ -42,5 +42,5 @@
   align-self: stretch;
   padding: .05em;
   border: none;
-  background-color: #AAA6;
+  background-color: #6666;
 }

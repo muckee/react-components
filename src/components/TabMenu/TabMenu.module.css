@@ -1,0 +1,43 @@
+menu.menu {
+  margin: 0px 0 -2px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #CCE;
+  border-bottom: 1px solid #888;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+
+li.menuItem {
+  width: unset;
+  overflow: clip;
+  background-color: #444;
+  border-radius: 0;
+}
+
+button.menuButton {
+  border: none;
+  border-radius: 0;
+  width: auto;
+  background-color: transparent;
+  box-shadow: unset;
+  /* TODO: Initialise button */
+}
+
+button.currentTab {
+  box-shadow: 0 6px 15px rgba(0,0,0,0.75);
+  clip-path: inset(0 -15px -1px 0);
+  background-color: #888;
+}
+
+.article {
+  padding: 0.9em;
+  background-color: #888;
+  border: 1px solid #CCE;
+  border-radius: 0em 0.3em 0.3em 0.3em;
+}

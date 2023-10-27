@@ -125,6 +125,22 @@ const Tooltip = (props: TooltipProps) => {
         ? cloneElement(children, {...anchorProps})
         : <span {...anchorProps}>{children}</span>;
 
+    if(tooltipRef.current) {
+        tooltipRef.current.style.top = `${position?.y || 0}px`;
+        tooltipRef.current.style.left = `${position?.x || 0}px`;
+    }
+
+    useEffect(() => {
+
+        if(tooltipRef.current) {
+            tooltipRef.current.style.top = `${position?.y || 0}px`;
+            tooltipRef.current.style.left = `${position?.x || 0}px`;
+        }
+    }, [
+        tooltipRef.current,
+        position,
+    ]);
+
     return <Fragment>
 
         {anchor}
@@ -133,10 +149,10 @@ const Tooltip = (props: TooltipProps) => {
             <div
                 ref={tooltipRef}
                 className={styles.tooltipContainer}
-                style={{
-                    top: position.y,
-                    left: position.x,
-                }}
+                // style={{
+                //     top: position.y,
+                //     left: position.x,
+                // }}
             >
                 <div
                     className={styles.tooltip}

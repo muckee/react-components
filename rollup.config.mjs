@@ -7,7 +7,6 @@ import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import nested from 'postcss-nested';
 import cssnext from 'postcss-cssnext';
 import copy from 'rollup-plugin-copy';
 import { createTransform } from 'rollup-copy-transform-css';
@@ -16,14 +15,13 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import { uglify } from 'rollup-plugin-uglify';
 import gzip from 'rollup-plugin-gzip';
-// import postCSSUrl from 'postcss-url';
 
 import packageJson from './package.json' assert {
     type: 'json',
 };
 
 // TODO: Optimise sourcemap generation
-// TODO: Optimise css minification
+// TODO: Optimise CSS
 export default [
     {
         context: 'this',
@@ -77,10 +75,6 @@ export default [
             postcss({
                 plugins: [
                     autoprefixer(),
-                    // postCSSUrl({
-                    //     url: 'inline'
-                    // }),
-                    nested(),
                     cssnext({
                         warnForDuplicates: false,
                     }),
@@ -101,7 +95,20 @@ export default [
                     {
                         src: 'src/*.css',
                         dest: 'dist',
-                        transform: createTransform({ inline: true, minify: true }),
+                        transform: createTransform({
+                            minify: true,
+                            plugins: [
+                                autoprefixer(),
+                            ],
+                        }),
+                    },
+                    {
+                        src: 'dist/*.css',
+                        dest: 'dist',
+                        transform: createTransform({
+                            inline: true,
+                            rename: (name, extension) => `${name}.min.${extension}`,
+                        }),                   
                     },
                 ]
             }),

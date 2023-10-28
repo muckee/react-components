@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import {
     SelectedOption,
-} from '../..//SelectedOptionButton';
+} from '../../SelectedOptionButton';
 
 export interface SelectInputProps {
     title: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Button, {
     ButtonProps,
-} from '../../../Button';
+} from '@application/components/Button';
 
 import styles from './MenuButton.module.css';
 

@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import RemixIcon, {
     System,
-} from '../../../../RemixIcon';
+} from '@application/components/RemixIcon';
 import { DeselectEvent } from '../Select';
 
 import styles from './SelectedOptionButton.module.css';

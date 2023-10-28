@@ -1,8 +1,12 @@
 import {
     ButtonProps,
+} from '@application/components/Button';
+import {
     InputListItem,
-    // InputProps,
-} from '../../components';
+} from '@application/components/Form/InputList';
+import {
+    NotificationProps
+} from '@application/components/Notification';
 import defaultStyles from './use-get-classes-from-props.module.css';
 
 export interface Class {
@@ -15,16 +19,14 @@ export interface Class {
 }
 
 // TODO: InputListItem should adhere to naming convention.. probably.
-export type ElementProps = ButtonProps | InputListItem;
+export type ElementProps = ButtonProps | NotificationProps | InputListItem;
 
 // Dynamically concatenate classes from props
 ////
 // Find a set of values in an array, filtered by property name.
 // Concatenate the found values into a string, each separated by a single whitespace character.
-// Trim excess whitespace
-// The resulting string is suitable for use as the value of an HTML element's `class` property.
-
-
+// Trim excess whitespace.
+// The resulting string is suitable for use as the value of a React element's `className` property.
 const useGetClassesFromProps = (
     props: ElementProps,
     styles: object = defaultStyles,
@@ -56,6 +58,7 @@ const useGetClassesFromProps = (
         // Check if the specified property exists
 
         if (props[c.property as keyof ElementProps]) {
+
             return true;
         }
 
@@ -87,6 +90,7 @@ const useGetClassesFromProps = (
             // Add the default class to the list of class names,
             // using the default style as a fallback in case user-provided styles do not contain a 'default' class
             const defaultClass = styles['default' as keyof typeof styles] || defaultStyles['default' as keyof typeof defaultStyles];
+
             classNames.push(defaultClass);
         }
     }
@@ -96,7 +100,8 @@ const useGetClassesFromProps = (
 
         // Check if the disabled flag is set to true
         const className: keyof ButtonProps = 'disabled';
-        if (props[className]) {
+
+        if (props[className] !== undefined && props[className]) {
 
             // Add the disabled class to the list of class names
             const disabledClass = styles[className as keyof typeof styles] || defaultStyles[className as keyof typeof defaultStyles];

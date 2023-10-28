@@ -13,7 +13,7 @@ import { SelectedOption } from '../Form/Input/Select/SelectedOptionButton';
 import {
     useGetClassesFromProps,
     useClickTracker,
-} from '../../hooks';
+} from '@application/hooks';
 
 import styles from './Dropdown.module.css';
 import RemixIcon, { Arrows } from '../RemixIcon';

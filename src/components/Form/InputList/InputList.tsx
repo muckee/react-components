@@ -4,14 +4,14 @@ import React, {
 } from 'react';
 import RemixIcon, {
     System,
-} from '../../RemixIcon';
-import Button from '../../Button';
+} from '@application/components/RemixIcon';
+import Button from '@application/components/Button';
 import Fieldset from '../Fieldset';
 import Label from '../Label';
 import Input, {
     InputProps,
 } from '../Input';
-import { useGetClassesFromProps } from '../../../hooks';
+import { useGetClassesFromProps } from '@application/hooks';
 
 import styles from './InputList.module.css';
 

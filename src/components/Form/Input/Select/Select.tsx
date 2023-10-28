@@ -5,11 +5,11 @@ import React, {
 } from 'react';
 import {
     ButtonStatus,
-} from '../../../Button';
-import { SplitButtonPosition } from '../../../Button/SplitButton';
+    SplitButtonPosition,
+} from '@application/components/Button';
 import Dropdown, {
     DropdownMenuButton,
-} from '../../../Dropdown';
+} from '@application/components/Dropdown';
 import FormElement from './FormElement';
 import SelectedOptionButton, {
     SelectedOption,

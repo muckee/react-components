@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 
 import styles from './Button.module.css';
-import { useGetClassesFromProps } from '../../hooks';
+import { useGetClassesFromProps } from '@application/hooks';
 
 export enum ButtonStatus {
   Primary = 'primary',

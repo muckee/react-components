@@ -13,6 +13,7 @@ import {
     InputList,
     ListItem,
     Main,
+    Notification,
     OrderedList,
     Select,
     Section,
@@ -217,7 +218,7 @@ const App = () => {
                 <h1>ThugNerdz&apos; React Components Example</h1>
             </Tooltip>
 
-            <p>Date: {new Date().toDateString()}</p>
+            <Notification>Date: {new Date().toDateString()}</Notification>
 
         </Header>
 

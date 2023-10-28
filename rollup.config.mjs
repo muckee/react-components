@@ -11,11 +11,10 @@ import cssnext from 'postcss-cssnext';
 import copy from 'rollup-plugin-copy';
 import { createTransform } from 'rollup-copy-transform-css';
 import dts from 'rollup-plugin-dts';
+import gzip from 'rollup-plugin-gzip';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import { uglify } from 'rollup-plugin-uglify';
-import gzip from 'rollup-plugin-gzip';
-
 import packageJson from './package.json' assert {
     type: 'json',
 };
@@ -39,6 +38,8 @@ export default [
             },
         ],
         external: [
+            'react',
+            'react-dom',
             'remixicon/fonts/remixicon.css',
         ],
         plugins: [
@@ -108,7 +109,7 @@ export default [
                         transform: createTransform({
                             inline: true,
                             rename: (name, extension) => `${name}.min.${extension}`,
-                        }),                   
+                        }),
                     },
                 ]
             }),

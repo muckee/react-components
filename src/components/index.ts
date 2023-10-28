@@ -35,6 +35,7 @@ export { default as Main } from './Main';
 export { default as Menu } from './Menu';
 export { default as Modal } from './Modal';
 export { default as Nav } from './Nav';
+export { default as Notification } from './Notification';
 export { default as Pagination } from './Pagination';
 export { default as Portal } from './Portal';
 export {

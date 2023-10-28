@@ -33,6 +33,7 @@
     "@types/caniuse-lite": "^1",
     "@types/eslint": "^8",
     "@types/jest": "^29.5.3",
+    "@types/module-alias": "^2",
     "@types/node": "^20.4.9",
     "@types/prop-types": "^15",
     "@types/react": "^18.2.25",
@@ -77,5 +78,6 @@
   },
   "workspaces": [
     "./example"
-  ]
+  ],
+  "packageManager": "yarn@4.0.1"
 }

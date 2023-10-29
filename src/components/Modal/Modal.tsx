@@ -16,12 +16,20 @@ export interface ModalProps {
   show?: boolean | undefined;
   className?: string | undefined;
   mainClassName?: string | undefined;
-  contentClassName?: string | undefined;
   heading?: string | undefined;
   children?: ReactNode | undefined;
 }
 
 const Modal = (props: ModalProps) => {
+
+    const {
+        handleClose,
+        show,
+        className,
+        mainClassName,
+        heading,
+        children,
+    } = props;
 
     const backdropPortalId = 'thugnerdz-modal-backdrop-root';
     const modalPortalId = 'thugnerdz-modal-root';
@@ -29,27 +37,25 @@ const Modal = (props: ModalProps) => {
     return <Fragment>
 
         {<Portal id={backdropPortalId}>
-            <Backdrop onClick={props.handleClose}className={props.show ? ` ${styles.visible}` : ''} />
+            <Backdrop onClick={handleClose} className={show ? ` ${styles.visible}` : ''} />
         </Portal>}
 
         {<Portal id={modalPortalId}>
-            <div className={`${styles.modal}${props.show ? ` ${styles.visible}` : ''}${props.className ? ` ${props.className}` : ''}`}>
+            <div className={`${styles.modal}${show ? ` ${styles.visible}` : ''}${className ? ` ${className}` : ''}`}>
 
-                <Section className={`${styles.modalMain}${props.mainClassName ? ` ${props.mainClassName}` : ''}`}>
+                <Section className={`${styles.modalMain}${mainClassName ? ` ${mainClassName}` : ''}`}>
 
-                    {props.heading && <Header>
-                        <Button type="button" className={styles.closeButton} onClick={props.handleClose}>
+                    {heading && <Header>
+                        <Button type="button" className={styles.closeButton} onClick={handleClose}>
                             Close
                         </Button>
-                        <h2>{props.heading}</h2>
+                        <h2>{heading}</h2>
                     </Header>}
 
-                    <Section className={props.contentClassName && props.contentClassName}>
-                        {props.children}
-                    </Section>
+                    {children}
 
-                    {!props.heading && <Footer>
-                        <Button type="button" onClick={props.handleClose}>
+                    {!heading && <Footer>
+                        <Button type="button" onClick={handleClose}>
                             Close
                         </Button>
                     </Footer>}

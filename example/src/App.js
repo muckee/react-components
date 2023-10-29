@@ -9,10 +9,12 @@ import {
     Dropdown,
     DropdownMenuButton,
     Footer,
+    Form,
     Header,
     InputList,
     ListItem,
     Main,
+    Modal,
     Notification,
     OrderedList,
     Select,
@@ -206,7 +208,19 @@ const App = () => {
         });
     };
 
-    console.log(rarity);
+    const [browser1IsVisible, setBrowser1IsVisible] = useState(false);
+    const [browser2IsVisible, setBrowser2IsVisible] = useState(false);
+
+    const hideBrowser = (number) => {
+
+        switch (number) {
+        case 2:
+            setBrowser2IsVisible(false);
+            break;
+        default:
+            setBrowser1IsVisible(false);
+        }
+    };
 
     return <Fragment>
 
@@ -228,6 +242,66 @@ const App = () => {
 
 
                 <h2>Section component</h2>
+
+                <Button onClick={() => setBrowser1IsVisible(true)}>Modal 1</Button>
+
+
+                <Modal
+                    show={browser1IsVisible}
+                    handleClose={() => hideBrowser(1)}
+                >
+
+                    {!browser2IsVisible && <Form>
+
+                        <InputList inputs={[
+                            {
+                                title: 'Upload an image',
+                                label: 'Image :',
+                                type: 'file',
+                                name: 'trait-fish-upload',
+                                placeholder: 'Choose a file...',
+                                // value: sortedValue,
+                                // multi: true,
+                                // errorMsg: errorMsg,
+                                // disabled: disabled,
+                                // className: styles.dropdown,
+                                onChange: (e) => console.log(e),
+                            }
+                        ]} />
+
+                        <Button onClick={() => setBrowser2IsVisible(true)}>Modal 2</Button>
+
+                    </Form>}
+
+                    <Modal
+                        show={browser2IsVisible}
+                        handleClose={() => hideBrowser(2)}
+                    >
+
+                        <Form>
+
+                            <InputList inputs={[
+                                {
+                                    title: 'Upload an image',
+                                    label: 'Image :',
+                                    type: 'file',
+                                    name: 'trait-image-upload',
+                                    placeholder: 'Choose a file...',
+                                    // value: sortedValue,
+                                    // multi: true,
+                                    // errorMsg: errorMsg,
+                                    // disabled: disabled,
+                                    // className: styles.dropdown,
+                                    onChange: (e) => console.log(e),
+                                }
+                            ]} />
+
+                        </Form>
+
+                    </Modal>
+
+                </Modal>
+
 
                 <Article>
 

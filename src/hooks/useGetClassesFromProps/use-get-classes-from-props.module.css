@@ -1,7 +1,7 @@
 /* Global */
 
 .default {
-    color: var(--accent-one, #F0F2F5);
+    color: var(--accent-one, honeydew);
 }
 
 .primary,
@@ -11,11 +11,11 @@ input.success,
 input.warning,
 div.success,
 div.warning {
-    color: var(--primary-button-color, #2B2D42);
+    color: var(--primary-button-color, #2C363F);
 }
 
 .secondary {
-    color: var(--secondary-button-color, #2B2D42);
+    color: var(--secondary-button-color, #2C363F);
 }
 
 .success {
@@ -68,27 +68,27 @@ input.disabled:focus {
 /* Division */
 /* TODO: Reduce shared styles */
 div.default {
-    border: 1px solid var(--accent-one, #F0F2F5);
-    background-color: var(--accent-two, #A799B7);
+    border: 1px solid var(--accent-one, honeydew);
+    background-color: var(--accent-two, #B9CDDA);
 }
 
 div.primary,
 div.secondary {
-    border: 1px solid var(--primary-button-color, #2B2D42);
+    border: 1px solid var(--primary-button-color, #2C363F);
 }
 
 div.primary {
-    background-color: var(--primary-button-background-color, #E4E6C3);
+    background-color: var(--primary-button-background-color, #048A81);
 }
 
 div.secondary {
-    background-color: var(--secondary-button-background-color, #048A81);
+    background-color: var(--secondary-button-background-color, #A1869E);
 }
 
 div.tertiary {
-    border: 1px solid var(--tertiary-button-color, #048A81);
-    background-color: var(--tertiary-button-background-color, #2B2D42);
-    color: 1px solid var(--tertiary-button-color, #048A81);
+    border: 1px solid var(--tertiary-button-color, #A1869E);
+    background-color: var(--tertiary-button-background-color, #2C363F);
+    color: 1px solid var(--tertiary-button-color, #A1869E);
 }
 
 div.success {
@@ -116,27 +116,27 @@ div.disabled {
 /* Button */
 
 button.default {
-    border: 1px solid var(--accent-one, #F0F2F5);
-    background-color: var(--accent-two, #A799B7);
+    border: 1px solid var(--accent-one, honeydew);
+    background-color: var(--accent-two, #B9CDDA);
 }
 
 button.primary,
 button.secondary {
-    border: 1px solid var(--primary-button-color, #2B2D42);
+    border: 1px solid var(--primary-button-color, #2C363F);
 }
 
 button.primary {
-    background-color: var(--primary-button-background-color, #E4E6C3);
+    background-color: var(--primary-button-background-color, #048A81);
 }
 
 button.secondary {
-    background-color: var(--secondary-button-background-color, #048A81);
+    background-color: var(--secondary-button-background-color, #A1869E);
 }
 
 button.tertiary {
-    border: 1px solid var(--tertiary-button-color, #048A81);
-    background-color: var(--tertiary-button-background-color, #2B2D42);
-    color: 1px solid var(--tertiary-button-color, #048A81);
+    border: 1px solid var(--tertiary-button-color, #A1869E);
+    background-color: var(--tertiary-button-background-color, #2C363F);
+    color: 1px solid var(--tertiary-button-color, #A1869E);
 }
 
 button.success {
@@ -164,21 +164,21 @@ button.disabled {
 /* Input */
 
 input.default {
-    border: 1px solid var(--secondary-color, #2B2D42);
-    background-color: var(--accent-one, #F0F2F5);
-    color: var(--secondary-color, #2B2D42);
+    border: 1px solid var(--secondary-color, #2C363F);
+    background-color: var(--accent-one, honeydew);
+    color: var(--secondary-color, #2C363F);
 }
 
 input.primary {
-    border: 1px solid var(--tertiary-color, #048A81);
-    background-color: var(--primary-color, #E4E6C3);
-    color: 1px solid var(--tertiary-color, #048A81);
+    border: 1px solid var(--tertiary-color, #A1869E);
+    background-color: var(--primary-color, #048A81);
+    color: 1px solid var(--tertiary-color, #A1869E);
 }
 
 input.secondary {
-    border: 1px solid var(--accent-one, #F0F2F5);
-    background-color: var(--secondary-color, #2B2D42);
-    color: 1px solid var(--accent-one, #F0F2F5);
+    border: 1px solid var(--accent-one, honeydew);
+    background-color: var(--secondary-color, #2C363F);
+    color: 1px solid var(--accent-one, honeydew);
 }
 
 input.success {

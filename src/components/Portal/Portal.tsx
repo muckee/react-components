@@ -1,4 +1,5 @@
 import {
+    // Fragment,
     ReactNode,
     // memo,
     useLayoutEffect,
@@ -22,7 +23,7 @@ const Portal = (props: PortalProps) => {
         children,
     } = props;
 
-    const [element, setElement] = useState<Node | null>(null);
+    const [element, setElement] = useState<HTMLElement | null>(null);
 
     // const [isDynamic] = useState(!element.parentElement);
 
@@ -51,7 +52,7 @@ const Portal = (props: PortalProps) => {
 
         return () => {
             // delete the programatically created element
-            if (elementCreatedDynamically && updatedElement.parentNode) {
+            if (elementCreatedDynamically && updatedElement?.parentNode) {
                 updatedElement.parentNode.removeChild(updatedElement);
             }
         };

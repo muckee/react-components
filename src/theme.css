@@ -24,11 +24,11 @@
         monospace;
 
     /* Theme */
-    --primary-color: #E4E6C3; /* Light */
-    --secondary-color: #2B2D42; /* Dark */
-    --tertiary-color: #048A81; /* Dark/mid */
-    --accent-one: #F0F2F5; /* Light */
-    --accent-two: #A799B7; /* Mid */
+    --primary-color: #048A81; /* Light */
+    --secondary-color: #2C363F; /* Dark */
+    --tertiary-color: #A1869E; /* Dark/mid */
+    --accent-one: honeydew; /* Light */
+    --accent-two: #B9CDDA; /* Mid */
 
     /* State */
     --success-color: green;

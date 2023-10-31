@@ -8,33 +8,35 @@ import styles from './Button.module.css';
 import { useGetClassesFromProps } from '@application/hooks';
 
 export enum ButtonStatus {
-  Primary = 'primary',
-  Secondary = 'secondary',
-  Tertiary = 'tertiary',
-  Success = 'success',
-  Warning = 'warning',
-  Danger = 'danger',
+    Primary = 'primary',
+    Secondary = 'secondary',
+    Tertiary = 'tertiary',
+    Success = 'success',
+    Warning = 'warning',
+    Danger = 'danger',
 }
 
 export interface ButtonProps {
-  title?: string | undefined;
-  type?: 'button' | 'submit' | 'reset' | undefined;
-  className?: string | undefined;
-  status?: ButtonStatus | undefined;
-  outline?: boolean | undefined;
-  disabled?: boolean | undefined;
-  highlight?: boolean | undefined;
-  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
-  onMouseDown?: MouseEventHandler<HTMLButtonElement> | undefined;
-  onMouseOut?: MouseEventHandler<HTMLButtonElement> | undefined;
-  onMouseUp?: MouseEventHandler<HTMLButtonElement> | undefined;
-  onTouchStart?: TouchEventHandler<HTMLButtonElement> | undefined;
-  children?: ReactNode | undefined;
+    id?: string | undefined;
+    title?: string | undefined;
+    type?: 'button' | 'submit' | 'reset' | undefined;
+    className?: string | undefined;
+    status?: ButtonStatus | undefined;
+    outline?: boolean | undefined;
+    disabled?: boolean | undefined;
+    highlight?: boolean | undefined;
+    onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+    onMouseDown?: MouseEventHandler<HTMLButtonElement> | undefined;
+    onMouseOut?: MouseEventHandler<HTMLButtonElement> | undefined;
+    onMouseUp?: MouseEventHandler<HTMLButtonElement> | undefined;
+    onTouchStart?: TouchEventHandler<HTMLButtonElement> | undefined;
+    children?: ReactNode | undefined;
 }
 
 const Button = (props: ButtonProps) => {
 
     const {
+        id,
         title,
         type,
         outline,
@@ -56,6 +58,7 @@ const Button = (props: ButtonProps) => {
     const className = styles.button + `${classNames ? ` ${classNames}` : ''}` + (highlight ? ' highlight' : '') + (outline ? ' outline' : '');
 
     return <button
+        id={id}
         title={title}
         type={type || 'button'}
         className={className}

@@ -11,7 +11,7 @@ button.dragHandleButton {
 }
 
 button.dragHandleButton svg {
-  fill: var(--primary-color, #E4E6C3);
+  fill: var(--primary-color, #048A81);
   padding: 0;
 }
 

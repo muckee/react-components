@@ -115,6 +115,22 @@ const useGetClassesFromProps = (
         return undefined;
     }
 
+    // Check if user-defined className property is being used.
+    if(
+        classes.find(c => c === 'className')
+        && props['className'] !== undefined
+    ) {
+
+        // Ensure that the user-defined className property is assigned last.
+        // TODO: Instead of doing this, just make sure it's always appended last. Also rewrite the hook from scratch.
+        const userClassName = props['className'];
+        const updatedClassNames = classNames.filter(c => c !== props['className']);
+        updatedClassNames.push(userClassName);
+
+        // Return concatenated class names, separated by a single whitespace character
+        return updatedClassNames.join(' ');
+    }
+
     // Return concatenated class names, separated by a single whitespace character
     return classNames.join(' ');
 };

@@ -42,10 +42,7 @@ const Button = (props: ButtonProps) => {
         children,
     } = props;
 
-    const classNames = useGetClassesFromProps(props, undefined, undefined, [
-        'className',
-        'status',
-    ]);
+    const classNames = useGetClassesFromProps(props);
 
     // Start with the default `styles.button` class.
     // If defined, add the value of `props.className` and derive the appropriate className from `props.status`.

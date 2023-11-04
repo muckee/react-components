@@ -1,4 +1,4 @@
-// Normalize CSS
+// TODO: Add support for all RemixIcon formats
 import 'remixicon/fonts/remixicon.css';
 import './initialize.css';
 import './theme.css';

@@ -1,8 +1,13 @@
-.dropdown {
-  box-shadow: inset 0 0 1px 0 #222;
+div.dropdownContainer {
+  border-color: inherit;
+  /* background-color: inherit; */
 }
 
-.button {
+.dropdown {
+  box-shadow: inset 1px 0 1px 0 #222;
+}
+
+button.button {
   flex-wrap: wrap;
   gap: 0.6em;
 }

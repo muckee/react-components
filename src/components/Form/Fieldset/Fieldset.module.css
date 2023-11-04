@@ -2,8 +2,52 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.3em;
+    padding: 0.3em 0.6em;
+    border-radius: 0.3em;
+    background-color: var(--accent-two, #B9CDDA);
+}
+
+.fieldset fieldset,
+.fieldset fieldset .label,
+.fieldset fieldset .legend {
+    color: var(--tertiary-color, #A1869E);
+}
+
+.fieldset fieldset,
+.fieldset fieldset .legend {
+    background-color: var(--secondary-color, #2C363F);
 }
 
 .fieldset fieldset {
     flex-direction: row;
+    width: 100%;
+}
+
+.legend,
+.label {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.legend {
+  margin: 0 -0.6em;
+  padding: 0.3em 0.6em;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  background-color: var(--accent-two, #B9CDDA);
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.label {
+    width: 100%;
+}
+
+.field {
+    flex: 1;
+    color: var(--secondary-color, #2C363F);
 }

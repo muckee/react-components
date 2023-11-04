@@ -3,25 +3,19 @@ import React, {
     ReactNode,
     TouchEventHandler,
 } from 'react';
+import {
+    useGetClassesFromProps,
+    Status,
+} from '@application/hooks';
 
 import styles from './Button.module.css';
-import { useGetClassesFromProps } from '@application/hooks';
-
-export enum ButtonStatus {
-    Primary = 'primary',
-    Secondary = 'secondary',
-    Tertiary = 'tertiary',
-    Success = 'success',
-    Warning = 'warning',
-    Danger = 'danger',
-}
 
 export interface ButtonProps {
     id?: string | undefined;
     title?: string | undefined;
     type?: 'button' | 'submit' | 'reset' | undefined;
     className?: string | undefined;
-    status?: ButtonStatus | undefined;
+    status?: Status | undefined;
     outline?: boolean | undefined;
     disabled?: boolean | undefined;
     highlight?: boolean | undefined;
@@ -39,9 +33,7 @@ const Button = (props: ButtonProps) => {
         id,
         title,
         type,
-        outline,
         disabled,
-        highlight = true,
         onClick,
         onMouseDown,
         onMouseOut,
@@ -55,7 +47,7 @@ const Button = (props: ButtonProps) => {
     // Start with the default `styles.button` class.
     // If defined, add the value of `props.className` and derive the appropriate className from `props.status`.
     // If `props.outline` is set to true, add the outline class.
-    const className = styles.button + `${classNames ? ` ${classNames}` : ''}` + (highlight ? ' highlight' : '') + (outline ? ' outline' : '');
+    const className = `${styles.button}${classNames ? ` ${classNames}` : ''}`;
 
     return <button
         id={id}

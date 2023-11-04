@@ -1,1 +1,5 @@
-export { default } from './Fieldset';
+export {
+    default,
+    FieldsetInputProps,
+    createFieldset,
+} from './Fieldset';

@@ -47,6 +47,7 @@ const Input = (props: InputProps) => {
                 ...props,
                 label: label || '',
                 value: value,
+                className: `${styles.input}${className ? ` ${className}` : ''}`,
             }}
         />;
     }

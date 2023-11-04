@@ -10,6 +10,7 @@ export interface SortableListItemProps {
     context: DragItemContextType;
     preview?: ReactNode | string | undefined;
     className?: string | undefined;
+    previewClassName?: string | undefined;
     children?: ReactNode | string | undefined;
 }
 
@@ -20,6 +21,7 @@ const SortableListItem = (props: SortableListItemProps) => {
         context,
         preview,
         className,
+        previewClassName,
         children,
     } = props;
 
@@ -28,6 +30,7 @@ const SortableListItem = (props: SortableListItemProps) => {
         context={context}
         preview={preview}
         className={className}
+        previewClassName={previewClassName}
     >
         {children}
     </DragItem>;

@@ -29,6 +29,8 @@ const SplitButton = (props: SplitButtonProps) => {
     const classNames = useGetClassesFromProps(
         props,
         [],
+        undefined,
+        [],
     );
 
     return <div

@@ -8,35 +8,21 @@
   flex-wrap: nowrap;
   gap: 0.1em;
   padding: 0.3em 0.6em;
-  border: 1px solid var(--secondary-color, #222);
   border-radius: 0.3em;
-  background-color: var(--accent-two, #98A);
-  -webkit-backdrop-filter: var(--background-filter, saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3));
-  backdrop-filter: var(--background-filter, saturate(1.5) grayscale(0.42) brightness(2.1) contrast(0.3));
-  color: var(--secondary-color, #222);
-  cursor: pointer;
   box-sizing: content-box;
   font: inherit;
   font-weight: 700;
-  letter-spacing: 1px;
-  vertical-align: middle;
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
-}
-
-.outline:disabled {
-  background-color: transparent;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  cursor: pointer;
 }
 
 /* Disabled state override */
 /* TODO: Add state-specific styles for disabled state. i.e. dim red for `.danger.disabled ` ... use filters */
 
 .button:disabled {
-  background-color: var(--disabled-background-color, #EEF);
-  color: var(--disabled-color, #888);
-  border: 1px solid var(--disabled-color, #888);
-  outline: none;
-  text-shadow: none;
   cursor: not-allowed;
 }

@@ -4,7 +4,9 @@ import React, {
     useState,
 } from 'react';
 import {
-    ButtonStatus,
+    Status,
+} from '@application/hooks';
+import {
     SplitButtonPosition,
 } from '@application/components/Button';
 import Dropdown, {
@@ -29,7 +31,6 @@ export interface SelectOption {
 }
 
 export interface SelectProps {
-    label: ReactNode | string;
     title: string;
     name: string;
     placeholder?: string | undefined;
@@ -37,20 +38,19 @@ export interface SelectProps {
     options?: SelectOption[] | undefined;
     value?: SelectedOption[] | SelectedOption | undefined;
     className?: string | undefined;
-    status?: ButtonStatus | undefined;
+    status?: Status | undefined;
     closeOnSelect?: boolean | undefined;
     onSelect?: SelectEvent | undefined;
     onDeselect?: DeselectEvent | undefined;
 }
 
-// TODO: Add styles for `multiple=false`
+// TODO: Rewrite Dropdown and Select components without styles, then re-introduce styles in minimal fashion
 // TODO: Test form input
 
 const Select = (props: SelectProps) => {
 
     const {
         title,
-        label,
         name,
         multi,
         options = [],
@@ -64,6 +64,50 @@ const Select = (props: SelectProps) => {
     } = props;
 
     const [menuIsVisible, setMenuIsVisible] = useState(false);
+
+    const availableOptions = options.filter(option => {
+
+        if(value === (undefined || null)) {
+            return true;
+        }
+
+        switch(typeof value) {
+        case 'object': {
+
+            const selected = value.find(v => v === option.value);
+
+            return selected === undefined;
+            break;
+        }
+        case 'string':
+        case 'number':
+        default: {
+            return value !== option.value;
+        }
+        }
+    });
+
+    const menuItems = availableOptions.map((option, idx) => {
+
+        const optionTitle = option.title
+            ? option.title
+            : option.label
+                ? option.label
+                : `Menu item #${idx + 1}`;
+
+        return <DropdownMenuButton
+            key={idx}
+            title={optionTitle}
+            onClick={() => {
+
+                if (closeOnSelect || !multi) {
+                    setMenuIsVisible(false);
+                }
+
+                onSelect(option.value);
+            }}
+        >{option.label}</DropdownMenuButton>;
+    });
 
     const getFormElementValue: () => Value = () => {
 
@@ -144,56 +188,12 @@ const Select = (props: SelectProps) => {
         }
     };
 
-    const availableOptions = options.filter(option => {
-
-        if(value === (undefined || null)) {
-            return true;
-        }
-
-        switch(typeof value) {
-        case 'object': {
-
-            const selected = value.find(v => v === option.value);
-
-            return selected === undefined;
-            break;
-        }
-        case 'string':
-        case 'number':
-        default: {
-            return value !== option.value;
-        }
-        }
-    });
-
-    const menuItems = availableOptions.map((option, idx) => {
-
-        const optionTitle = option.title
-            ? option.title
-            : option.label
-                ? option.label
-                : `Menu item #${idx + 1}`;
-
-        return <DropdownMenuButton
-            key={idx}
-            title={optionTitle}
-            onClick={() => {
-
-                if (closeOnSelect || !multi) {
-                    setMenuIsVisible(false);
-                }
-
-                onSelect(option.value);
-            }}
-        >{option.label}</DropdownMenuButton>;
-    });
-
     return <Fragment>
 
         <Dropdown
             menuIsVisible={menuIsVisible}
             setMenuIsVisible={setMenuIsVisible}
-            className={className}
+            className={`${styles.dropdownContainer}${className ? ` ${className}` : ''}`}
             status={status}
             position={SplitButtonPosition.Right}
             buttonProps={{
@@ -211,7 +211,6 @@ const Select = (props: SelectProps) => {
         {/* TODO: Select input typing is fucked. Fix it. */}
 
         <FormElement
-            label={label}
             title={title}
             name={name}
             options={options}

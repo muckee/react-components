@@ -4,7 +4,6 @@ export { default as Backdrop } from './Backdrop';
 export {
     default as Button,
     ButtonProps,
-    ButtonStatus,
     SplitButton,
     SplitButtonProps,
 } from './Button';

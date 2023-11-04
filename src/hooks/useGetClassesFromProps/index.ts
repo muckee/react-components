@@ -1,1 +1,4 @@
-export { default } from './use-get-classes-from-props';
+export {
+    default,
+    Status,
+} from './use-get-classes-from-props';

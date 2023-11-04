@@ -2,12 +2,13 @@ import React, {
     Fragment,
     ReactNode,
 } from 'react';
-import Backdrop from '../Backdrop/Backdrop';
+import Backdrop from '../Backdrop';
 import Button from '../Button';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Portal from '../Portal/Portal';
-import Section from '../Section/Section';
+import Header from '../Header';
+import Footer from '../Footer';
+import Menu from '../Menu';
+import Portal from '../Portal';
+import Section from '../Section';
 
 import styles from './Modal.module.css';
 
@@ -46,19 +47,22 @@ const Modal = (props: ModalProps) => {
                 <Section className={`${styles.modalMain}${mainClassName ? ` ${mainClassName}` : ''}`}>
 
                     {heading && <Header>
-                        <Button type="button" className={styles.closeButton} onClick={handleClose}>
-                            Close
-                        </Button>
                         <h2>{heading}</h2>
                     </Header>}
 
                     {children}
 
-                    {!heading && <Footer>
-                        <Button type="button" onClick={handleClose}>
-                            Close
-                        </Button>
-                    </Footer>}
+                    <Footer>
+                        <Menu items={[
+                            <Button
+                                key={0}
+                                type="button"
+                                onClick={handleClose}
+                            >
+                                Close
+                            </Button>,
+                        ]} />
+                    </Footer>
 
                 </Section>
             </div>

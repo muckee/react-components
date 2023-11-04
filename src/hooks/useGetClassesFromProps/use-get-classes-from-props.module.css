@@ -126,7 +126,9 @@ button.secondary {
 }
 
 button.primary {
+    border-color: var(--accent-two, #B9CDDA);
     background-color: var(--primary-button-background-color, #048A81);
+    color: var(--accent-one, honeydew);
 }
 
 button.secondary {

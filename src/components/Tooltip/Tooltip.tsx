@@ -13,12 +13,14 @@ import { createPortal } from 'react-dom';
 import styles from './Tooltip.module.css';
 
 export interface TooltipProps {
-    text: string;
+    text: ReactNode;
     children: ReactNode;
     offset?: number | undefined;
 }
 
 const Tooltip = (props: TooltipProps) => {
+
+    // TODO: The tooltip does not disappear if it is displayed, then the user right-clicks and moves the mouse out of the bounding box before left-clicking again. Fix this by adding a window event and always hiding the tooltip on clean-up.
 
     const {
         text,
@@ -76,6 +78,7 @@ const Tooltip = (props: TooltipProps) => {
     
             // Assign fallback values (left-hand side of anchor), overflowing downwards
             let updatedX = anchorBounds.x - tooltipWidth;
+            // TODO: Maybe add margin size instead of tooltipHeight
             let updatedY = anchorBounds.y;
 
             // If the tooltip is below the viewport, move it up
@@ -86,8 +89,13 @@ const Tooltip = (props: TooltipProps) => {
 
             // If the tooltip is beyond the left-hand side of the viewport, move it up and right
             if(updatedX < 0) {
+                console.log('Anchor outside of left bounds', {
+                    position,
+                    updatedX,
+                    updatedY,
+                });
                 updatedX = anchorBounds.x;
-                updatedY = anchorBounds.y - tooltipHeight;
+                updatedY = anchorBounds.top - tooltipHeight;
             }
 
             // If the tooltip is beyond the top of the viewport, move it down and right
@@ -112,11 +120,11 @@ const Tooltip = (props: TooltipProps) => {
 
     }, [positionHasChanged]);
 
-    const handleMouseOut = () => setPosition(undefined);
+    const handleMouseLeave = () => setPosition(undefined);
 
     const anchorProps = {
         onMouseOver: handleMouseOver,
-        onMouseOut: handleMouseOut,
+        onMouseLeave: handleMouseLeave,
         ref: anchorRef,
         
     };
@@ -149,10 +157,6 @@ const Tooltip = (props: TooltipProps) => {
             <div
                 ref={tooltipRef}
                 className={styles.tooltipContainer}
-                // style={{
-                //     top: position.y,
-                //     left: position.x,
-                // }}
             >
                 <div
                     className={styles.tooltip}

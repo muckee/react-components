@@ -41,7 +41,7 @@
     --disabled-background-color: whitesmoke;
 
     /* Heading */
-    --primary-heading-color: var(--primary-color);
+    --primary-heading-color: var(--accent-two);
     --primary-heading-background-color: var(--tertiary-color);
     --secondary-heading-color: var(--secondary-color);
     --secondary-heading-background-color: var(--primary-color);

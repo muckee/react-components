@@ -1,5 +1,21 @@
 /* Stylesheet */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0.3em 0.6em;
+  color: var(--primary-heading-color, #B9CDDA);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-weight: 700;
+}
+
 .highlight:hover, /* TODO: Move to global styles */
 .highlight:focus {
     /* filter: var(--highlight-filter, saturate(0.6) brightness(1.2)); */

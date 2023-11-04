@@ -42,7 +42,7 @@ select {
 
 html,
 body {
-  background-color: var(--secondary-color, #222);
+    background-color: var(--secondary-color, #222);
 }
 
 body {
@@ -50,7 +50,15 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    font-family: var(--primary-body-font-family, 'Times New Roman', Times, serif);
+    font-family: var(--primary-body-font-family,
+        -apple-system,
+        BlinkMacSystemFont,
+        'Lora',
+        Cambria,
+        'Times New Roman',
+        Times,
+        serif,
+    );
     -webkit-text-size-adjust: none;
     -moz-text-size-adjust: none;
     -ms-text-size-adjust: none;
@@ -150,25 +158,25 @@ rp {
 }
 
 a {
-  color: var(--primary-link-color, purple);
-  text-decoration: none;
+    color: var(--primary-link-color, purple);
+    text-decoration: none;
 }
 
 a:hover {
-  color: var(--tertiary-color, lightblue);
+    color: var(--tertiary-color, lightblue);
 }
 
 a:visited,
 a:active {
-  color: var(--tertiary-link-color, lavender);
+    color: var(--tertiary-link-color, lavender);
 }
 
 a:visited:hover {
-  color: var(--tertiary-color, lightblue);
+    color: var(--tertiary-color, lightblue);
 }
 
 a:focus {
-  outline-color: var(--tertiary-link-color, lavender);
+    outline-color: var(--tertiary-link-color, lavender);
 }
 
 ol,
@@ -212,10 +220,18 @@ kbd,
 pre,
 samp {
     padding: 0.3em;
-    font-family: var(--primary-mono-font-family, 'Courier New', Courier, monospace);
+    font-family: var(--primary-mono-font-family,
+        source-code-pro,
+        'Roboto Mono',
+        Menlo,
+        Monaco,
+        Consolas,
+        'Courier New',
+        Courier,
+        monospace,
+    );
     background-color: var(--primary-color, black);
     color: var(--tertiary-color, green);
-    font-family: monospace;
 }
 
 sub {
@@ -246,8 +262,14 @@ h5,
 h6,
 button,
 input[type='button'] {
-  color: var(--tertiary-color, teal);
-  font-family: var(--primary-heading-font-family, Arial, Helvetica, sans-serif);
+    color: var(--tertiary-color, teal);
+    font-family: var(
+        --primary-heading-font-family,
+        'Roboto',
+        Arial,
+        Helvetica,
+        sans-serif,
+    );
 }
 
 h1,
@@ -256,6 +278,6 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }

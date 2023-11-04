@@ -1,0 +1,77 @@
+.iconContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.1em;
+}
+
+.dropdownMenuItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 0;
+}
+
+.menuItemHidden,
+div.menuItemHidden {
+    display: none;
+    visibility: hidden;
+}
+
+.menuItemHidden.hover {
+    display: flex;
+    visibility: visible;
+    justify-content: space-between;
+}
+
+.dropdownMenuItem .borderReset,
+.dropdownMenuItem .borderReset:disabled {
+    border: none;
+    border-radius: 0;
+}
+
+button.menuItemButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.1em;
+    padding: 0.3em;
+}
+
+button.menuItemHidden {
+    display: flex;
+    visibility: visible;
+    justify-content: center;
+}
+
+button.menuItemHidden.hover {
+    justify-content: flex-start;
+}
+
+.buttonText {
+    white-space: nowrap;
+}
+
+.stretchChildren {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+@media only screen and (min-width: 900px) {
+    button.menuItemHidden {
+        justify-content: flex-start;
+    }
+
+    .menuItemHidden,
+    div.menuItemHidden {
+        display: flex;
+        visibility: visible;
+    }
+}

@@ -1,13 +1,15 @@
 import React, {
     ReactNode,
 } from 'react';
-import useGetClassesFromProps from '@application/hooks/useGetClassesFromProps/use-get-classes-from-props';
+import {
+    useGetClassesFromProps,
+    Status,
+} from '@application/hooks';
 
 import styles from './Notification.module.css';
-import { ButtonStatus } from '../Button/Button';
 
 export interface NotificationProps {
-    status?: ButtonStatus | undefined;
+    status?: Status | undefined;
     className?: string | undefined;
     disabled?: boolean | undefined;
     children?: ReactNode | undefined;

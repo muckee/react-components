@@ -2,11 +2,13 @@ import {
     ButtonProps,
 } from '@application/components/Button';
 import {
-    InputListItem,
-} from '@application/components/Form/InputList';
-import {
     NotificationProps
 } from '@application/components/Notification';
+import { FieldsetInputProps } from '@application/components/Form';
+export {
+    default as Status,
+} from './Status';
+
 import defaultStyles from './use-get-classes-from-props.module.css';
 
 export interface Class {
@@ -18,8 +20,7 @@ export interface Class {
     ) => string;
 }
 
-// TODO: InputListItem should adhere to naming convention.. probably.
-export type ElementProps = ButtonProps | NotificationProps | InputListItem;
+export type ElementProps = ButtonProps | NotificationProps | FieldsetInputProps;
 
 // Dynamically concatenate classes from props
 ////
@@ -32,17 +33,17 @@ const useGetClassesFromProps = (
     styles: object = defaultStyles,
     classes: Class[] = [
         {
-            property: 'className',
-            // TODO: Refine type of styles once pre-processors are added
-            format: (_: object, property: string) => {
-                return property;
-            }
-        },
-        {
             property: 'status',
             // TODO: Refine type of styles once pre-processors are added
             format: (styles: object, property: string) => {
                 return styles[property as keyof typeof styles];
+            }
+        },
+        {
+            property: 'className',
+            // TODO: Refine type of styles once pre-processors are added
+            format: (_: object, property: string) => {
+                return property;
             }
         },
     ],

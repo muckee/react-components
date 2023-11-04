@@ -2,12 +2,14 @@ import React, {
     MouseEventHandler,
     TouchEventHandler,
 } from 'react';
+import {
+    Status,
+} from '@application/hooks';
 import RemixIcon, {
     Editor,
 } from '@application/components/RemixIcon';
 import Button, {
     ButtonProps,
-    ButtonStatus,
 } from '@application/components/Button';
 
 import styles from './DragHandle.module.css';
@@ -37,7 +39,7 @@ const DragHandle = (props: DragHandleProps) => {
             ...buttonProps,
             title: title ? title : 'Re-position layer',
             className: `${styles.dragHandleButton}${className ? ` ${className}` : ''}`,
-            status: status ? status : ButtonStatus.Secondary,
+            status: status ? status : Status.Secondary,
         }}
     >
         <RemixIcon

@@ -32,6 +32,7 @@ export type DragItemProps = {
     listeners?: { [key in string]: (MouseEventHandler | TouchEventHandler) };
     preview?: ReactNode;
     className?: string | undefined;
+    previewClassName?: string | undefined;
     dividerClassName?: string | undefined;
 };
 
@@ -49,6 +50,7 @@ const DragItem = (props: DragItemProps) => {
         listeners,
         preview,
         className,
+        previewClassName,
         dividerClassName,
     } = props;
 
@@ -87,7 +89,7 @@ const DragItem = (props: DragItemProps) => {
             {!!preview && isDragging && dragIndex === index && (
                 <div
                     ref={previewRef}
-                    className={`${styles.preview}${className ? ` ${className}` : ''}${(isDragging && dragIndex === index) ? ` ${styles.dragging}` : ''}`}
+                    className={`${styles.preview}${(isDragging && dragIndex === index) ? ` ${styles.dragging}` : ''}${className ? ` ${className}` : ''}${previewClassName ? ` ${previewClassName}` : ''}`}
                 >
                     {preview}
                 </div>

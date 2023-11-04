@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import {
     ButtonProps,
-    ButtonStatus,
     SplitButton,
     SplitButtonProps,
 } from '../Button';
@@ -13,6 +12,7 @@ import { SelectedOption } from '../Form/Input/Select/SelectedOptionButton';
 import {
     useGetClassesFromProps,
     useClickTracker,
+    Status,
 } from '@application/hooks';
 
 import styles from './Dropdown.module.css';
@@ -27,7 +27,7 @@ export interface DropdownProps extends SplitButtonProps {
     menuItems?: (SelectedOption | ReactNode | string)[] | undefined;
     menuClassName?: string | undefined;
     menuItemClassName?: string | undefined;
-    status?: ButtonStatus | undefined;
+    status?: Status | undefined;
     toggleButtonProps?: ButtonProps | undefined;
 }
 
@@ -46,7 +46,9 @@ const Dropdown = (props: DropdownProps) => {
         toggleButtonProps,
     } = props;
 
-    const classNames = useGetClassesFromProps(props);
+    const classNames = useGetClassesFromProps(
+        props,
+    );
 
     const clickTracker = useClickTracker(() => {
         setMenuIsVisible(false);

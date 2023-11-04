@@ -8,10 +8,10 @@ import {
     DragHandle,
     Dropdown,
     DropdownMenuButton,
+    Fieldset,
     Footer,
     Form,
     Header,
-    InputList,
     ListItem,
     Main,
     Modal,
@@ -227,6 +227,7 @@ const App = () => {
         <Header>
 
             <Tooltip
+                help={true}
                 text={'Example heading tooltip'}
             >
                 <h1>ThugNerdz&apos; React Components Example</h1>
@@ -253,7 +254,7 @@ const App = () => {
 
                     {!browser2IsVisible && <Form>
 
-                        <InputList inputs={[
+                        <Fieldset fields={[
                             {
                                 title: 'Upload an image',
                                 label: 'Image :',
@@ -280,7 +281,7 @@ const App = () => {
 
                         <Form>
 
-                            <InputList inputs={[
+                            <Fieldset fields={[
                                 {
                                     title: 'Upload an image',
                                     label: 'Image :',
@@ -307,7 +308,7 @@ const App = () => {
 
                     <h3>Article component</h3>
 
-                    <InputList inputs={[
+                    <Fieldset fields={[
                         {
                             label: 'Quality :',
                             type: 'select',

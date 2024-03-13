@@ -1,22 +1,32 @@
 import React, {
+    forwardRef,
+    ForwardedRef,
     ReactNode,
 } from 'react';
 
 import styles from './Main.module.css';
 
 export interface MainProps {
-  className?: string | undefined;
-  children?: ReactNode | undefined;
+    className?: string | undefined;
+    children?: ReactNode | undefined;
 }
 
-const Main = (props: MainProps) => {
+const Main = forwardRef(function Main(props: MainProps, ref?: ForwardedRef<HTMLElement> | undefined) {
+
+    const {
+        className,
+        children,
+    } = props;
+
     return <main
-        className={`${styles.main} ${props.className ? props.className : ''}`}
+        ref={ref}
+        className={`${styles.main} ${className ? className : ''}`}
     >
 
-        {props.children}
+        {children}
 
     </main>;
-};
+
+});
 
 export default Main;

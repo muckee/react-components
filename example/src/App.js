@@ -5,6 +5,7 @@ import React, {
 import {
     Article,
     Button,
+    Copyright,
     DragHandle,
     Dropdown,
     DropdownMenuButton,
@@ -577,7 +578,9 @@ const App = () => {
         </Main>
 
         <Footer>
-            <p><small>Copyright &copy; {new Date().getFullYear()} ThugNerdz. All rights reserved.</small></p>
+            <Copyright
+                organisationName='ThugNerdz'
+            />
         </Footer>
 
     </Fragment>;

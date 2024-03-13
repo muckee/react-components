@@ -1,59 +1,71 @@
-import React, {
-    ChangeEventHandler,
+import React,{
+    HTMLProps,
     ReactNode,
 } from 'react';
-import DefaultInput from './DefaultInput';
-import Select from './Select';
-import {
-    SelectEvent,
+import DefaultInput, {
+    DefaultInputProps,
+} from './DefaultInput';
+import Select, {
+    SelectProps,
 } from './Select';
-import {
-    SelectedOption,
-} from './Select/SelectedOptionButton';
-
+import TextArea from './TextArea';
 import styles from './Input.module.css';
-import { DeselectEvent } from './Select/Select';
 
-export interface InputProps {
-    name: string;
-    title: string;
-    label?: string | undefined;
-    id?: string | undefined;
-    type?: string | undefined;
-    children?: ReactNode | undefined;
-    hidden?: boolean | undefined;
-    onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
-    onSelect?: SelectEvent | undefined;
-    onDeselect?: DeselectEvent | undefined;
-    className?: string | undefined;
-    disabled?: boolean | undefined;
-    placeholder?: string | undefined;
-    value?: SelectedOption[] | SelectedOption | undefined;
+export interface TextAreaProps extends Omit<HTMLProps<HTMLTextAreaElement>, 'label'> {
+    type: string;
+    label?: ReactNode;
 }
 
-const Input = (props: InputProps) => {
+const Input = (props: DefaultInputProps | TextAreaProps | SelectProps) => {
 
     const {
-        label,
         type,
-        value,
-        className,
     } = props;
 
     switch (type) {
     case 'select': {
+
+        const {
+            className,
+            value,
+        } = props as SelectProps;
+
         return <Select
             {...{
-                ...props,
-                label: label || '',
+                ...(props as SelectProps),
+                label: (props as SelectProps).label || '',
                 value: value,
                 className: `${styles.input}${className ? ` ${className}` : ''}`,
             }}
         />;
     }
+    case 'textarea': {
+
+        const {
+            className,
+            label,
+            value,
+        } = props as HTMLProps<HTMLTextAreaElement>;
+
+        return <TextArea {...{
+            ...{
+                ...props as HTMLProps<HTMLTextAreaElement>,
+                label: label as string | undefined,
+            },
+            value: value as string,
+            className: `${styles.input}${className ? ` ${className}` : ''}`,
+
+        }} />;
+    }
     default: {
+
+        const {
+            className,
+            value,
+        } = props as DefaultInputProps;
+
         return <DefaultInput {...{
-            ...props,
+            ...props as DefaultInputProps,
             value: value as string,
             className: `${styles.input}${className ? ` ${className}` : ''}`,
         }} />;

@@ -4,13 +4,13 @@ import React, {
 } from 'react';
 import {
     Status,
-} from '@application/hooks';
+} from '@hooks';
 import RemixIcon, {
     Editor,
-} from '@application/components/RemixIcon';
+} from '@components/RemixIcon';
 import Button, {
     ButtonProps,
-} from '@application/components/Button';
+} from '@components/Button';
 
 import styles from './DragHandle.module.css';
 

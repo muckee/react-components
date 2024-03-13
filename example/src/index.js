@@ -5,7 +5,6 @@ import 'remixicon/fonts/remixicon.css';
 import '@muckington/react-components/dist/initialize.css';
 import '@muckington/react-components/dist/theme.css';
 import '@muckington/react-components/dist/index.css';
-import '@muckington/react-components/dist/cjs/index.css';
 
 import App from './App';
 

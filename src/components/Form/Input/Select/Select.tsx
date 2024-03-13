@@ -1,38 +1,24 @@
 import React, {
     Fragment,
     ReactNode,
-    useState,
 } from 'react';
 import {
     Status,
-} from '@application/hooks';
-import {
-    SplitButtonPosition,
-} from '@application/components/Button';
-import Dropdown, {
-    DropdownMenuButton,
-} from '@application/components/Dropdown';
-import FormElement from './FormElement';
-import SelectedOptionButton, {
+} from '@hooks';
+import SelectDropdown, {
+    OnSelectAction,
+    SelectOption,
     SelectedOption,
     Value,
-} from './SelectedOptionButton';
-
+} from './SelectDropdown';
+import SelectInput from './SelectInput';
 import styles from './Select.module.css';
-
-export type SelectEvent = (value: Value) => void;
-
-export type DeselectEvent = (value: Value) => void;
-
-export interface SelectOption {
-    label: string;
-    value: SelectedOption;
-    title?: string | undefined;
-}
 
 export interface SelectProps {
     title: string;
     name: string;
+    label: ReactNode;
+    type: string;
     placeholder?: string | undefined;
     multi?: boolean | undefined;
     options?: SelectOption[] | undefined;
@@ -40,8 +26,8 @@ export interface SelectProps {
     className?: string | undefined;
     status?: Status | undefined;
     closeOnSelect?: boolean | undefined;
-    onSelect?: SelectEvent | undefined;
-    onDeselect?: DeselectEvent | undefined;
+    onSelect?: OnSelectAction | undefined;
+    onDeselect?: OnSelectAction | undefined;
 }
 
 // TODO: Rewrite Dropdown and Select components without styles, then re-introduce styles in minimal fashion
@@ -63,52 +49,6 @@ const Select = (props: SelectProps) => {
         onDeselect,
     } = props;
 
-    const [menuIsVisible, setMenuIsVisible] = useState(false);
-
-    const availableOptions = options.filter(option => {
-
-        if(value === (undefined || null)) {
-            return true;
-        }
-
-        switch(typeof value) {
-        case 'object': {
-
-            const selected = value.find(v => v === option.value);
-
-            return selected === undefined;
-            break;
-        }
-        case 'string':
-        case 'number':
-        default: {
-            return value !== option.value;
-        }
-        }
-    });
-
-    const menuItems = availableOptions.map((option, idx) => {
-
-        const optionTitle = option.title
-            ? option.title
-            : option.label
-                ? option.label
-                : `Menu item #${idx + 1}`;
-
-        return <DropdownMenuButton
-            key={idx}
-            title={optionTitle}
-            onClick={() => {
-
-                if (closeOnSelect || !multi) {
-                    setMenuIsVisible(false);
-                }
-
-                onSelect(option.value);
-            }}
-        >{option.label}</DropdownMenuButton>;
-    });
-
     const getFormElementValue: () => Value = () => {
 
         if(value === (undefined || null)) {
@@ -128,89 +68,21 @@ const Select = (props: SelectProps) => {
         return value;
     };
 
-    const getPrimaryButtonLabel: () => ReactNode[] = () => {
-
-        const primaryButtonLabel = [];
-
-        if (typeof value === 'object' && value) {
-            primaryButtonLabel.push(
-                ...value.map((selectedItem, idx) => {
-
-                    return <SelectedOptionButton
-                        key={idx}
-                        option={options.find(o => o.value === selectedItem) || {
-                            label: '',
-                            value: '',
-                        }}
-                        deselectOption={onDeselect}
-                    />;
-                })
-            );
-        } else {
-            primaryButtonLabel.push(<SelectedOptionButton
-                option={options.find(o => o.value === value) || {
-                    label: '',
-                    value: '',
-                }}
-                deselectOption={onDeselect}
-            />);
-        }
-
-        return primaryButtonLabel;
-    };
-
-    const getPrimaryButtonContent: () => ReactNode[] | ReactNode = () => {
-
-        const inputHasValue = typeof value === 'object' && value !== (undefined || null)
-            ? value.length > 0
-                ? true
-                : false
-            : value !== ('' || undefined || null)
-                ? true
-                : false;
-
-        switch(true) {
-        case inputHasValue: {
-            return getPrimaryButtonLabel();
-        }
-        case availableOptions.length < 1: {
-            return 'No options available';
-        }
-        case placeholder !== undefined: {
-            return placeholder;
-        }
-        case multi: {
-            return 'Choose options...';
-        }
-        default: {
-            return 'Choose an option...';
-        }
-        }
-    };
-
     return <Fragment>
 
-        <Dropdown
-            menuIsVisible={menuIsVisible}
-            setMenuIsVisible={setMenuIsVisible}
+        <SelectDropdown
             className={`${styles.dropdownContainer}${className ? ` ${className}` : ''}`}
+            closeOnSelect={closeOnSelect}
+            multi={multi}
+            options={options}
+            placeholder={placeholder}
             status={status}
-            position={SplitButtonPosition.Right}
-            buttonProps={{
-                children: getPrimaryButtonContent(),
-                className: `${styles.cursorReset} ${styles.button}`,
-                highlight: false,
-            }}
-            toggleButtonProps={{
-                className: styles.cursorReset,
-            }}
-            menuItems={menuItems}
+            value={value}
+            onDeselect={onDeselect}
+            onSelect={onSelect}
         />
 
-        {/* TODO: After testing, move FormElement inside useSelectInput hook */}
-        {/* TODO: Select input typing is fucked. Fix it. */}
-
-        <FormElement
+        <SelectInput
             title={title}
             name={name}
             options={options}

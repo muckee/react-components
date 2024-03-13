@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
     gap: 1.3em;
     padding: 0.3em 0.6em;
@@ -26,6 +26,10 @@
     width: 100%;
 }
 
+.fieldset fieldset .label {
+    width: unset;
+}
+
 .legend,
 .label {
     text-transform: uppercase;
@@ -43,11 +47,11 @@
   text-transform: uppercase;
 }
 
-.label {
-    width: 100%;
-}
-
 .field {
     flex: 1;
     color: var(--secondary-color, #2C363F);
+}
+
+.error {
+    color: var(--danger-color, darkred);
 }

@@ -1,5 +1,6 @@
 export {
     default,
+    OnSelectAction,
     SelectedOption,
     SelectedItemProps,
     Value,

@@ -1,9 +1,8 @@
 import React, {
     ReactNode,
 } from 'react';
-
-import UnorderedList from '../List/UnorderedList';
-import ListItem from '../List/ListItem';
+import UnorderedList from '@components/List/UnorderedList';
+import ListItem from '@components/List/ListItem';
 
 import styles from './Menu.module.css';
 

@@ -2,34 +2,36 @@ import React, {
     Fragment,
     ReactNode,
 } from 'react';
-import Backdrop from '../Backdrop';
-import Button from '../Button';
-import Header from '../Header';
-import Footer from '../Footer';
-import Menu from '../Menu';
-import Portal from '../Portal';
-import Section from '../Section';
+import Backdrop from '@components/Backdrop';
+import Button from '@components/Button';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
+import Menu from '@components/Menu';
+import Portal from '@components/Portal';
+import Section from '@components/Section';
 
 import styles from './Modal.module.css';
 
 export interface ModalProps {
-  handleClose: () => void;
-  show?: boolean | undefined;
-  className?: string | undefined;
-  mainClassName?: string | undefined;
-  heading?: string | undefined;
-  children?: ReactNode | undefined;
+    handleClose: () => void;
+    footerIsVisible?: boolean | undefined;
+    show?: boolean | undefined;
+    className?: string | undefined;
+    mainClassName?: string | undefined;
+    heading?: string | undefined;
+    children?: ReactNode | undefined;
 }
 
 const Modal = (props: ModalProps) => {
 
     const {
-        handleClose,
+        footerIsVisible = true,
         show,
         className,
         mainClassName,
         heading,
         children,
+        handleClose,
     } = props;
 
     const backdropPortalId = 'thugnerdz-modal-backdrop-root';
@@ -52,7 +54,7 @@ const Modal = (props: ModalProps) => {
 
                     {children}
 
-                    <Footer>
+                    {footerIsVisible && <Footer>
                         <Menu items={[
                             <Button
                                 key={0}
@@ -62,7 +64,7 @@ const Modal = (props: ModalProps) => {
                                 Close
                             </Button>,
                         ]} />
-                    </Footer>
+                    </Footer>}
 
                 </Section>
             </div>

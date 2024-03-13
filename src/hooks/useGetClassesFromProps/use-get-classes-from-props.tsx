@@ -1,10 +1,10 @@
 import {
     ButtonProps,
-} from '@application/components/Button';
+} from '@components/Button';
 import {
     NotificationProps
-} from '@application/components/Notification';
-import { FieldsetInputProps } from '@application/components/Form';
+} from '@components/Notification';
+import { FieldsetProps } from '@components/Form';
 export {
     default as Status,
 } from './Status';
@@ -20,7 +20,7 @@ export interface Class {
     ) => string;
 }
 
-export type ElementProps = ButtonProps | NotificationProps | FieldsetInputProps;
+export type ElementProps = ButtonProps | NotificationProps | FieldsetProps;
 
 // Dynamically concatenate classes from props
 ////
@@ -102,7 +102,7 @@ const useGetClassesFromProps = (
         // Check if the disabled flag is set to true
         const className: keyof ButtonProps = 'disabled';
 
-        if (props[className] !== undefined && props[className]) {
+        if ((props as ButtonProps)[className] !== undefined && (props as ButtonProps)[className]) {
 
             // Add the disabled class to the list of class names
             const disabledClass = styles[className as keyof typeof styles] || defaultStyles[className as keyof typeof defaultStyles];
@@ -117,7 +117,7 @@ const useGetClassesFromProps = (
 
     // Check if user-defined className property is being used.
     if(
-        classes.find(c => c === 'className')
+        classes.find(c => c.property === 'className')
         && props['className'] !== undefined
     ) {
 

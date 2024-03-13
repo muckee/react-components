@@ -1,1 +1,4 @@
-export { default } from './DefaultInput';
+export {
+    default,
+    DefaultInputProps,
+} from './DefaultInput';

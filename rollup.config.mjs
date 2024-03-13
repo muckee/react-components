@@ -1,3 +1,4 @@
+import alias from '@rollup/plugin-alias';
 import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import eslint from '@rollup/plugin-eslint';
@@ -7,7 +8,7 @@ import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import cssnext from 'postcss-cssnext';
+import path from 'path';
 import copy from 'rollup-plugin-copy';
 import { createTransform } from 'rollup-copy-transform-css';
 import dts from 'rollup-plugin-dts';
@@ -50,9 +51,11 @@ export default [
                 jsnext: true,
                 main: true,
                 browser: true,
+                extensions: ['.css'],
             }),
             replace({
                 preventAssignment: true,
+                'process.browser': true,
                 'process.env.NODE_ENV': JSON.stringify('production'),
             }),
             uglify({
@@ -76,19 +79,19 @@ export default [
             postcss({
                 plugins: [
                     autoprefixer(),
-                    cssnext({
-                        warnForDuplicates: false,
-                    }),
                     cssnano(),
                 ],
                 extensions: [
                     '.css',
                 ],
+                autoprefixer: true,
                 minimize: true,
                 modules: true,
-                extract: true,
+                // exportGlobals: true,
+                // autoModules: true,
+                extract: false,
                 sourceMap: true,
-                inject: false,
+                // inject: false,
             }),
             terser(),
             copy({
@@ -104,21 +107,33 @@ export default [
                         }),
                     },
                     {
-                        src: 'dist/*.css',
-                        dest: 'dist',
-                        transform: createTransform({
-                            inline: true,
-                            rename: (name, extension) => `${name}.min.${extension}`,
-                        }),
+                        src: 'src/scripts/*.js',
+                        dest: 'dist/js',
                     },
                 ]
             }),
         ],
     },
     {
-        input: 'dist/esm/types/index.d.ts',
+        input: 'dist/esm/index.d.ts',
         output: [{ file: packageJson.types, format: 'esm' }],
         plugins: [
+            alias({
+                entries: [
+                    {
+                        find: '@application',
+                        replacement: path.resolve('./dist/esm/'),
+                    },
+                    {
+                        find: '@components',
+                        replacement: path.resolve('./dist/esm/components/'),
+                    },
+                    {
+                        find: '@hooks',
+                        replacement: path.resolve('./dist/esm/hooks/'),
+                    },
+                ],
+            }),
             dts(),
         ],
         external: [/\.css$/],

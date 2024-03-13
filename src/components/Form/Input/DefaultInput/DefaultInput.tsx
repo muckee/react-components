@@ -1,19 +1,12 @@
 import React, {
     ChangeEventHandler,
+    ReactNode,
 } from 'react';
-
-import { InputProps } from '../Input';
-
 import styles from './DefaultInput.module.css';
 
-export interface DefaultInputProps extends Omit<InputProps, 'onChange'> {
-  min?: string | undefined;
-  max?: string | undefined;
-  size?: number | undefined;
-  accept?: string | undefined;
-  placeholder?: string | undefined;
-  value?: string | undefined;
-  onChange?:  ChangeEventHandler<HTMLInputElement> | undefined;
+export interface DefaultInputProps extends
+    HTMLInputElement {
+    onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
 const DefaultInput = (props: DefaultInputProps) => {
@@ -48,7 +41,7 @@ const DefaultInput = (props: DefaultInputProps) => {
         className={`${styles.input}${className ? ` ${className}` : ''}`}
         disabled={disabled}
     >
-        {children}
+        {children as ReactNode}
     </input>;
 };
 

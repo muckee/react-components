@@ -1,22 +1,29 @@
 import React, {
+    MouseEvent,
     ReactNode,
 } from 'react';
 import {
     ButtonProps,
     SplitButton,
     SplitButtonProps,
-} from '../Button';
-import Menu from './Menu';
-import { SplitButtonPosition } from '../Button/SplitButton/SplitButton';
-import { SelectedOption } from '../Form/Input/Select/SelectedOptionButton';
+} from '@components/Button';
+import {
+    SplitButtonPosition,
+} from '@components/Button/SplitButton/SplitButton';
+import {
+    SelectedOption,
+} from '@components/Form/Input/Select';
+import RemixIcon, {
+    Arrows,
+} from '@components/RemixIcon';
 import {
     useGetClassesFromProps,
     useClickTracker,
     Status,
-} from '@application/hooks';
+} from '@hooks';
+import Menu from './Menu';
 
 import styles from './Dropdown.module.css';
-import RemixIcon, { Arrows } from '../RemixIcon';
 
 export interface DropdownProps extends SplitButtonProps {
     menuIsVisible: boolean;
@@ -44,7 +51,43 @@ const Dropdown = (props: DropdownProps) => {
         buttonTogglesMenu = false,
         buttonProps,
         toggleButtonProps,
+        disabled,
     } = props;
+
+    const dropdownItems = [
+        {
+            children: children,
+            ...buttonProps,
+            disabled,
+            onClick: (e: MouseEvent<HTMLButtonElement>) => {
+                if (buttonTogglesMenu) {
+                    setMenuIsVisible(!menuIsVisible);
+                }
+                if (buttonProps?.onClick) {
+                    buttonProps.onClick(e);
+                }
+            },
+            className: `${styles.primaryButton}${menuIsVisible ? ` ${styles.expanded}` : ''}${buttonProps?.className ? ` ${buttonProps.className}` : ''}`,
+        },
+    ];
+
+    if (position === SplitButtonPosition.Right) {
+        dropdownItems.push({
+            children: menuIsVisible ? <RemixIcon icon={Arrows.ArrowDropUpLine} /> : <RemixIcon icon={Arrows.ArrowDropDownLine} />,
+            disabled,
+            onClick: () => setMenuIsVisible(!menuIsVisible),
+            ...toggleButtonProps,
+            className: `${styles.toggleButton}${menuIsVisible ? ` ${styles.expanded}` : ''}${toggleButtonProps?.className ? ` ${toggleButtonProps.className}` : ''}`,
+        });
+    } else {
+        dropdownItems.unshift({
+            children: menuIsVisible ? <RemixIcon icon={Arrows.ArrowDropUpLine} /> : <RemixIcon icon={Arrows.ArrowDropDownLine} />,
+            disabled,
+            onClick: () => setMenuIsVisible(!menuIsVisible),
+            ...toggleButtonProps,
+            className: `${styles.toggleButton}${menuIsVisible ? ` ${styles.expanded}` : ''}${toggleButtonProps?.className ? ` ${toggleButtonProps.className}` : ''}`,
+        });
+    }
 
     const classNames = useGetClassesFromProps(
         props,
@@ -62,27 +105,7 @@ const Dropdown = (props: DropdownProps) => {
         <SplitButton
             className={styles.button}
             position={position}
-            items={[
-                {
-                    children: children,
-                    ...buttonProps,
-                    onClick: (e) => {
-                        if(buttonTogglesMenu) {
-                            setMenuIsVisible(!menuIsVisible);
-                        }
-                        if(buttonProps?.onClick) {
-                            buttonProps.onClick(e);
-                        }
-                    },
-                    className: `${styles.primaryButton}${menuIsVisible ? ` ${styles.expanded}` : ''}${buttonProps?.className ? ` ${buttonProps.className}` : ''}`,
-                },
-                {
-                    children: menuIsVisible ? <RemixIcon icon={Arrows.ArrowDropUpLine} /> : <RemixIcon icon={Arrows.ArrowDropDownLine} />,
-                    onClick: () => setMenuIsVisible(!menuIsVisible),
-                    ...toggleButtonProps,
-                    className: `${styles.toggleButton}${menuIsVisible ? ` ${styles.expanded}` : ''}${toggleButtonProps?.className ? ` ${toggleButtonProps.className}` : ''}`,
-                },
-            ]}
+            items={dropdownItems}
         />
 
         {menuIsVisible && <Menu

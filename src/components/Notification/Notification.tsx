@@ -4,7 +4,7 @@ import React, {
 import {
     useGetClassesFromProps,
     Status,
-} from '@application/hooks';
+} from '@hooks';
 
 import styles from './Notification.module.css';
 

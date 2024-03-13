@@ -7,6 +7,7 @@ import styles from './Figure.module.css';
 export interface FigureProps {
   className?: string | undefined;
   heading?: string | undefined;
+  figcaptionClassName?: string | undefined;
   shiftCaptionUp?: boolean | undefined;
   imgSrc?: string | undefined;
   imgAlt?: string | undefined;
@@ -19,6 +20,7 @@ const Figure = (props: FigureProps) => {
     const {
         className,
         heading,
+        figcaptionClassName,
         shiftCaptionUp,
         imgSrc,
         imgAlt,
@@ -31,7 +33,7 @@ const Figure = (props: FigureProps) => {
 
             {heading && heading}
 
-            {shiftCaptionUp && <figcaption>{children}</figcaption>}
+            {shiftCaptionUp && <figcaption className={figcaptionClassName}>{children}</figcaption>}
 
             <img
                 src={imgSrc}
@@ -39,7 +41,7 @@ const Figure = (props: FigureProps) => {
                 className={`${styles.image}${imgClassName ? ` ${imgClassName}` : ''}`}
             />
 
-            {!shiftCaptionUp && <figcaption>{children}</figcaption>}
+            {!shiftCaptionUp && <figcaption className={figcaptionClassName}>{children}</figcaption>}
 
         </figure>
     );

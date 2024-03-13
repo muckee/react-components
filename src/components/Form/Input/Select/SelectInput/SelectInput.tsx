@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import {
     SelectedOption,
-} from '../../SelectedOptionButton';
+} from '../SelectDropdown/SelectedOptionButton';
 
 export interface SelectInputProps {
     title: string;
@@ -14,7 +14,7 @@ export interface SelectInputProps {
     value?: string | readonly string[] | undefined;
     options?: {
         value: SelectedOption,
-        label?: ReactNode | undefined,
+        label?: ReactNode,
         optionLabel?: string | undefined,
     }[] | undefined;
     children?: ReactNode | undefined;

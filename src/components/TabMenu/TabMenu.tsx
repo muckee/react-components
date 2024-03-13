@@ -1,10 +1,10 @@
 import React, {
     ReactNode,
 } from 'react';
-import Article from '../Article';
-import Button from '../Button';
-import Menu from '../Menu';
-import Section from '../Section';
+import Article from '@components/Article';
+import Button from '@components/Button';
+import Menu from '@components/Menu';
+import Section from '@components/Section';
 
 import styles from './TabMenu.module.css';
 

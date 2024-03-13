@@ -1,7 +1,7 @@
 import React, {
     ReactNode,
 } from 'react';
-import DefaultMenu from '@application/components/Menu';
+import DefaultMenu from '@components/Menu';
 
 import styles from './Menu.module.css';
 

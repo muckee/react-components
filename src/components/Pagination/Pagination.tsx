@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '../Button';
-import ListItem from '../List/ListItem';
-import Menu from '../Menu/Menu';
+import Button from '@components/Button';
+import ListItem from '@components/List/ListItem';
+import Menu from '@components/Menu/Menu';
 
 import styles from './Pagination.module.css';
 

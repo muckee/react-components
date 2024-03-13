@@ -4,10 +4,10 @@ import React, {
 } from 'react';
 import RemixIcon, {
     System,
-} from '@application/components/RemixIcon';
-import { DeselectEvent } from '../Select';
-
+} from '@components/RemixIcon';
 import styles from './SelectedOptionButton.module.css';
+
+export type OnSelectAction = (value: Value) => void;
 
 export type SelectedOption = string | number | readonly string[];
 
@@ -18,9 +18,9 @@ export interface SelectedItemProps {
         label: ReactNode | string,
         value: Value,
         title?: string | undefined,
-        selectedLabel?: ReactNode | string | undefined,
+        selectedLabel?: ReactNode,
     };
-    deselectOption?: DeselectEvent | undefined;
+    deselectOption?: OnSelectAction | undefined;
 }
 
 const SelectedOptionButton = (props: SelectedItemProps) => {

@@ -1,4 +1,8 @@
-export { default } from './RemixIcon';
+export {
+    default,
+    RemixIconProps,
+    RemixIconSize,
+} from './RemixIcon';
 export { default as Icon } from './Icon';
 export {
     Arrows,

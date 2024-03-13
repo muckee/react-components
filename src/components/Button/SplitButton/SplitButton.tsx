@@ -6,7 +6,7 @@ import Button, {
 } from '../Button';
 
 import styles from './SplitButton.module.css';
-import { useGetClassesFromProps } from '@application/hooks';
+import { useGetClassesFromProps } from '@hooks';
 
 export enum SplitButtonPosition {
     Left = 'left',

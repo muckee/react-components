@@ -3,18 +3,19 @@ import React, {
     ReactNode,
 } from 'react';
 import Input, {
-    InputProps,
+    DefaultInputProps,
+    SelectProps,
+    TextAreaProps,
 } from '../Input';
-
 import styles from './Label.module.css';
 
 export interface LabelProps {
-  label: ReactNode | string;
-  input?: InputProps | undefined;
-  errorMsg?: string | undefined;
-  className?: string | undefined;
-  children?: ReactNode | undefined;
-  childrenPosition?: ('before' | 'beforeLabel' | 'after') | undefined;
+    label: ReactNode;
+    input?: DefaultInputProps | TextAreaProps | SelectProps | undefined;
+    errorMsg?: string | undefined;
+    className?: string | undefined;
+    children?: ReactNode | undefined;
+    childrenPosition?: ('before' | 'beforeLabel' | 'after') | undefined;
 }
 
 const Label = (props: LabelProps) => {
@@ -40,11 +41,15 @@ const Label = (props: LabelProps) => {
 
         {input && <Fragment>
 
-            {(input.type === 'file' && errorMsg) && <span className={`${errorMsg ? styles.error : ''}`}>{errorMsg}</span>}
+            {(input.type === 'file' && errorMsg) && <small
+                className={styles.error}
+            >{errorMsg}</small>}
 
             {input && <Input {...input} />}
 
-            {(input.type !== 'file' && errorMsg) && <span className={`${errorMsg ? styles.error : ''}`}>{errorMsg}</span>}
+            {(input.type !== 'file' && errorMsg) && <small
+                className={styles.error}
+            >{errorMsg}</small>}
 
         </Fragment>}
 

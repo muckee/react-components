@@ -8,7 +8,7 @@ import {
 import {
     DragItemType,
     DragItemContextType,
-} from '@application/components/List/SortableList/SortableListItem/DragItem';
+} from '@components/List/SortableList/SortableListItem/DragItem';
 
 const between = (x: number, from: number, to: number) => x > from && x < to;
 

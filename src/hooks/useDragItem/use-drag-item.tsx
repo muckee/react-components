@@ -1,4 +1,4 @@
-import { DragItemContextType } from '@application/components/List/SortableList/SortableListItem/DragItem';
+import { DragItemContextType } from '@components/List/SortableList/SortableListItem/DragItem';
 
 const useDragItem = (context: DragItemContextType, index: number) => {
 
